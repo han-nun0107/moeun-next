@@ -5,6 +5,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import importPlugin from 'eslint-plugin-import'
 import prettier from 'eslint-config-prettier'
 import globals from 'globals'
+import next from 'eslint-config-next'
 
 export default tseslint.config(
   {
@@ -12,6 +13,7 @@ export default tseslint.config(
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  next,
   {
     files: ['**/*.{ts,tsx,js,jsx}'],
     plugins: {
@@ -38,7 +40,6 @@ export default tseslint.config(
       },
     },
     rules: {
-      // React
       '@typescript-eslint/triple-slash-reference': 'off',
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
@@ -46,14 +47,12 @@ export default tseslint.config(
       'react/prop-types': 'off',
       'react/react-in-jsx-scope': 'off',
 
-      // TS
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
         'warn',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
 
-      // Imports
       'import/order': [
         'warn',
         {
@@ -72,6 +71,7 @@ export default tseslint.config(
         },
       ],
       'import/no-duplicates': 'warn',
+      'no-console': 'warn',
     },
   },
   prettier
