@@ -20,7 +20,7 @@ const Header = () => {
       className="fixed top-0 left-0 flex h-[90px] w-full items-center justify-around border-b border-[#d9d9d9] bg-white"
       style={{ zIndex: Z_INDEX.HEADER }}
     >
-      <div className="flex w-full items-center justify-around">
+      <div className="flex w-full items-center justify-between px-8">
         {/* 로고 */}
         <Link href={ROUTE_PATHS.HOME} aria-label="홈으로 이동">
           <Image
@@ -53,10 +53,7 @@ const Header = () => {
               /* TODO: 버튼 공통 컴포넌트로 변경 */
               <button
                 type="button"
-                onClick={() => {
-                  onLogin()
-                  router.push(ROUTE_PATHS.HOME)
-                }}
+                onClick={onLogin}
                 className="h-13 w-41 cursor-pointer rounded-[60px] bg-[#f2544b] text-center leading-[52px] font-semibold text-white hover:bg-[#e04439]"
               >
                 로그인/회원가입
