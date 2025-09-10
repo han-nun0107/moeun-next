@@ -50,54 +50,41 @@ const Header = () => {
           {/* 로그인 / 유저 아이콘 (로그인 전)*/}
           <div className="flex items-center">
             {!isLoggedIn ? (
-              <Link
-                onClick={() => onLogin()}
-                href={ROUTE_PATHS.LOGIN}
-                className="h-13 w-41 rounded-[60px] bg-[#f2544b] text-center leading-[52px] font-semibold text-white hover:bg-[#e04439]"
+              /* TODO: 버튼 공통 컴포넌트로 변경 */
+              <button
+                type="button"
+                onClick={() => {
+                  onLogin()
+                  router.push(ROUTE_PATHS.HOME)
+                }}
+                className="h-13 w-41 cursor-pointer rounded-[60px] bg-[#f2544b] text-center leading-[52px] font-semibold text-white hover:bg-[#e04439]"
               >
                 로그인/회원가입
-              </Link>
+              </button>
             ) : (
               <>
                 {/* 마이페이지, 장바구니 (로그인 이후) */}
                 <div className="flex items-center gap-8">
-                  {USER_ICONS.map((icon) =>
-                    icon.label === '마이페이지' ? (
-                      <Link
-                        key={icon.label}
-                        href={ROUTE_PATHS.MYPAGE.INDEX}
-                        aria-label={icon.label}
-                      >
-                        <Image
-                          src={icon.icon}
-                          alt={icon.label}
-                          width={20}
-                          height={20}
-                        />
-                      </Link>
-                    ) : (
-                      <Link
-                        key={icon.label}
-                        href={ROUTE_PATHS.CART}
-                        aria-label={icon.label}
-                      >
-                        <Image
-                          src={icon.icon}
-                          alt={icon.label}
-                          width={20}
-                          height={20}
-                        />
-                      </Link>
-                    )
-                  )}
+                  {USER_ICONS.map((icon) => (
+                    <button
+                      key={icon.label}
+                      onClick={() => router.push(icon.path)}
+                      aria-label={icon.label}
+                      className="cursor-pointer"
+                    >
+                      <Image
+                        src={icon.icon}
+                        alt={icon.label}
+                        width={20}
+                        height={20}
+                      />
+                    </button>
+                  ))}
                   {/* TODO: 버튼 공통 컴포넌트로 변경 */}
                   <button
                     type="button"
                     className="h-13 w-30 cursor-pointer rounded-4xl border border-[#d9d9d9] font-semibold text-[#666666]"
-                    onClick={() => {
-                      onLogout()
-                      router.push(ROUTE_PATHS.HOME)
-                    }}
+                    onClick={onLogout}
                   >
                     로그아웃
                   </button>
