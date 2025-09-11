@@ -1,5 +1,3 @@
-import { text } from 'stream/consumers'
-
 export const BUTTON_VARIANTS = {
   /* 로그아웃 버튼 */
   OUTLINE: [
