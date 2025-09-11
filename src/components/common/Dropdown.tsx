@@ -36,7 +36,7 @@ export default function Dropdown({
         aria-expanded={isOpen}
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <span className={selected ? 'text-gray-900' : 'text-[#d9d9d9]'}>
+        <span className={selected ? 'text-gray-900' : 'text-[#666]'}>
           {selected ? selected.label : placeholder}
         </span>
         <Image
@@ -51,7 +51,7 @@ export default function Dropdown({
       {isOpen && (
         <ul
           role="listbox"
-          className="absolute z-10 mt-2 w-full rounded-[5px] border border-[#d9d9d9] bg-white text-xs text-[#666666] shadow-lg"
+          className="absolute z-10 mt-2 w-full rounded-[5px] border border-[#d9d9d9] bg-white text-xs text-[#666] shadow-lg"
         >
           {options.map((option) => (
             <li
