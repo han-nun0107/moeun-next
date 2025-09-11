@@ -5,11 +5,11 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 import { NAV_ITEMS, USER_ICONS } from '@/constants/header/header'
-import { IMAGE_URLS } from '@/constants/imageUrls'
 import { ROUTE_PATHS } from '@/constants/routePaths'
 import { Z_INDEX } from '@/foundations/zIndex'
 import { useHeader } from '@/hooks/useHeader'
 import Button from '@/components/common/Button'
+import LOGO from '@/assets/icons/logo/logo.svg'
 
 const Header = () => {
   const router = useRouter()
@@ -23,12 +23,7 @@ const Header = () => {
     >
       <div className="flex w-full items-center justify-between px-80">
         <Link href={ROUTE_PATHS.HOME} aria-label="홈으로 이동">
-          <Image
-            src={IMAGE_URLS.LOGO}
-            alt="모은 한잔취향 로고"
-            width={100}
-            height={50}
-          />
+          <Image src={LOGO} alt="모은 한잔취향 로고" width={100} height={50} />
         </Link>
 
         <div className="flex items-center gap-15">
