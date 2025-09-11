@@ -19,4 +19,9 @@ export const USER_ICONS = [
     icon: IMAGE_URLS.CART,
     path: ROUTE_PATHS.CART,
   },
+  {
+    label: '좋아요페이지',
+    icon: IMAGE_URLS.LIKE,
+    path: ROUTE_PATHS.LIKE,
+  },
 ]

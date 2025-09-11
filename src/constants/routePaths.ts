@@ -5,6 +5,7 @@ export const ROUTE_PATHS = {
   SEARCH: '/search',
   FEEDBACK: '/feedback',
   CART: '/cart',
+  LIKE: '/like-page',
   ITEM_DETAIL: (id: string) => `/item/${id}`,
 
   LOGIN: '/login',
