@@ -1,6 +1,6 @@
 export const BUTTON_VARIANTS = {
   /* 로그아웃 버튼 */
-  VARIANTS1: [
+  OUTLINE: [
     'h-13',
     'w-30',
     'rounded-4xl',
@@ -11,7 +11,7 @@ export const BUTTON_VARIANTS = {
   ].join(' '),
 
   /* 로그인 버튼 */
-  VARIANTS2: [
+  CONTAINED: [
     'h-13',
     'w-41',
     'rounded-[60px]',
@@ -27,6 +27,6 @@ export const BUTTON_VARIANTS = {
   ICON: '',
 } as const
 
-export const DEFAULT_BUTTON_VARIANT = 'VARIANTS1'
+export const DEFAULT_BUTTON_VARIANT = 'CONTAINED'
 
 export type ButtonVariant = keyof typeof BUTTON_VARIANTS

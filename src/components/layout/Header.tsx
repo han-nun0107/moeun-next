@@ -48,7 +48,7 @@ const Header = () => {
 
           <div className="flex items-center">
             {!isLoggedIn ? (
-              <Button onClick={onLogin} variant="VARIANTS2">
+              <Button onClick={onLogin} variant="CONTAINED">
                 로그인/회원가입
               </Button>
             ) : (
@@ -56,7 +56,7 @@ const Header = () => {
                 <div className="flex items-center gap-8">
                   {USER_ICONS.map((icon) => (
                     <Button
-                      key={icon.label}
+                      key={icon.path}
                       onClick={() => router.push(icon.path)}
                       aria-label={icon.label}
                       variant="ICON"
@@ -69,7 +69,7 @@ const Header = () => {
                       />
                     </Button>
                   ))}
-                  <Button onClick={onLogout} variant="VARIANTS1">
+                  <Button onClick={onLogout} variant="OUTLINE">
                     로그아웃
                   </Button>
                 </div>

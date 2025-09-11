@@ -1,3 +1,4 @@
+import { ButtonHTMLAttributes } from 'react'
 import {
   BUTTON_VARIANTS,
   ButtonVariant,
@@ -5,30 +6,22 @@ import {
 } from '@/foundations/button'
 import { cn } from '@/utils/cn'
 
-type ButtonProps = {
-  children: React.ReactNode
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
-  disabled?: boolean
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant
-  className?: string
-  'aria-label'?: string
 }
 
 const Button = ({
   children,
-  onClick,
-  disabled = false,
   variant = DEFAULT_BUTTON_VARIANT,
   className,
-  'aria-label': ariaLabel,
+  type = 'button',
+  ...props
 }: ButtonProps) => {
   return (
     <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
+      type={type}
       className={cn('cursor-pointer', BUTTON_VARIANTS[variant], className)}
-      aria-label={ariaLabel}
+      {...props}
     >
       {children}
     </button>
