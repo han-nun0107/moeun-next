@@ -1,13 +1,13 @@
 'use client'
 
-import { cn } from '@/utils/cn'
 import Image from 'next/image'
+
 import ArrowIcon from '@/assets/icons/dropdown/arrow.svg'
 import Button from '@/components/common/Button'
-
-import { DropdownProps } from '@/types/dropdown'
-import { useDropdown } from '@/hooks/useDropdown'
 import { dropdownOptions } from '@/constants/dropdown/dropdown'
+import { useDropdown } from '@/hooks/useDropdown'
+import { DropdownProps } from '@/types/dropdown'
+import { cn } from '@/utils/cn'
 
 export default function Dropdown({
   placeholder = '편의점 매장을 선택해 주세요.',

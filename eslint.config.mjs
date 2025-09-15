@@ -1,29 +1,22 @@
 import js from '@eslint/js'
-import tseslint from 'typescript-eslint'
+import eslintPluginTs from '@typescript-eslint/eslint-plugin'
+import parserTs from '@typescript-eslint/parser'
 import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import importPlugin from 'eslint-plugin-import'
 import prettier from 'eslint-config-prettier'
 import globals from 'globals'
-import next from 'eslint-config-next'
 
-export default tseslint.config(
+export default [
   {
-    ignores: ['.next', 'dist', 'node_modules', 'public'],
+    ignores: ['.next', 'dist', 'node_modules', 'public', 'next-env.d.ts'],
   },
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
-  next,
   {
     files: ['**/*.{ts,tsx,js,jsx}'],
-    plugins: {
-      react,
-      'react-hooks': reactHooks,
-      import: importPlugin,
-    },
     languageOptions: {
       ecmaVersion: 2023,
       sourceType: 'module',
+      parser: parserTs,
       parserOptions: {
         ecmaFeatures: { jsx: true },
         project: ['./tsconfig.json'],
@@ -31,27 +24,24 @@ export default tseslint.config(
       globals: {
         ...globals.browser,
         ...globals.es2023,
+        ...globals.node,
       },
     },
-    settings: {
-      react: { version: 'detect' },
-      'import/resolver': {
-        typescript: { project: './tsconfig.json' },
-      },
+    plugins: {
+      '@typescript-eslint': eslintPluginTs,
+      react,
+      'react-hooks': reactHooks,
+      import: importPlugin,
     },
     rules: {
-      '@typescript-eslint/triple-slash-reference': 'off',
+      ...js.configs.recommended.rules,
+      ...eslintPluginTs.configs.recommended.rules,
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
       'react/prop-types': 'off',
       'react/react-in-jsx-scope': 'off',
-
-      'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': [
-        'warn',
-        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
-      ],
+      'no-undef': 'off',
 
       'import/order': [
         'warn',
@@ -72,7 +62,12 @@ export default tseslint.config(
       ],
       'import/no-duplicates': 'warn',
       'no-console': 'warn',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
     },
   },
-  prettier
-)
+  prettier,
+]
