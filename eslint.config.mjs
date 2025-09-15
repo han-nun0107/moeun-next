@@ -33,12 +33,23 @@ export default [
       'react-hooks': reactHooks,
       import: importPlugin,
     },
+    settings: {
+      'import/resolver': {
+        typescript: true,
+        node: true,
+      },
+      react: {
+        version: 'detect',
+      },
+    },
     rules: {
       ...js.configs.recommended.rules,
       ...eslintPluginTs.configs.recommended.rules,
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
+
+      // custom rules
       'react/prop-types': 'off',
       'react/react-in-jsx-scope': 'off',
       'no-undef': 'off',
