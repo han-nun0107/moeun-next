@@ -7,6 +7,9 @@ export type StarRatingProps = {
   showRatingValue?: boolean
   size?: number
   className?: string
+  fillColor?: string
+  emptyColor?: string
+  ariaLabel?: string
 }
 
 export type UseStarRatingProps = {
