@@ -4,12 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
+import LOGO from '@/assets/icons/logo/logo.svg'
+import Button from '@/components/common/Button'
 import { NAV_ITEMS, USER_ICONS } from '@/constants/header/header'
 import { ROUTE_PATHS } from '@/constants/routePaths'
 import { Z_INDEX } from '@/foundations/zIndex'
 import { useHeader } from '@/hooks/useHeader'
-import Button from '@/components/common/Button'
-import LOGO from '@/assets/icons/logo/logo.svg'
 
 const Header = () => {
   const router = useRouter()

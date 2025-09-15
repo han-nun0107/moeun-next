@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+
 import type { DropdownOption } from '@/types/dropdown'
 
 type UseDropdownProps = {

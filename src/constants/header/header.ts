@@ -1,7 +1,7 @@
-import { ROUTE_PATHS } from '@/constants/routePaths'
-import MYPAGE from '@/assets/icons/header/mypage.svg'
-import LIKE from '@/assets/icons/header/like.svg'
 import CART from '@/assets/icons/header/cart.svg'
+import LIKE from '@/assets/icons/header/like.svg'
+import MYPAGE from '@/assets/icons/header/mypage.svg'
+import { ROUTE_PATHS } from '@/constants/routePaths'
 
 export const NAV_ITEMS = [
   { label: '패키지', path: ROUTE_PATHS.PACKAGE },
