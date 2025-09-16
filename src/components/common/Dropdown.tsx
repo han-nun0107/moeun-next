@@ -39,8 +39,8 @@ export default function Dropdown({
         <span className={selected ? 'text-gray-900' : 'text-[#666]'}>
           {selected ? selected.label : placeholder}
         </span>
-        <Image
-          src={ArrowIcon}
+        <img
+          src={ArrowIcon.src}
           alt="arrow"
           width={12}
           height={12}

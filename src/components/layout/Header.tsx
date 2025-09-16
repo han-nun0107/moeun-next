@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
@@ -23,20 +22,26 @@ const Header = () => {
     >
       <div className="flex w-full items-center justify-between px-80">
         <Link href={ROUTE_PATHS.HOME} aria-label="홈으로 이동">
-          <Image src={LOGO} alt="모은 한잔취향 로고" width={100} height={50} />
+          <img
+            src={LOGO.src}
+            alt="모은 한잔취향 로고"
+            width={100}
+            height={50}
+          />
         </Link>
 
         <div className="flex items-center gap-15">
           <nav>
-            <ul className="flex gap-15">
+            <ul className="flex list-none gap-15">
               {NAV_ITEMS.map((item) => (
-                <Link
-                  key={item.path}
-                  href={item.path}
-                  className="text-lg font-semibold text-[#333]"
-                >
-                  {item.label}
-                </Link>
+                <li key={item.path}>
+                  <Link
+                    href={item.path}
+                    className="text-lg font-semibold text-[#333]"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
               ))}
             </ul>
           </nav>
@@ -56,8 +61,8 @@ const Header = () => {
                       aria-label={icon.label}
                       variant="ICON"
                     >
-                      <Image
-                        src={icon.icon}
+                      <img
+                        src={icon.icon.src}
                         alt={icon.label}
                         width={20}
                         height={20}
