@@ -41,7 +41,7 @@ export default function Dropdown({
         </span>
         <img
           src={ArrowIcon.src}
-          alt="arrow"
+          alt=""
           width={12}
           height={12}
           className={cn('transition-transform', isOpen && 'rotate-180')}

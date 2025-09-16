@@ -2,35 +2,34 @@ import { InputHTMLAttributes } from 'react'
 
 import SearchIcon from '@/assets/icons/input/search.svg'
 import Button from '@/components/common/Button'
-import {
-  INPUT_VARIANTS,
-  DEFAULT_INPUT_VARIANT,
-  InputVariant,
-} from '@/foundations/input'
+import { INPUT_VARIANTS, InputVariant } from '@/foundations/input'
 import { cn } from '@/utils/cn'
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+  id?: string
   placeholder: string
-  variant?: InputVariant
   maxLength?: number
   inputType?: 'nickname' | 'search'
 }
 
 const Input = ({
+  id,
   inputType = 'nickname',
   type = 'text',
   placeholder,
-  variant = DEFAULT_INPUT_VARIANT,
   maxLength,
   className,
   ...props
 }: InputProps) => {
+  const variant = inputType.toUpperCase() as InputVariant
+
   return (
     <div className="relative inline-flex items-center">
-      <label htmlFor={inputType} className="sr-only">
+      <label htmlFor={id ?? inputType} className="sr-only">
         {placeholder}
       </label>
       <input
+        id={id ?? inputType}
         type={type}
         inputMode={inputType === 'search' ? 'search' : 'text'}
         placeholder={placeholder}

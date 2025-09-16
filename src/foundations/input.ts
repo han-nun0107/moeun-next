@@ -6,7 +6,7 @@ export const INPUT_VARIANTS = {
     'px-4',
     'text-[#333]',
     'border-[#d9d9d9]',
-    'rounded-[6px]',
+    'rounded-md',
     'bg-[#fff]',
   ].join(' '),
   SEARCH: [
@@ -14,7 +14,7 @@ export const INPUT_VARIANTS = {
     'w-90',
     'border-b-2',
     'border-b-[#000]',
-    'px-[10px]',
+    'px-2.5',
     'bg-[#fff]',
   ].join(' '),
 } as const
