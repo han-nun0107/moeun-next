@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
@@ -22,12 +23,7 @@ const Header = () => {
     >
       <div className="flex w-full items-center justify-between px-80">
         <Link href={ROUTE_PATHS.HOME} aria-label="홈으로 이동">
-          <img
-            src={LOGO.src}
-            alt="모은 한잔취향 로고"
-            width={100}
-            height={50}
-          />
+          <Image src={LOGO} alt="모은 한잔취향 로고" width={100} height={50} />
         </Link>
 
         <div className="flex items-center gap-15">
