@@ -1,7 +1,5 @@
 'use client'
 
-import Image from 'next/image'
-
 import ArrowIcon from '@/assets/icons/dropdown/arrow.svg'
 import Button from '@/components/common/Button'
 import { dropdownOptions } from '@/constants/dropdown/dropdown'
