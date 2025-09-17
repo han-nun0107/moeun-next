@@ -3,16 +3,18 @@
 import Image, { StaticImageData } from 'next/image'
 import { useState } from 'react'
 
+import TestImage from '@/assets/test.png'
 import { cn } from '@/utils/cn'
+import isValidUrl from '@/utils/validUrl'
 
 import HeartButton from './HeartButton'
 
 type CardImageProps = {
-  src: string | StaticImageData
+  src?: string | StaticImageData | null
   alt: string
   width: number
   height: number
-  Heart?: boolean
+  isLiked?: boolean
   className?: string
 }
 
@@ -21,12 +23,10 @@ const CardImage = ({
   alt,
   width,
   height,
-  Heart = false,
+  isLiked = false,
   className = '',
 }: CardImageProps) => {
-  const [isLiked, setIsLiked] = useState(false)
-
-  if (!src) return null
+  const [liked, setLiked] = useState(false)
 
   return (
     <div
@@ -37,16 +37,20 @@ const CardImage = ({
       style={{ width: width, height: height }}
     >
       <Image
-        src={src}
+        src={typeof src === 'string' && isValidUrl(src) ? src : TestImage}
         alt={alt}
         fill
         className="object-cover"
-        sizes="(max-width: 768px) 100vw, 300px"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        onError={(e) => {
+          const target = e.target as HTMLImageElement
+          target.src = TestImage.src
+        }}
       />
-      {Heart && (
+      {isLiked && (
         <HeartButton
-          isLiked={isLiked}
-          onClick={() => setIsLiked(!isLiked)}
+          isLiked={liked}
+          onClick={() => setLiked(!liked)}
           className="absolute right-2 bottom-2 z-10"
         />
       )}

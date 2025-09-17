@@ -1,4 +1,5 @@
-import TestImage from '@/assets/test.png'
+import { StaticImageData } from 'next/image'
+
 import StarRating from '@/components/common/StarRating'
 
 import CardImage from './CardImage'
@@ -7,16 +8,20 @@ const ReviewCard = ({
   nickname,
   feedback,
   rating,
+  img,
+  alt,
 }: {
   nickname: string
   feedback: string
   rating: number
+  img: string | StaticImageData
+  alt: string
 }) => {
   return (
     <div className="w-[300px] flex-shrink-0">
       <CardImage
-        src={TestImage}
-        alt="짱구"
+        src={img}
+        alt={alt}
         width={300}
         height={290}
         className="h-[290px] w-full"

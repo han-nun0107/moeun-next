@@ -1,33 +1,38 @@
-import type { ComponentProps } from 'react'
+import type { ComponentProps, ReactElement } from 'react'
 
-import DetailCard from '@/components/common/card/DetailCard'
-import PackageModalCard from '@/components/common/card/PackageModalCard'
-import ProductCard from '@/components/common/card/ProductCard'
-import ReviewCard from '@/components/common/card/ReviewCard'
-import TestCard from '@/components/common/card/TestCard'
+import { cardMap } from '@/foundations/card'
 
-type CardProps =
-  | { type: 'product'; data: ComponentProps<typeof ProductCard> }
-  | { type: 'test'; data: ComponentProps<typeof TestCard> }
-  | { type: 'detail' }
-  | { type: 'review'; data: ComponentProps<typeof ReviewCard> }
-  | { type: 'package'; data: ComponentProps<typeof PackageModalCard> }
+type CardType = keyof typeof cardMap
 
-const Card = (props: CardProps) => {
-  switch (props.type) {
-    case 'product':
-      return <ProductCard {...props.data} />
-    case 'test':
-      return <TestCard {...props.data} />
-    case 'detail':
-      return <DetailCard />
-    case 'review':
-      return <ReviewCard {...props.data} />
-    case 'package':
-      return <PackageModalCard {...props.data} />
-    default:
-      return null
-  }
+type CardProps = {
+  [K in CardType]: { type: K; data: ComponentProps<(typeof cardMap)[K]> }
+}[CardType]
+
+const renderers = {
+  product: ({ data }: Extract<CardProps, { type: 'product' }>) => {
+    const Component = cardMap.product
+    return <Component {...data} />
+  },
+  test: ({ data }: Extract<CardProps, { type: 'test' }>) => {
+    const Component = cardMap.test
+    return <Component {...data} />
+  },
+  detail: ({ data }: Extract<CardProps, { type: 'detail' }>) => {
+    const Component = cardMap.detail
+    return <Component {...data} />
+  },
+  review: ({ data }: Extract<CardProps, { type: 'review' }>) => {
+    const Component = cardMap.review
+    return <Component {...data} />
+  },
+  package: ({ data }: Extract<CardProps, { type: 'package' }>) => {
+    const Component = cardMap.package
+    return <Component {...data} />
+  },
+} as const
+
+const Card = (props: CardProps): ReactElement => {
+  return renderers[props.type](props as never)
 }
 
 export default Card
