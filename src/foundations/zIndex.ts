@@ -4,4 +4,5 @@ export const Z_INDEX = {
   HEADER: 300,
   MODAL_OVERLAY: 900,
   MODAL: 1000,
+  LIKE: 10,
 }
