@@ -4,19 +4,21 @@ import StarRating from '@/components/common/StarRating'
 
 import CardImage from './CardImage'
 
+type ReviewCardProps = {
+  nickname: string
+  feedback: string
+  rating: number
+  img: string | StaticImageData
+  alt: string
+}
+
 const ReviewCard = ({
   nickname,
   feedback,
   rating,
   img,
   alt,
-}: {
-  nickname: string
-  feedback: string
-  rating: number
-  img: string | StaticImageData
-  alt: string
-}) => {
+}: ReviewCardProps) => {
   return (
     <div className="w-[300px] flex-shrink-0">
       <CardImage

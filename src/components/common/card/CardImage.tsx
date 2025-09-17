@@ -14,8 +14,9 @@ type CardImageProps = {
   alt: string
   width: number
   height: number
-  isLiked?: boolean
+  initialLiked?: boolean
   className?: string
+  showHeart?: boolean
 }
 
 const CardImage = ({
@@ -23,10 +24,11 @@ const CardImage = ({
   alt,
   width,
   height,
-  isLiked = false,
+  initialLiked = false,
   className = '',
+  showHeart = false,
 }: CardImageProps) => {
-  const [liked, setLiked] = useState(false)
+  const [liked, setLiked] = useState(initialLiked)
 
   return (
     <div
@@ -47,7 +49,7 @@ const CardImage = ({
           target.src = TestImage.src
         }}
       />
-      {isLiked && (
+      {showHeart && (
         <HeartButton
           isLiked={liked}
           onClick={() => setLiked(!liked)}

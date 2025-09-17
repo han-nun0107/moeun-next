@@ -24,7 +24,12 @@ const HeartButton = ({
       aria-label={isLiked ? '찜 취소' : '찜하기'}
       onClick={onClick}
     >
-      <img src={icon.src} alt="찜하기" width={30} height={30} />
+      <img
+        src={icon.src}
+        alt={isLiked ? '찜 취소' : '찜하기'}
+        width={30}
+        height={30}
+      />
     </Button>
   )
 }

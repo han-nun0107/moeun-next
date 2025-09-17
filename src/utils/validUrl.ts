@@ -1,9 +1,10 @@
 const isValidUrl = (url: string): boolean => {
+  if (url.startsWith('/') || url.startsWith('data:')) {
+    return true
+  }
   try {
-    if (url.startsWith('data:')) return true
-
     new URL(url)
-    return url.startsWith('http') || url.startsWith('/')
+    return url.startsWith('http')
   } catch {
     return false
   }

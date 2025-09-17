@@ -15,7 +15,7 @@ const DetailCard = ({ img, alt }: DetailCardProps) => {
         alt={alt}
         width={560}
         height={560}
-        isLiked={true}
+        showHeart={true}
         className="bg-[#f5f5f5]"
       />
     </div>
