@@ -44,6 +44,9 @@ export const BUTTON_VARIANTS = {
     'focus:border-blue-500',
     'focus:outline-none',
   ].join(' '),
+
+  /* 좋아요 버튼 */
+  LIKE: ['rounded-full', 'bg-white', 'p-1', 'shadow-md'].join(' '),
 } as const
 
 export const DEFAULT_BUTTON_VARIANT = 'CONTAINED'
