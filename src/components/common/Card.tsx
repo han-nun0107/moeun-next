@@ -5,34 +5,14 @@ import { cardMap } from '@/foundations/card'
 type CardType = keyof typeof cardMap
 
 type CardProps = {
-  [K in CardType]: { type: K; data: ComponentProps<(typeof cardMap)[K]> }
+  [T in CardType]: { type: T; data: ComponentProps<(typeof cardMap)[T]> }
 }[CardType]
 
-const renderers = {
-  product: ({ data }: Extract<CardProps, { type: 'product' }>) => {
-    const Component = cardMap.product
-    return <Component {...data} />
-  },
-  test: ({ data }: Extract<CardProps, { type: 'test' }>) => {
-    const Component = cardMap.test
-    return <Component {...data} />
-  },
-  detail: ({ data }: Extract<CardProps, { type: 'detail' }>) => {
-    const Component = cardMap.detail
-    return <Component {...data} />
-  },
-  review: ({ data }: Extract<CardProps, { type: 'review' }>) => {
-    const Component = cardMap.review
-    return <Component {...data} />
-  },
-  package: ({ data }: Extract<CardProps, { type: 'package' }>) => {
-    const Component = cardMap.package
-    return <Component {...data} />
-  },
-} as const
-
 const Card = (props: CardProps): ReactElement => {
-  return renderers[props.type](props as never)
+  const Component = cardMap[props.type] as React.ComponentType<
+    typeof props.data
+  >
+  return <Component {...props.data} />
 }
 
 export default Card
