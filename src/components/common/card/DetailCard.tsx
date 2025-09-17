@@ -1,16 +1,21 @@
-import TestImage from '@/assets/test.png'
+import { StaticImageData } from 'next/image'
 
 import CardImage from './CardImage'
 
-const DetailCard = () => {
+type DetailCardProps = {
+  img: string | StaticImageData
+  alt: string
+}
+
+const DetailCard = ({ img, alt }: DetailCardProps) => {
   return (
     <div>
       <CardImage
-        src={TestImage}
-        alt="짱구"
+        src={img}
+        alt={alt}
         width={560}
         height={560}
-        Heart={true}
+        isLiked={true}
         className="bg-[#f5f5f5]"
       />
     </div>

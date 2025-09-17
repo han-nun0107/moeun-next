@@ -1,4 +1,5 @@
-import TestImage from '@/assets/test.png'
+import { StaticImageData } from 'next/image'
+
 import Tag from '@/components/common/Tag'
 
 import CardImage from './CardImage'
@@ -8,14 +9,16 @@ const testTags = ['부드러운', '곡물향']
 type TestCardProps = {
   title: string
   subtitle: string
+  img: string | StaticImageData
+  alt: string
 }
 
-const TestCard = ({ title, subtitle }: TestCardProps) => {
+const TestCard = ({ title, subtitle, img, alt }: TestCardProps) => {
   return (
     <div>
       <CardImage
-        src={TestImage}
-        alt="짱구"
+        src={img}
+        alt={alt}
         width={132}
         height={128}
         className="bg-[#fff]"
