@@ -47,6 +47,14 @@ export const BUTTON_VARIANTS = {
 
   /* 좋아요 버튼 */
   LIKE: ['rounded-full', 'bg-white', 'p-1', 'shadow-md'].join(' '),
+
+  PAGINATION: [
+    'h-8',
+    'w-8',
+    'cursor-pointer',
+    'rounded-sm',
+    'text-[#333]',
+  ].join(' '),
 } as const
 
 export const DEFAULT_BUTTON_VARIANT = 'CONTAINED'
