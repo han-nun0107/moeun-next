@@ -55,6 +55,27 @@ export const BUTTON_VARIANTS = {
     'rounded-sm',
     'text-[#333]',
   ].join(' '),
+
+  /* 피드백 버튼 */
+  FEEDBACK: [
+    'w-35',
+    'h-12',
+    'bg-[#f2f2f2]',
+    'text-[#333333]',
+    'text-lg',
+    'rounded-md',
+    'tracking-[0.05em]',
+  ].join(' '),
+
+  /* 본품 구매하기 */
+  BUY: [
+    'w-36',
+    'h-12',
+    'bg-[#000000]',
+    'text-[#ffffff]',
+    'tracking-[0.05em]',
+    'rounded-md',
+  ].join(' '),
 } as const
 
 export const DEFAULT_BUTTON_VARIANT = 'CONTAINED'

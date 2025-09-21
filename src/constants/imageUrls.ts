@@ -1,1 +1,5 @@
-export const IMAGE_URLS = {}
+export const IMAGE_URLS = {
+  Product: {
+    Default: '/default-product.png',
+  },
+}
