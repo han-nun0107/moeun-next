@@ -2,9 +2,9 @@
 
 import { useEffect, useMemo, useState } from 'react'
 
-import { CartResponse } from '@/types/cart'
+import { CartResponse } from '@/types/item-row'
 
-interface UseCartItemLogicParams {
+type UseCartItemLogicParams = {
   quantity: number | undefined
   id?: string | number
   data?: CartResponse
@@ -20,13 +20,11 @@ const useCartItem = ({ quantity, data }: UseCartItemLogicParams) => {
   }, [quantity])
 
   const onIncreaseQuantity = (): void => {
-    if (localQuantity >= 0) return
-    setLocalQuantity(localQuantity + 1)
+    setLocalQuantity((prev) => prev + 1)
   }
 
   const onDecreaseQuantity = (): void => {
-    if (localQuantity <= 0) return
-    setLocalQuantity(localQuantity - 1)
+    setLocalQuantity((prev) => prev - 1)
   }
 
   const onCheckChange = (itemId: number, isChecked: boolean) => {

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { IMAGE_URLS } from '@/constants/imageUrls'
 import { useTasteDisplay } from '@/hooks/item-row/useTasteDisplay'
 
-interface TastingItemRowProps {
+type TastingItemRowProps = {
   img: string
   name: string
   order: string

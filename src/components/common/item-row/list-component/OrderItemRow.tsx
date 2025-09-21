@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Button from '@/components/common/Button'
 import { IMAGE_URLS } from '@/constants/imageUrls'
 import { useOrderItemRow } from '@/hooks/item-row/useOrderItemRow'
-import { ItemRowType } from '@/types/itemRows'
+import { OrderItemRowProps } from '@/types/item-row'
 
 const OrderItemRow = ({
   id,
@@ -18,7 +18,7 @@ const OrderItemRow = ({
   reviewed,
   feedback_id,
   product,
-}: ItemRowType) => {
+}: OrderItemRowProps) => {
   const { handleClick, getButtonConfig } = useOrderItemRow({
     id,
     reviewed,
@@ -37,40 +37,38 @@ const OrderItemRow = ({
   const orderDate = `${datePart} ${timePart}`
 
   return (
-    <>
-      <div className="flex items-center border-b border-[#e1e1e1] py-4 text-center text-[#666666]">
-        <div className="w-[15%] min-w-[80px] text-lg">{orderDate}</div>
+    <div className="flex items-center border-b border-[#e1e1e1] py-4 text-center text-[#666666]">
+      <div className="w-[15%] min-w-[80px] text-lg">{orderDate}</div>
 
-        <div className="flex w-[40%] min-w-[250px] items-center gap-4 pl-2">
-          <div className="ml-36 flex items-center justify-center overflow-hidden border">
-            <Image
-              src={img || IMAGE_URLS.Product.Default}
-              alt={name || '상품 이미지'}
-              width={100}
-              height={100}
-              className="h-25 w-25"
-            />
-          </div>
-          <p className="text-left text-lg font-bold">{name}</p>
+      <div className="flex w-[40%] min-w-[250px] items-center gap-4 pl-2">
+        <div className="ml-36 flex items-center justify-center overflow-hidden border">
+          <Image
+            src={img || IMAGE_URLS.Product.Default}
+            alt={name || '상품 이미지'}
+            width={100}
+            height={100}
+            className="h-25 w-25"
+          />
         </div>
-
-        <div className="mx-auto w-20 text-lg">{quantity}</div>
-
-        <div className="w-[15%] min-w-[80px] text-lg">
-          {totalPrice.toLocaleString()}원
-        </div>
-
-        <div className="flex w-[20%] min-w-[100px] justify-center">
-          <Button
-            onClick={handleClick}
-            variant={buttonConfig.variant}
-            className={clsx('cursor-pointer text-lg', buttonConfig.className)}
-          >
-            {buttonConfig.text}
-          </Button>
-        </div>
+        <p className="text-left text-lg font-bold">{name}</p>
       </div>
-    </>
+
+      <div className="mx-auto w-20 text-lg">{quantity}</div>
+
+      <div className="w-[15%] min-w-[80px] text-lg">
+        {totalPrice.toLocaleString()}원
+      </div>
+
+      <div className="flex w-[20%] min-w-[100px] justify-center">
+        <Button
+          onClick={handleClick}
+          variant={buttonConfig.variant}
+          className={clsx('cursor-pointer text-lg', buttonConfig.className)}
+        >
+          {buttonConfig.text}
+        </Button>
+      </div>
+    </div>
   )
 }
 

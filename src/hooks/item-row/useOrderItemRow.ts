@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 import type { ItemRowType } from '@/types/itemRows'
 
-interface UseOrderItemRowProps {
+type UseOrderItemRowProps = {
   id: ItemRowType['id']
   reviewed: ItemRowType['reviewed']
   feedback_id?: ItemRowType['feedback_id']

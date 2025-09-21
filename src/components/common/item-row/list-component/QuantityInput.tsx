@@ -2,7 +2,7 @@ import MinusIcon from '@/assets/icons/cart/minus.svg'
 import PlusIcon from '@/assets/icons/cart/plus.svg'
 import Button from '@/components/common/Button'
 
-interface QuantityInputProps {
+type QuantityInputProps = {
   value: number
   onIncrease: () => void
   onDecrease: () => void

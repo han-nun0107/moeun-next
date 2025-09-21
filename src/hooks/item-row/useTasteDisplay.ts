@@ -7,14 +7,14 @@ export const useTasteDisplay = (tasteData: {
   bitterness?: string
   confidence?: string
 }) => {
-  const tasteInfo = {
-    단맛: tasteData.sweetness + '점',
-    신맛: tasteData.acidity + '점',
-    바디감: tasteData.body + '점',
-    탄산감: tasteData.carbonation + '점',
-    향: tasteData.aroma + '점',
-    쓴맛: tasteData.bitterness + '점',
-  }
+const tasteInfo = {
+  단맛: tasteData.sweetness ? tasteData.sweetness + '점' : undefined,
+  신맛: tasteData.acidity ? tasteData.acidity + '점' : undefined,
+  바디감: tasteData.body ? tasteData.body + '점' : undefined,
+  탄산감: tasteData.carbonation ? tasteData.carbonation + '점' : undefined,
+  향: tasteData.aroma ? tasteData.aroma + '점' : undefined,
+  쓴맛: tasteData.bitterness ? tasteData.bitterness + '점' : undefined,
+}
 
   const tasteInfoArray = Object.entries(tasteInfo)
     .filter(([_, value]) => value)
