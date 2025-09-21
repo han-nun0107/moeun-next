@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react'
 
-import type { ItemRowType } from '@/types/itemRows'
+import type { ItemRow } from '@/types/item-row'
 
-const useItemRow = (items: ItemRowType[]) => {
-  const [itemList, setItemList] = useState<ItemRowType[]>(items)
+const useItemRow = (items: ItemRow[]) => {
+  const [itemList, setItemList] = useState<ItemRow[]>(items)
 
   useEffect(() => {
     setItemList(items)

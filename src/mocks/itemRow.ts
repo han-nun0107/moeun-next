@@ -1,6 +1,6 @@
-import type { ItemRowType } from '@/types/itemRows'
+import type { ItemRow } from '@/types/item-row'
 
-export const cartItems: ItemRowType[] = [
+export const cartItems: ItemRow[] = [
   {
     id: 1,
     type: 'cart',
@@ -38,7 +38,7 @@ export const cartItems: ItemRowType[] = [
   },
 ]
 
-export const orderItems: ItemRowType[] = [
+export const orderItems: ItemRow[] = [
   {
     id: 101,
     type: 'order',
@@ -85,7 +85,7 @@ export const orderItems: ItemRowType[] = [
   },
 ]
 
-export const tastingItems: ItemRowType[] = [
+export const tastingItems: ItemRow[] = [
   {
     id: 201,
     type: 'tasting',
