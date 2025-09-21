@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { IMAGE_URLS } from '@/constants/imageUrls'
 import useCartItem from '@/hooks/item-row/useCartItem'
-import { CartItemRowProps } from '@/types/itemRows'
+import { CartItemRowProps } from '@/types/item-row'
 
 import { QuantityInput } from './QuantityInput'
 

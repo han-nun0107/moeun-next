@@ -1,4 +1,4 @@
-interface ItemRowLabelType {
+type ItemRowLabelType = {
   type?: 'cart' | 'order' | 'tasting'
   children?: React.ReactNode
   className?: string

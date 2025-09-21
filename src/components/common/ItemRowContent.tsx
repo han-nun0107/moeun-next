@@ -3,14 +3,14 @@
 import ItemRowLabel from '@/components/common/item-row/ItemRowLabel'
 import ItemRowList from '@/components/common/item-row/ItemRowList'
 import useItemRow from '@/hooks/item-row/useItemRow'
-import type { ItemRowType } from '@/types/itemRows'
+import type { ItemRowType } from '@/types/item-row'
 
-interface ItemRowProps {
+type ItemRowProps = {
   items: ItemRowType[]
   type: 'cart' | 'order' | 'tasting'
   onQuantityChange?: () => void
-  checkedItems?: number[]
-  onCheckChange?: (itemId: number, isChecked: boolean) => void
+  checkedItems?: (number | string)[]
+  onCheckChange?: (itemId: number | string, isChecked: boolean) => void
 }
 
 const ItemRowContent = ({
@@ -39,13 +39,15 @@ const ItemRowContent = ({
     <ItemRowLabel type={type}>
       {itemList.map((item, idx) => (
         <ItemRowList
-          key={`${items[idx]?.id} - ${idx}`}
+          key={`${item.id ?? idx}`}
           {...item}
           type={type}
-          checked={checkedItems?.includes(item.id as number)}
-          onCheckChange={(isChecked) =>
-            onCheckChange?.(item.id as number, isChecked)
-          }
+          checked={item.id != null && checkedItems?.includes(item.id)}
+          onCheckChange={(isChecked) => {
+            if (item.id != null) {
+              onCheckChange?.(item.id, isChecked)
+            }
+          }}
           onQuantityChange={async (newQuantity: number) => {
             await handleQuantityChange(idx, newQuantity)
             onQuantityChange?.()
