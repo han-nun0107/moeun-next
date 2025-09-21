@@ -28,14 +28,14 @@ const Slider = ({
           {formatValue ? formatValue(0) : '0'}
         </div>
         <SliderPrimitive.Root
+          aria-label={label}
           defaultValue={defaultValue}
           value={value}
           onValueChange={onValueChange}
           max={max}
           step={step}
           className={clsx(
-            'relative flex h-[20px] w-[308px] cursor-pointer touch-none items-center select-none',
-            className
+            'relative flex h-[20px] w-[308px] cursor-pointer touch-none items-center select-none'
           )}
         >
           <SliderPrimitive.Track className="relative h-full w-full rounded-full bg-[#DFDFDF]">
