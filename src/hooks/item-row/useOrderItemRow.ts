@@ -3,16 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
-import type { ItemRowType } from '@/types/itemRows'
-
-type UseOrderItemRowProps = {
-  id: ItemRowType['id']
-  reviewed: ItemRowType['reviewed']
-  feedback_id?: ItemRowType['feedback_id']
-  productId?: ItemRowType['product'] extends { id?: infer T }
-    ? T
-    : string | number | undefined
-}
+import type { UseOrderItemRowProps } from '@/types/item-row'
 
 export const useOrderItemRow = ({
   id,

@@ -21,7 +21,7 @@ const OrderItemRow = ({
 }: OrderItemRowProps) => {
   const { handleClick, getButtonConfig } = useOrderItemRow({
     id,
-    reviewed,
+    reviewed: reviewed ?? false,
     feedback_id,
     productId: product?.id,
   })

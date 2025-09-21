@@ -1,10 +1,10 @@
-import { CartItemRowProps } from '@/types/itemRows'
+import type { ItemRow } from '@/types/item-row'
 
 import CartItemRow from './list-component/CartItemRow'
 import OrderItemRow from './list-component/OrderItemRow'
 import TastingItemRow from './list-component/TastingItemRow'
 
-const ItemRowList = (props: CartItemRowProps) => {
+const ItemRowList = (props: ItemRow) => {
   switch (props.type) {
     case 'cart':
       return (

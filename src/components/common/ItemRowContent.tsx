@@ -3,10 +3,10 @@
 import ItemRowLabel from '@/components/common/item-row/ItemRowLabel'
 import ItemRowList from '@/components/common/item-row/ItemRowList'
 import useItemRow from '@/hooks/item-row/useItemRow'
-import type { ItemRowType } from '@/types/item-row'
+import type { ItemRow } from '@/types/item-row'
 
 type ItemRowProps = {
-  items: ItemRowType[]
+  items: ItemRow[]
   type: 'cart' | 'order' | 'tasting'
   onQuantityChange?: () => void
   checkedItems?: (number | string)[]
@@ -39,11 +39,11 @@ const ItemRowContent = ({
     <ItemRowLabel type={type}>
       {itemList.map((item, idx) => (
         <ItemRowList
-          key={`${item.id ?? idx}`}
+          key={`${item.id}-${idx}`}
           {...item}
           type={type}
           checked={item.id != null && checkedItems?.includes(item.id)}
-          onCheckChange={(isChecked) => {
+          onCheckChange={(isChecked: boolean) => {
             if (item.id != null) {
               onCheckChange?.(item.id, isChecked)
             }
