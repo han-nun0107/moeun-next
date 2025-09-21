@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 
 type UseModalProps = {
   isOpen: boolean
@@ -13,6 +13,12 @@ export const useModal = ({
   onClose,
   isCloseable = true,
 }: UseModalProps) => {
+  const onCloseRef = useRef(onClose)
+
+  useEffect(() => {
+    onCloseRef.current = onClose
+  })
+
   useEffect(() => {
     if (!isOpen) return
 
@@ -20,7 +26,9 @@ export const useModal = ({
     document.body.style.overflow = 'hidden'
 
     const handleEsc = (e: KeyboardEvent) => {
-      if (isCloseable && e.key === 'Escape') onClose()
+      if (isCloseable && e.key === 'Escape') {
+        onCloseRef.current()
+      }
     }
 
     document.addEventListener('keydown', handleEsc)
@@ -29,15 +37,22 @@ export const useModal = ({
       document.removeEventListener('keydown', handleEsc)
       document.body.style.overflow = originalOverflow
     }
-  }, [isOpen, onClose, isCloseable])
+  }, [isOpen, isCloseable])
 
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isCloseable && e.target === e.currentTarget) onClose()
-  }
+  const handleOverlayClick = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (isCloseable && e.target === e.currentTarget) {
+        onCloseRef.current()
+      }
+    },
+    [isCloseable]
+  )
 
-  const handleClose = () => {
-    if (isCloseable) onClose()
-  }
+  const handleClose = useCallback(() => {
+    if (isCloseable) {
+      onCloseRef.current()
+    }
+  }, [isCloseable])
 
   return {
     handleOverlayClick,

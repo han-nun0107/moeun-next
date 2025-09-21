@@ -69,7 +69,7 @@ const Modal = ({
                 variant="ICON"
                 className="absolute top-10 right-8"
               >
-                <img src={CloseIcon.src} alt="닫기" />
+                <img src={CloseIcon.src} />
               </Button>
             )}
           </div>
