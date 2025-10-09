@@ -9,6 +9,8 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import { cn } from '@/utils/cn'
 
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+
 type CarouselProps = {
   children: ReactNode
   slidesPerView?: number
@@ -34,7 +36,6 @@ export default function Carousel({
 }: CarouselProps) {
   const slideElements = Children.toArray(children)
 
-  // ✅ SSR과 CSR 모두에서 동일하게 유지되는 고정 클래스명
   const navigationPrevClass = 'swiper-button-prev-custom'
   const navigationNextClass = 'swiper-button-next-custom'
 
@@ -77,13 +78,13 @@ export default function Carousel({
             className={cn(`${navigationPrevClass} swiper-button-prev-custom`)}
             aria-label="이전"
           >
-            ◀
+            <ChevronLeft />
           </button>
           <button
             className={cn(`${navigationNextClass} swiper-button-next-custom`)}
             aria-label="다음"
           >
-            ▶
+            <ChevronRight />
           </button>
         </>
       )}
