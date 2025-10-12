@@ -1,7 +1,7 @@
 import * as SliderPrimitive from '@radix-ui/react-slider'
 import clsx from 'clsx'
 
-import { VARIANT_COLOR_MAP } from '@/constants/slider/sliderColors'
+import { VARIANT_COLOR_MAP } from '@/constants'
 import type { SliderProps } from '@/types/slider/slider'
 
 const Slider = ({

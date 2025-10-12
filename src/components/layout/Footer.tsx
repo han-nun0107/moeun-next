@@ -1,5 +1,4 @@
-import { FOOTER_INFO_GROUPS } from '@/constants/footer/footer'
-import { IMAGE_URLS } from '@/constants/imageUrls'
+import { FOOTER_INFO_GROUPS, IMAGE_URLS } from '@/constants'
 import { cn } from '@/utils/cn'
 
 import FooterLogo from './FooterLogo'

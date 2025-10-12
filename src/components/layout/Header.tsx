@@ -5,9 +5,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 import LOGO from '@/assets/icons/logo/logo.svg'
-import Button from '@/components/common/Button'
-import { NAV_ITEMS, USER_ICONS } from '@/constants/header/header'
-import { ROUTE_PATHS } from '@/constants/routePaths'
+import { Button } from '@/components'
+import { NAV_ITEMS, ROUTE_PATHS, USER_ICONS } from '@/constants'
 import { Z_INDEX } from '@/foundations/zIndex'
 import { useHeader } from '@/hooks/useHeader'
 

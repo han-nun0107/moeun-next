@@ -1,5 +1,5 @@
-import { JustifiedText } from '@/components/common/gauge-bar/JustifiedText'
-import { tasteMetaMap } from '@/constants/gauge-bar/tasteMeta'
+import JustifiedText from '@/components/common/gauge-bar/JustifiedText'
+import { tasteMetaMap } from '@/constants'
 import type { TasteScore } from '@/types/gauge-bar/tasteTypes'
 
 const GaugeBar = ({ type, score }: TasteScore) => {

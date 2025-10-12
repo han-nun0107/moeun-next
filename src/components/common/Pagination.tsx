@@ -2,10 +2,9 @@
 
 import NextIcon from '@/assets/icons/pagination/next.svg'
 import PrevIcon from '@/assets/icons/pagination/prev.svg'
+import Button from '@/components/common/Button'
 import { usePagination } from '@/hooks/usePaginations'
 import { cn } from '@/utils/cn'
-
-import Button from './Button'
 
 type PaginationProps = {
   currentPage: number
