@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import './globals.css'
+import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
 
 export const metadata: Metadata = {
@@ -44,6 +45,7 @@ export default function RootLayout({
       <body>
         <Header />
         <main className="pt-[90px]">{children}</main>
+        <Footer />
         <div id="modal-root"></div>
       </body>
     </html>
