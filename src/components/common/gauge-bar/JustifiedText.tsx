@@ -1,4 +1,4 @@
-export const JustifiedText = ({ text }: { text: string }) => (
+const JustifiedText = ({ text }: { text: string }) => (
   <>
     {[...text].map((char, index) => (
       <span className="inline-block" key={index}>
@@ -7,3 +7,5 @@ export const JustifiedText = ({ text }: { text: string }) => (
     ))}
   </>
 )
+
+export default JustifiedText

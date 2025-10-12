@@ -1,5 +1,6 @@
 'use client'
 
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { ReactNode, Children, ReactElement } from 'react'
 import { Pagination, Autoplay, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -7,9 +8,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
-import { cn } from '@/utils/cn'
 
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { cn } from '@/utils/cn'
 
 type CarouselProps = {
   children: ReactNode

@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 
 import './globals.css'
-import Footer from '@/components/layout/Footer'
-import Header from '@/components/layout/Header'
+import { Footer, Header } from '@/components'
 
 export const metadata: Metadata = {
   title: '한잔취향 | 전통주 취향 맞춤 추천',

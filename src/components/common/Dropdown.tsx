@@ -2,7 +2,7 @@
 
 import ArrowIcon from '@/assets/icons/dropdown/arrow.svg'
 import Button from '@/components/common/Button'
-import { dropdownOptions } from '@/constants/dropdown/dropdown'
+import { dropdownOptions } from '@/constants'
 import { useDropdown } from '@/hooks/useDropdown'
 import { DropdownProps } from '@/types/dropdown'
 import { cn } from '@/utils/cn'
