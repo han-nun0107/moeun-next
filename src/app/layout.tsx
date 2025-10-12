@@ -44,7 +44,7 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <Header />
-        <main className="pt-[90px]">{children}</main>
+        <main className="pt-[90px] pb-[255px]">{children}</main>
         <Footer />
         <div id="modal-root"></div>
       </body>
