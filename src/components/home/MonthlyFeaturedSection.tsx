@@ -1,7 +1,6 @@
+import { ProductCard } from '@/components'
 import { ProductTitle } from '@/components/home'
 import MONTHLY from '@/mocks/main/monthly'
-
-import ProductCard from '../common/card/ProductCard'
 
 type MonthlyFeaturedSectionProps = {
   title: string
@@ -19,7 +18,7 @@ const MonthlyFeaturedSection = ({
         <div className="flex gap-[23.4px]">
           {MONTHLY.map((product, index) => (
             <ProductCard
-              key={product.title + index}
+              key={`${product.title}-${index}`}
               title={product.title}
               subtitle={product.subtitle}
               price={product.price}
