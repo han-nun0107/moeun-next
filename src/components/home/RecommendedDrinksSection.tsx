@@ -1,4 +1,6 @@
+import { ProductCard } from '@/components'
 import { ProductTitle } from '@/components/home'
+import RECOMMENDED from '@/mocks/main/recommended'
 
 type RecommendedDrinksSectionProps = {
   title: string
@@ -15,13 +17,15 @@ const RecommendedDrinksSection = ({
         <ProductTitle title={title} desc={desc} />
 
         <div className="grid grid-cols-4 grid-rows-2 gap-[27px]">
-          {Array.from({ length: 8 }).map((_, idx) => (
-            <div
-              key={idx}
-              className="flex h-95 w-75 items-center justify-center rounded-lg border border-gray-500"
-            >
-              Card {idx + 1}
-            </div>
+          {RECOMMENDED.map((item, idx) => (
+            <ProductCard
+              key={`${item.title}-${idx}`}
+              img={item.img}
+              alt={item.alt}
+              title={item.title}
+              subtitle={item.subtitle}
+              price={item.price}
+            />
           ))}
         </div>
       </div>
