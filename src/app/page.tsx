@@ -8,9 +8,9 @@ import { MAIN_TITLE } from '@/constants'
 
 const Home = async () => {
   const SECTIONS = [
-    MonthlyFeaturedSection,
-    PopularPackagesSection,
-    RecommendedDrinksSection,
+    { Component: MonthlyFeaturedSection, ...MAIN_TITLE[0] },
+    { Component: PopularPackagesSection, ...MAIN_TITLE[1] },
+    { Component: RecommendedDrinksSection, ...MAIN_TITLE[2] },
   ]
 
   return (
@@ -18,16 +18,9 @@ const Home = async () => {
       <HomeCarousel />
 
       <div className="flex flex-col gap-25">
-        {MAIN_TITLE.map((title, index) => {
-          const SectionComponent = SECTIONS[index]
-          return (
-            <SectionComponent
-              key={title.title + index}
-              title={title.title}
-              desc={title.desc}
-            />
-          )
-        })}
+        {SECTIONS.map(({ Component, title, desc }) => (
+          <Component key={title} title={title} desc={desc} />
+        ))}
       </div>
     </section>
   )
