@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 
 import './globals.css'
 import { Footer, Header } from '@/components'
+import { pretendard } from '@/styles/fonts'
 
 export const metadata: Metadata = {
   title: '한잔취향 | 전통주 취향 맞춤 추천',
@@ -11,7 +12,6 @@ export const metadata: Metadata = {
     title: '한잔취향 | 전통주 취향 맞춤 추천',
     description:
       '내 취향에 꼭 맞는 전통주를 발견하세요. 시음 기록과 리뷰를 통해 나만의 술 취향을 찾아보세요.',
-    /* TODO: 수정 */
     url: 'https://mock.com',
     siteName: '한잔취향',
     images: [
@@ -29,7 +29,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '한잔취향 | 전통주 취향 맞춤 추천',
     description: '취향 기반 전통주 추천 & 기록 서비스',
-    /* TODO: 수정 */
     images: ['/og-image.png'],
   },
 }
@@ -40,10 +39,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ko">
-      <body>
+    <html lang="ko" className={pretendard.variable}>
+      <body className="flex flex-col">
         <Header />
-        <main className="pt-[90px] pb-[255px]">{children}</main>
+        <main className="flex-grow pt-[90px]">{children}</main>
         <Footer />
         <div id="modal-root"></div>
       </body>
