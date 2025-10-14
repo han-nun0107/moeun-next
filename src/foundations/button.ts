@@ -76,6 +76,17 @@ export const BUTTON_VARIANTS = {
     'tracking-[0.05em]',
     'rounded-md',
   ].join(' '),
+
+  /* 테스트하기 버튼 */
+  TEST: [
+    'w-49',
+    'h-14',
+    'bg-[#2e2f2f]',
+    'text-[#ffffff]',
+    'text-lg',
+    'tracking-[0.05em]',
+    'rounded-md',
+  ].join(' '),
 } as const
 
 export const DEFAULT_BUTTON_VARIANT = 'CONTAINED'
