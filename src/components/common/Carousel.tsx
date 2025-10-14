@@ -18,12 +18,13 @@ type CarouselProps = {
   autoplay?: boolean
   autoplayDelay?: number
   loop?: boolean
+  centeredSlides?: boolean
   paginationType?: 'bullets' | 'fraction' | 'progressbar' | 'none'
   navigation?: boolean
   className?: string
 }
 
-export default function Carousel({
+const Carousel = ({
   children,
   slidesPerView = 1,
   spaceBetween = 0,
@@ -33,7 +34,7 @@ export default function Carousel({
   paginationType = 'bullets',
   navigation = false,
   className = '',
-}: CarouselProps) {
+}: CarouselProps) => {
   const slideElements = Children.toArray(children)
 
   const navigationPrevClass = 'swiper-button-prev-custom'
@@ -91,3 +92,5 @@ export default function Carousel({
     </div>
   )
 }
+
+export default Carousel

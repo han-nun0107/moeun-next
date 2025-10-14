@@ -7,12 +7,12 @@ import { useDropdown } from '@/hooks/useDropdown'
 import { DropdownProps } from '@/types/dropdown'
 import { cn } from '@/utils/cn'
 
-export default function Dropdown({
+const Dropdown = ({
   placeholder = '편의점 매장을 선택해 주세요.',
   options = dropdownOptions,
   onSelect,
   className = '',
-}: DropdownProps) {
+}: DropdownProps) => {
   const {
     isOpen,
     selected,
@@ -67,3 +67,5 @@ export default function Dropdown({
     </div>
   )
 }
+
+export default Dropdown
