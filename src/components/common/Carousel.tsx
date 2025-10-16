@@ -55,22 +55,16 @@ const Carousel = ({
         spaceBetween={spaceBetween}
         loop={loop}
         autoplay={
-          autoplay
-            ? { delay: autoplayDelay, disableOnInteraction: false }
-            : undefined
+          autoplay && { delay: autoplayDelay, disableOnInteraction: false }
         }
         pagination={
-          paginationType !== 'none'
-            ? { clickable: true, type: paginationType }
-            : undefined
+          paginationType !== 'none' && { clickable: true, type: paginationType }
         }
         navigation={
-          navigation
-            ? {
-                prevEl: `.${navigationPrevClass}`,
-                nextEl: `.${navigationNextClass}`,
-              }
-            : false
+          navigation && {
+            prevEl: `.${navigationPrevClass}`,
+            nextEl: `.${navigationNextClass}`,
+          }
         }
         className="w-full"
       >
