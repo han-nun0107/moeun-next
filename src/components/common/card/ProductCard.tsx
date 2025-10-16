@@ -18,7 +18,7 @@ const ProductCard = ({
   alt,
 }: ProductCardProps) => {
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex cursor-pointer flex-col gap-1">
       <CardImage
         src={img}
         alt={alt}
