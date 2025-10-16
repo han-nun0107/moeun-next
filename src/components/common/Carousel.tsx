@@ -9,7 +9,13 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
+import { Button } from '@/components'
 import { cn } from '@/utils/cn'
+
+const NAV_BUTTONS = [
+  { direction: 'prev', icon: <ChevronLeft />, label: '이전' },
+  { direction: 'next', icon: <ChevronRight />, label: '다음' },
+] as const
 
 type CarouselProps = {
   children: ReactNode
@@ -21,6 +27,7 @@ type CarouselProps = {
   centeredSlides?: boolean
   paginationType?: 'bullets' | 'fraction' | 'progressbar' | 'none'
   navigation?: boolean
+  navigationHeight?: number
   className?: string
 }
 
@@ -33,10 +40,10 @@ const Carousel = ({
   loop = true,
   paginationType = 'bullets',
   navigation = false,
+  navigationHeight,
   className = '',
 }: CarouselProps) => {
   const slideElements = Children.toArray(children)
-
   const navigationPrevClass = 'swiper-button-prev-custom'
   const navigationNextClass = 'swiper-button-next-custom'
 
@@ -74,20 +81,30 @@ const Carousel = ({
       </Swiper>
 
       {navigation && (
-        <>
-          <button
-            className={cn(`${navigationPrevClass} swiper-button-prev-custom`)}
-            aria-label="이전"
-          >
-            <ChevronLeft />
-          </button>
-          <button
-            className={cn(`${navigationNextClass} swiper-button-next-custom`)}
-            aria-label="다음"
-          >
-            <ChevronRight />
-          </button>
-        </>
+        <div
+          className={cn(
+            'absolute right-0 left-0',
+            navigationHeight ? 'top-0' : 'top-1/2 -translate-y-1/2'
+          )}
+          style={navigationHeight ? { height: navigationHeight } : undefined}
+        >
+          <div className="relative h-full">
+            {NAV_BUTTONS.map(({ direction, icon, label }) => (
+              <Button
+                key={direction}
+                variant="ICON"
+                className={cn(
+                  direction === 'prev'
+                    ? `${navigationPrevClass} swiper-button-prev-custom`
+                    : `${navigationNextClass} swiper-button-next-custom`
+                )}
+                aria-label={label}
+              >
+                {icon}
+              </Button>
+            ))}
+          </div>
+        </div>
       )}
     </div>
   )
