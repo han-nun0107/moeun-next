@@ -12,7 +12,7 @@ const RecommendedDrinksSection = ({
   desc,
 }: RecommendedDrinksSectionProps) => {
   return (
-    <section className="flex items-center justify-center py-25">
+    <section className="flex items-center justify-center pb-25">
       <div className="flex h-235 w-320 flex-col gap-[50px]">
         <ProductTitle title={title} desc={desc} />
 

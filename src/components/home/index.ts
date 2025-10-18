@@ -1,4 +1,4 @@
-export { default as HomeCarousel } from './HomeCarousel'
+export { default as BannerCarousel } from './BannerCarousel'
 export { default as ProductTitle } from './ProductTitle'
 export { default as MonthlyFeaturedSection } from './MonthlyFeaturedSection'
 export { default as PopularPackagesSection } from './PopularPackagesSection'

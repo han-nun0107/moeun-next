@@ -6,10 +6,10 @@
 
 @layer components {
   .swiper-button-prev-custom {
-    @apply absolute top-1/2 left-0 z-10 -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2 text-white transition hover:bg-black/60;
+    @apply absolute top-1/2 left-[-50px] z-10 -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2 text-white transition hover:bg-black/60;
   }
 
   .swiper-button-next-custom {
-    @apply absolute top-1/2 right-0 z-10 -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2 text-white transition hover:bg-black/60;
+    @apply absolute top-1/2 right-[-50px] z-10 -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2 text-white transition hover:bg-black/60;
   }
 }
