@@ -13,7 +13,7 @@ const PopularPackagesSection = ({
 }: PopularPackagesSectionProps) => {
   return (
     <section className="flex h-176 w-full items-center justify-center bg-[#d9d9d9]">
-      <div className="h-126 w-350">
+      <div className="flex h-126 w-320 flex-col items-start">
         <ProductTitle title={title} desc={desc} />
         <PopularCarousel />
       </div>

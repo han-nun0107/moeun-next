@@ -7,6 +7,7 @@ export const IMAGE_URLS = {
   },
   Banner: {
     Main: '/main-banner/banner.png',
+    Package: '/package-banner/package.png',
   },
   Popular: {
     Product: [
