@@ -92,7 +92,7 @@ export const BUTTON_VARIANTS = {
   SOCIAL: [
     'flex',
     'items-center',
-    'w-[440px]',
+    'w-full',
     'h-[56px]',
     'pl-6',
     'pr-10',
