@@ -60,7 +60,7 @@ const Login = () => {
         </Link>
       </div>
       <main className="flex w-full items-center justify-center xl:w-[45%]">
-        <div className="flex flex-col">
+        <div className="flex w-full flex-col">
           <header className="flex flex-col items-center gap-5">
             <Link href="/" aria-label="홈으로 이동">
               <Image
@@ -74,7 +74,7 @@ const Login = () => {
               로그인하고 나만의 전통주를 즐겨보세요!
             </h1>
           </header>
-          <section className="flex flex-col gap-5">
+          <section className="mx-auto flex w-full max-w-[440px] flex-col gap-5">
             {SOCIAL_LOGINS.map((socialLogin) => (
               <Button
                 key={socialLogin.provider}
