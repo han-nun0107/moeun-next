@@ -1,4 +1,5 @@
-import { FOOTER_INFO_GROUPS, IMAGE_URLS } from '@/constants'
+import LOGO from '@/assets/icons/logo/logo-footer.svg'
+import { FOOTER_INFO_GROUPS } from '@/constants'
 import { cn } from '@/utils/cn'
 
 import FooterLogo from './FooterLogo'
@@ -18,7 +19,7 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center justify-center pr-80">
-            <FooterLogo src={IMAGE_URLS.Footer.Logo} />
+            <FooterLogo src={LOGO} />
           </div>
         </div>
 
