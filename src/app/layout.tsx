@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 
 import './globals.css'
-import { Footer, Header } from '@/components'
 import { pretendard } from '@/styles/fonts'
 
 export const metadata: Metadata = {
@@ -41,9 +40,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className={pretendard.variable}>
       <body className="flex flex-col">
-        <Header />
-        <main className="flex-grow pt-[90px]">{children}</main>
-        <Footer />
+        {children}
         <div id="modal-root"></div>
       </body>
     </html>
