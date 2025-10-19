@@ -87,6 +87,18 @@ export const BUTTON_VARIANTS = {
     'tracking-[0.05em]',
     'rounded-md',
   ].join(' '),
+
+  /* 소셜 로그인 버튼 */
+  SOCIAL: [
+    'flex',
+    'items-center',
+    'w-[440px]',
+    'h-[56px]',
+    'pl-6',
+    'pr-10',
+    'rounded-xl',
+    'font-bold',
+  ].join(' '),
 } as const
 
 export const DEFAULT_BUTTON_VARIANT = 'CONTAINED'

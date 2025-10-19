@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-import LOGO from '@/assets/icons/logo/logo.svg'
+import LOGO from '@/assets/icons/logo/logo-black.svg'
 import { Button } from '@/components'
 import { NAV_ITEMS, ROUTE_PATHS, USER_ICONS } from '@/constants'
 import { Z_INDEX } from '@/foundations/zIndex'
@@ -13,7 +13,7 @@ import { useHeader } from '@/hooks/useHeader'
 const Header = () => {
   const router = useRouter()
 
-  const { isLoggedIn, onLogin, onLogout } = useHeader()
+  const { isLoggedIn, onLogout, onLogin } = useHeader()
 
   return (
     <header

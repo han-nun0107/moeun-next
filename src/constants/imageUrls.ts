@@ -2,8 +2,13 @@ export const IMAGE_URLS = {
   Product: {
     Default: '/default-product.png',
   },
-  Footer: {
-    Logo: '/footer/logo.png',
+  Login: {
+    Background: '/login/login-background.png',
+  },
+  Logo: {
+    Black: '/logo/logo-black.png',
+    White: '/logo/logo-white.png',
+    Footer: '/logo/logo-footer.png',
   },
   Banner: {
     Main: '/main-banner/banner.png',

@@ -13,8 +13,7 @@ export const useHeader = () => {
   }
 
   const handleLogin = () => {
-    setIsLoggedIn(true)
-    router.push(ROUTE_PATHS.HOME)
+    router.push(ROUTE_PATHS.LOGIN)
   }
 
   return {
