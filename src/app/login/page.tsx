@@ -23,19 +23,19 @@ const SOCIAL_LOGINS: SocialLogin[] = [
     provider: 'kakao',
     icon: KaKaoIcon,
     label: '카카오 로그인',
-    className: 'bg-[#FEE500] text-[#000]',
+    className: 'bg-[var(--kakao-primary)] text-[var(--kakao-text)]',
   },
   {
     provider: 'naver',
     icon: NaverIcon,
     label: '네이버 로그인',
-    className: 'bg-[#03C75A] text-[#FFF]',
+    className: 'bg-[var(--naver-primary)] text-[var(--naver-text)]',
   },
   {
     provider: 'google',
     icon: GoogleIcon,
     label: '구글 로그인',
-    className: 'border border-[#DFDFDF] bg-[#FFF]',
+    className: 'border border-[var(--google-primary)] bg-white',
   },
 ]
 
