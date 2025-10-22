@@ -23,4 +23,13 @@ export const IMAGE_URLS = {
       '/popular-product/product1.png',
     ],
   },
+  Test: {
+    Main: '/test/test-main.png',
+    Background: '/test/test-background.png',
+    ResultBG: '/test/result-background.png',
+    Result: '/test/test-result.png',
+    Hansan: '/test/hansan.png',
+    Solsongju: '/test/solsongju.png',
+    Jeonju: '/test/jeonju.png',
+  },
 }

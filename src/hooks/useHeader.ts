@@ -1,14 +1,14 @@
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
 
 import { ROUTE_PATHS } from '@/constants/routePaths'
+import { useLoginStore } from '@/stores/useLoginStore'
 
 export const useHeader = () => {
   const router = useRouter()
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const { isLoggedIn, logout } = useLoginStore()
 
   const handleLogout = () => {
-    setIsLoggedIn(false)
+    logout()
     router.push(ROUTE_PATHS.HOME)
   }
 
