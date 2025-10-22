@@ -9,7 +9,7 @@ export default function WithLayout({
   return (
     <>
       <Header />
-      <main className="flex-grow pt-[90px]">{children}</main>
+      <main>{children}</main>
       <Footer />
     </>
   )

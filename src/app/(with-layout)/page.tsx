@@ -8,7 +8,7 @@ const Home = async () => {
       <BannerCarousel
         {...CAROUSEL.Main}
         type="main"
-        variant="TEST"
+        variant="MAIN_TEST"
         className="text-xl"
       />
 

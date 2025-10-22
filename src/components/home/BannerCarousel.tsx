@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
+import Link from 'next/link'
 import { SwiperSlide } from 'swiper/react'
 
 import { Button } from '@/components'
@@ -35,9 +36,11 @@ const BannerCarousel = ({
             {text.content2 && <p>{text.content2}</p>}
             {text.content3 && <p>{text.content3}</p>}
           </div>
-          <Button variant={variant}>
-            {type === 'main' ? '지금 테스트하러 가기' : '구매하기'}
-          </Button>
+          <Link href={'/test'} aria-label="테스트로 이동">
+            <Button variant={variant}>
+              {type === 'main' ? '지금 테스트하러 가기' : '구매하기'}
+            </Button>
+          </Link>
         </div>
       </div>
       <Carousel

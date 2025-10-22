@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <header
-      className="fixed top-0 left-0 flex h-[90px] w-full items-center justify-around border-b border-[#d9d9d9] bg-white"
+      className="top-0 left-0 flex h-[90px] w-full items-center justify-around border-b border-[#d9d9d9] bg-white"
       style={{ zIndex: Z_INDEX.HEADER }}
     >
       <div className="flex w-full items-center justify-between px-80">

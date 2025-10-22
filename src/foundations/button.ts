@@ -77,8 +77,8 @@ export const BUTTON_VARIANTS = {
     'rounded-md',
   ].join(' '),
 
-  /* 테스트하기 버튼 */
-  TEST: [
+  /*메인페이지 테스트하기 버튼 */
+  MAIN_TEST: [
     'w-49',
     'h-14',
     'bg-[#2e2f2f]',
@@ -86,6 +86,42 @@ export const BUTTON_VARIANTS = {
     'text-lg',
     'tracking-[0.05em]',
     'rounded-md',
+  ].join(' '),
+
+  /* 테스트 페이지 테스트하기 버튼 */
+  TEST: [
+    'w-115',
+    'h-15',
+    'bg-[#2d2d2d]',
+    'text-[#ffffff]',
+    'text-2xl',
+    'font-bold',
+    'tracking-[0.05em]',
+    'rounded-[60px]',
+  ].join(' '),
+
+  /* 테스트 페이지 회원가입 버튼 */
+  TEST_JOIN: [
+    'w-115',
+    'h-14',
+    'bg-[#fff]',
+    'text-[#2e2f2f]',
+    'text-2xl',
+    'font-bold',
+    'tracking-[0.05em]',
+    'rounded-[60px]',
+  ].join(' '),
+
+  /* 테스트 페이지 하단 버튼 */
+  TEST_BOTTOM: [
+    'w-[225px]',
+    'h-[54px]',
+    'text-[#fff]',
+    'text-lg',
+    'font-bold',
+    'border',
+    'border-[#fff]',
+    'rounded-[60px]',
   ].join(' '),
 
   /* 소셜 로그인 버튼 */
@@ -99,6 +135,9 @@ export const BUTTON_VARIANTS = {
     'rounded-xl',
     'font-bold',
   ].join(' '),
+
+  /* 테스트 페이지 버튼 A,B */
+  TEST_BUTTON: ['w-115 h-14 rounded-[60px] border border-[#F2544B]'].join(' '),
 } as const
 
 export const DEFAULT_BUTTON_VARIANT = 'CONTAINED'
