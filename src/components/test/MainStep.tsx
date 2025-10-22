@@ -1,27 +1,16 @@
 import Image from 'next/image'
-import { Dispatch, SetStateAction } from 'react'
 
 import Share from '@/assets/icons/test/share.svg'
 import { Button, Modal } from '@/components'
 import { IMAGE_URLS } from '@/constants'
+import { useMainStep } from '@/hooks/test/useMainStep'
+import { MainTestProps } from '@/types/test/test'
 
 import TestModal from './TestModal'
 
-type StepType = 'main' | 'question' | 'result'
+const MainStep = (props: MainTestProps) => {
+  const { handleOpenModal, handleCloseModal } = useMainStep(props)
 
-type MainTestProps = {
-  setStep: Dispatch<SetStateAction<StepType>>
-  setIsModalOpen: Dispatch<SetStateAction<boolean>>
-  isModalOpen: boolean
-}
-
-const MainStep = ({ setStep, setIsModalOpen, isModalOpen }: MainTestProps) => {
-  const handleOpenModal = () => {
-    setIsModalOpen(true)
-  }
-  const handleCloseModal = () => {
-    setIsModalOpen(false)
-  }
   return (
     <>
       <div className="mt-19 flex flex-col gap-2 text-center">
@@ -41,7 +30,7 @@ const MainStep = ({ setStep, setIsModalOpen, isModalOpen }: MainTestProps) => {
         height={320}
       />
 
-      <Button variant="TEST" onClick={() => setStep('question')}>
+      <Button variant="TEST" onClick={() => props.setStep('question')}>
         테스트 시작하기
       </Button>
 
@@ -55,8 +44,8 @@ const MainStep = ({ setStep, setIsModalOpen, isModalOpen }: MainTestProps) => {
         <p>공유하기</p>
       </div>
 
-      {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+      {props.isModalOpen && (
+        <Modal isOpen={props.isModalOpen} onClose={handleCloseModal}>
           <TestModal />
         </Modal>
       )}

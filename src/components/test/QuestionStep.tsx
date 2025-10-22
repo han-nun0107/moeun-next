@@ -1,26 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-
 import Button from '@/components/common/Button'
+import { useQuestionStep } from '@/hooks/test/useQuestionStep'
 import { mockTasteTestData } from '@/mocks/test/questions'
-import { TasteTestResult, TestQuestionType, TestType } from '@/types/test/test'
+import { ProgressStepProps, TestQuestionType } from '@/types/test/test'
 import { cn } from '@/utils/cn'
-
-export type ProgressStepProps = {
-  step: TestType
-  setStep: React.Dispatch<React.SetStateAction<TestType>>
-  testStep: number
-  setTestStep: React.Dispatch<React.SetStateAction<number>>
-  testResult: TasteTestResult | undefined
-  setTestResult: React.Dispatch<
-    React.SetStateAction<TasteTestResult | undefined>
-  >
-}
-
-type AnswerType = {
-  [key: string]: 'A' | 'B'
-}
 
 const QuestionStep = ({
   step: _step,
@@ -30,28 +14,11 @@ const QuestionStep = ({
   testResult: _testResult,
   setTestResult: _setTestResult,
 }: ProgressStepProps) => {
-  const [answers, setAnswers] = useState<AnswerType>({})
-  const [isClicked, setIsClicked] = useState<'A' | 'B' | null>(null)
-
-  const handlerAnswer = (option: 'A' | 'B') => {
-    setAnswers((prev) => ({
-      ...prev,
-      [`Q${testStep + 1}`]: option,
-    }))
-  }
-
-  const saveResultToLocal = (resultData: AnswerType) => {
-    try {
-      localStorage.setItem('selectedAnswers', JSON.stringify(resultData))
-    } catch {
-      alert('저장에 실패 했습니다!')
-    }
-  }
-
-  const handleResult = () => {
-    saveResultToLocal(answers)
-    setStep('result')
-  }
+  const { isClicked, handlerAnswer, handleResult, setIsClicked } =
+    useQuestionStep({
+      testStep,
+      setStep,
+    })
 
   return (
     <div className="flex w-full flex-col items-center">
