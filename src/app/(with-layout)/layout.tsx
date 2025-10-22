@@ -9,7 +9,7 @@ export default function WithLayout({
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main className="mt-[90px]">{children}</main>
       <Footer />
     </>
   )
