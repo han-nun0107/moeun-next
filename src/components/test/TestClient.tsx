@@ -1,27 +1,29 @@
-// src/app/(with-layout)/test/TestClient.tsx
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
 
 import Logo from '@/assets/icons/logo/logo-white.svg'
 import { MainStep, QuestionStep, ResultStep } from '@/components/test'
 import { IMAGE_URLS } from '@/constants'
-import { TasteTestResult, TestType } from '@/types/test/test'
+import { useTasteTest } from '@/hooks/test/useTestClient'
 import { cn } from '@/utils/cn'
 
 const TestClient = () => {
-  const [step, setStep] = useState<TestType>('main')
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [testStep, setTestStep] = useState(0)
-  const [testResult, setTestResult] = useState<TasteTestResult | undefined>(
-    undefined
-  )
+  const {
+    step,
+    isModalOpen,
+    setIsModalOpen,
+    testStep,
+    setTestStep,
+    testResult,
+    setTestResult,
+    setStep,
+  } = useTasteTest()
 
   return (
     <section
       className={cn(
-        'flex h-[1130px] w-full items-center justify-center bg-[#f2f2f2]',
+        'flex w-full items-center justify-center bg-[#f2f2f2]',
         step === 'result' ? 'h-[1620px]' : 'h-[1130px]'
       )}
     >
@@ -31,11 +33,12 @@ const TestClient = () => {
           step === 'result' ? 'h-[1454px]' : 'h-[872px]'
         )}
       >
-        <div className="flex h-[70px] w-full items-center justify-center rounded-t-[20px] bg-[#f2544b]">
+        <div className="flex h-[70px] items-center justify-center rounded-t-[20px] bg-[#f2544b]">
           <Link href="/">
             <img src={Logo.src} alt="로고" className="h-6 w-13" />
           </Link>
         </div>
+
         <div
           className="flex h-full flex-col items-center gap-12 rounded-b-[20px]"
           style={{
@@ -50,7 +53,7 @@ const TestClient = () => {
         >
           {step === 'main' && (
             <MainStep
-              setStep={setStep}
+              setStep={() => setStep('question')}
               setIsModalOpen={setIsModalOpen}
               isModalOpen={isModalOpen}
             />
