@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 import GoogleIcon from '@/assets/icons/login/google-icon.svg'
 import KaKaoIcon from '@/assets/icons/login/kakao-icon.svg'
@@ -10,6 +11,7 @@ import LogoRight from '@/assets/icons/logo/logo-black.svg'
 import LogoLeft from '@/assets/icons/logo/logo-white.svg'
 import { Button } from '@/components'
 import { IMAGE_URLS } from '@/constants/imageUrls'
+import { useLoginStore } from '@/stores/useLoginStore'
 
 type SocialLogin = {
   provider: string
@@ -40,6 +42,14 @@ const SOCIAL_LOGINS: SocialLogin[] = [
 ]
 
 const Login = () => {
+  const { login } = useLoginStore()
+
+  const router = useRouter()
+
+  const handleLogin = () => {
+    login()
+    router.push('/')
+  }
   return (
     <div className="flex h-screen p-5">
       <div
@@ -80,7 +90,7 @@ const Login = () => {
                 key={socialLogin.provider}
                 variant="SOCIAL"
                 className={socialLogin.className}
-                onClick={() => {}}
+                onClick={handleLogin}
               >
                 <Image
                   src={socialLogin.icon}
