@@ -6,7 +6,9 @@ import Logo from '@/assets/icons/logo/logo-white.svg'
 import { MainStep, QuestionStep, ResultStep } from '@/components/test'
 import { IMAGE_URLS } from '@/constants'
 import { useTasteTest } from '@/hooks/test/useTestClient'
+import { TEST_BOTTOM_BUTTON } from '@/mocks/test/resultProduct'
 import { cn } from '@/utils/cn'
+import { Button } from '@/components'
 
 const TestClient = () => {
   const {
@@ -40,7 +42,7 @@ const TestClient = () => {
         </div>
 
         <div
-          className="flex h-full flex-col items-center gap-12 rounded-b-[20px]"
+          className="flex flex-1 flex-col items-center gap-12"
           style={{
             backgroundImage: `url(${
               step === 'result'
@@ -49,6 +51,8 @@ const TestClient = () => {
             })`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            borderBottomLeftRadius: step === 'result' ? '0' : '20px',
+            borderBottomRightRadius: step === 'result' ? '0' : '20px',
           }}
         >
           {step === 'main' && (
@@ -70,6 +74,20 @@ const TestClient = () => {
           )}
           {step === 'result' && <ResultStep />}
         </div>
+
+        {step === 'result' && (
+          <div className="flex h-[103px] w-full items-center justify-center gap-[10px] rounded-b-[20px] bg-[#f2544b]">
+            {TEST_BOTTOM_BUTTON.map((button) => (
+              <Link
+                key={button.id}
+                href={button.href}
+                aria-label={button.label}
+              >
+                <Button variant="TEST_BOTTOM">{button.label}</Button>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )

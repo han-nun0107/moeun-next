@@ -6,14 +6,14 @@ import {
 
 import { PACKAGE_TITLE } from './title'
 
-type PackageSection = {
-  Component: React.FC<{
-    title: string
-    desc: string[]
-    type?: 'monthly' | 'package'
-  }>
+type PackageSectionProps = {
   title: string
   desc: string[]
+  type?: 'monthly' | 'package'
+}
+
+type PackageSection = {
+  Component: React.ComponentType<PackageSectionProps>
   type?: 'monthly' | 'package'
 }
 
