@@ -57,6 +57,13 @@ const RECOMMENDED = [
     subtitle: 'Monthly',
     price: 'Monthly',
   },
+  {
+    img: IMAGE_URLS.Product.Default,
+    alt: 'monthly',
+    title: 'Monthly',
+    subtitle: 'Monthly',
+    price: 'Monthly',
+  },
 ]
 
 export default RECOMMENDED

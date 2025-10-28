@@ -1,4 +1,7 @@
-import type { SliderVariant } from '@/constants/slider/sliderColors'
+import type {
+  SLIDER_OPTIONS,
+  SliderVariant,
+} from '@/constants/slider/sliderColors'
 
 export type SliderProps = {
   defaultValue?: number[]
@@ -11,3 +14,5 @@ export type SliderProps = {
   onValueChange: (value: number[]) => void
   formatValue?: (value: number) => string
 }
+
+export type SliderVariantType = (typeof SLIDER_OPTIONS)[number]['key']

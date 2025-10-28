@@ -1,5 +1,6 @@
 import LOGO from '@/assets/icons/logo/logo-footer.svg'
 import { FOOTER_INFO_GROUPS } from '@/constants'
+import { Z_INDEX } from '@/foundations/zIndex'
 import { cn } from '@/utils/cn'
 
 import FooterLogo from './FooterLogo'
@@ -7,7 +8,7 @@ import RenderInfo from './RenderInfo'
 
 const Footer = () => {
   return (
-    <footer className="text-sm">
+    <footer className="relative text-sm" style={{ zIndex: Z_INDEX.FOOTER }}>
       <div className={cn('h-[255px] w-full bg-[#2e2f2f] pb-12.5 text-white')}>
         <div className="flex justify-between">
           <div className="flex flex-col gap-1 py-12.5 pl-80">

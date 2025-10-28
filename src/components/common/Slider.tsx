@@ -35,18 +35,19 @@ const Slider = ({
           max={max}
           step={step}
           className={clsx(
-            'relative flex h-[20px] w-[308px] cursor-pointer touch-none items-center select-none'
+            'relative flex h-[20px] w-[308px] cursor-pointer touch-none items-center select-none',
+            'transition-none'
           )}
         >
-          <SliderPrimitive.Track className="relative h-full w-full rounded-full bg-[#DFDFDF]">
+          <SliderPrimitive.Track className="relative h-full w-full rounded-full bg-[#DFDFDF] transition-none">
             <SliderPrimitive.Range
-              className="absolute h-full rounded-full"
+              className="absolute h-full rounded-full transition-none"
               style={{ backgroundColor: color }}
             />
           </SliderPrimitive.Track>
           <SliderPrimitive.Thumb asChild>
             <div
-              className="flex h-[40px] w-[40px] items-center justify-center rounded-full border-[3px] bg-[#FFFFFF] outline-none"
+              className="flex h-[40px] w-[40px] items-center justify-center rounded-full border-[3px] bg-[#FFFFFF] outline-none transition-none will-change-transform"
               style={{ borderColor: color }}
             >
               <div

@@ -138,6 +138,10 @@ export const BUTTON_VARIANTS = {
 
   /* 테스트 페이지 버튼 A,B */
   TEST_BUTTON: ['w-115 h-14 rounded-[60px] border border-[#F2544B]'].join(' '),
+  /* 제품 검색 필터 적용하기 버튼 */
+  FILTER_BUTTON: [
+    'w-29 h-10 rounded-[6px] border border-[#d9d9d9] bg-[#333] text-[#fff] font-base',
+  ].join(' '),
 } as const
 
 export const DEFAULT_BUTTON_VARIANT = 'CONTAINED'
