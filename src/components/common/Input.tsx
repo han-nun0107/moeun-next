@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react'
+import { InputHTMLAttributes, useId } from 'react'
 
 import SearchIcon from '@/assets/icons/input/search.svg'
 import Button from '@/components/common/Button'
@@ -27,15 +27,17 @@ const Input = ({
 }: InputProps) => {
   const variant =
     inputType !== 'checkbox' ? (inputType.toUpperCase() as InputVariant) : null
+  const autoId = useId()
+  const inputId = id ?? autoId
 
   if (inputType === 'checkbox') {
     return (
       <label
-        htmlFor={id ?? inputType}
+        htmlFor={inputId}
         className="inline-flex cursor-pointer items-center gap-2 select-none"
       >
         <input
-          id={id ?? inputType}
+          id={inputId}
           type="checkbox"
           className={cn(
             'cursor-pointer rounded-sm border-gray-300 accent-black',
@@ -50,11 +52,11 @@ const Input = ({
 
   return (
     <div className="relative inline-flex items-center">
-      <label htmlFor={id ?? inputType} className="sr-only">
+      <label htmlFor={inputId} className="sr-only">
         {placeholder}
       </label>
       <input
-        id={id ?? inputType}
+        id={inputId}
         type={type}
         inputMode={inputType === 'search' ? 'search' : 'text'}
         placeholder={placeholder}
