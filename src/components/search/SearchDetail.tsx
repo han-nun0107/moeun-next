@@ -2,7 +2,7 @@ import { Button, Input, Slider } from '@/components'
 import { SEARCH_CHECKBOX, SLIDER_OPTIONS } from '@/constants'
 import { useSearch } from '@/hooks/search/useSearch'
 
-const Detail = () => {
+const SearchDetail = () => {
   const { handleSliderChange, sliderState } = useSearch()
 
   return (
@@ -20,7 +20,7 @@ const Detail = () => {
               inputType="checkbox"
               label={item.label}
               className="h-[30px] w-[30px]"
-              labelClassName="text-lg text-[#333] "
+              labelClassName="text-lg text-[#333] ml-3"
             />
           ))}
         </div>
@@ -40,4 +40,4 @@ const Detail = () => {
   )
 }
 
-export default Detail
+export default SearchDetail

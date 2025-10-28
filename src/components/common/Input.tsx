@@ -43,9 +43,7 @@ const Input = ({
           )}
           {...props}
         />
-        {label && (
-          <span className={cn('sr-only', labelClassName)}>{label}</span>
-        )}
+        {label && <span className={cn(labelClassName)}>{label}</span>}
       </label>
     )
   }
