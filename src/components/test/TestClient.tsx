@@ -3,12 +3,12 @@
 import Link from 'next/link'
 
 import Logo from '@/assets/icons/logo/logo-white.svg'
+import { Button } from '@/components'
 import { MainStep, QuestionStep, ResultStep } from '@/components/test'
 import { IMAGE_URLS } from '@/constants'
 import { useTasteTest } from '@/hooks/test/useTestClient'
 import { TEST_BOTTOM_BUTTON } from '@/mocks/test/resultProduct'
 import { cn } from '@/utils/cn'
-import { Button } from '@/components'
 
 const TestClient = () => {
   const {

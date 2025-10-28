@@ -7,9 +7,11 @@ import { cn } from '@/utils/cn'
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string
-  placeholder: string
+  placeholder?: string
   maxLength?: number
-  inputType?: 'nickname' | 'search'
+  inputType?: 'nickname' | 'search' | 'checkbox'
+  label?: string
+  labelClassName?: string
 }
 
 const Input = ({
@@ -18,10 +20,35 @@ const Input = ({
   type = 'text',
   placeholder,
   maxLength,
+  label,
+  labelClassName,
   className,
   ...props
 }: InputProps) => {
-  const variant = inputType.toUpperCase() as InputVariant
+  const variant =
+    inputType !== 'checkbox' ? (inputType.toUpperCase() as InputVariant) : null
+
+  if (inputType === 'checkbox') {
+    return (
+      <label
+        htmlFor={id ?? inputType}
+        className="inline-flex cursor-pointer items-center gap-2 select-none"
+      >
+        <input
+          id={id ?? inputType}
+          type="checkbox"
+          className={cn(
+            'cursor-pointer rounded-sm border-gray-300 accent-black',
+            className
+          )}
+          {...props}
+        />
+        {label && (
+          <span className={cn('sr-only', labelClassName)}>{label}</span>
+        )}
+      </label>
+    )
+  }
 
   return (
     <div className="relative inline-flex items-center">
@@ -34,7 +61,7 @@ const Input = ({
         inputMode={inputType === 'search' ? 'search' : 'text'}
         placeholder={placeholder}
         maxLength={maxLength}
-        className={cn('outline-none', INPUT_VARIANTS[variant], className)}
+        className={cn('outline-none', INPUT_VARIANTS[variant!], className)}
         {...props}
       />
       {inputType === 'search' && (
