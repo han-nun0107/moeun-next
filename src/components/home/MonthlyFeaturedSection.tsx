@@ -2,13 +2,8 @@ import { Card } from '@/components'
 import { ProductTitle } from '@/components/home'
 import MONTHLY from '@/mocks/main/monthly'
 import PACKAGE_RECOMMENDED from '@/mocks/package/recommended'
+import { MonthlyFeaturedSectionProps } from '@/types/main/mainSection'
 import { cn } from '@/utils/cn'
-
-type MonthlyFeaturedSectionProps = {
-  title: string
-  desc: string[]
-  type?: 'monthly' | 'package'
-}
 
 const MonthlyFeaturedSection = ({
   title,
