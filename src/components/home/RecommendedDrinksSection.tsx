@@ -1,22 +1,15 @@
 import { Card } from '@/components'
 import { ProductTitle } from '@/components/home'
 import RECOMMENDED from '@/mocks/main/recommended'
+import { MainSectionProps } from '@/types/main/mainSection'
 
-type RecommendedDrinksSectionProps = {
-  title: string
-  desc: string[]
-}
-
-const RecommendedDrinksSection = ({
-  title,
-  desc,
-}: RecommendedDrinksSectionProps) => {
+const RecommendedDrinksSection = ({ title, desc }: MainSectionProps) => {
   return (
     <section className="flex items-center justify-center pb-25">
-      <div className="flex h-235 w-320 flex-col gap-[50px]">
+      <div className="flex w-320 flex-col gap-[50px]">
         <ProductTitle title={title} desc={desc} />
 
-        <div className="grid grid-cols-4 grid-rows-2 gap-[27px]">
+        <div className="grid grid-cols-4 gap-[27px]">
           {RECOMMENDED.map((item, idx) => (
             <Card
               type="product"

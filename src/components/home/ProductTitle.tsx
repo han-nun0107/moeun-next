@@ -1,9 +1,6 @@
-type ProductTitleProps = {
-  title: string
-  desc: string[]
-}
+import { MainSectionProps } from '@/types/main/mainSection'
 
-const ProductTitle = ({ title, desc }: ProductTitleProps) => {
+const ProductTitle = ({ title, desc }: MainSectionProps) => {
   return (
     <div className="flex flex-col gap-[10px]">
       <h1 className="text-[32px] font-semibold text-[#333]">{title}</h1>
