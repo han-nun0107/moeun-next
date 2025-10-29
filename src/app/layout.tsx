@@ -4,6 +4,7 @@ import './globals.css'
 import { pretendard } from '@/styles/fonts'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mock.com'),
   title: '한잔취향 | 전통주 취향 맞춤 추천',
   description:
     '내 취향에 꼭 맞는 전통주를 발견하세요. 다양한 막걸리, 소주, 청주를 맛보고 기록하며 나만의 주류 취향을 만들어갑니다.',
@@ -39,6 +40,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={pretendard.variable}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://via.placeholder.com" />
+      </head>
       <body className="flex flex-col">
         {children}
         <div id="modal-root"></div>
