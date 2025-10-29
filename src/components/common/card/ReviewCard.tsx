@@ -33,8 +33,12 @@ const ReviewCard = ({
           <p className="text-sm leading-relaxed">{feedback}</p>
         </div>
         <div>
-          <p className={`text-[${text}] text-gray-600`}>{nickname}</p>
-          <p className={`text-[${text}] text-gray-600`}>{createdAt}</p>
+          <p style={{ fontSize: text }} className="text-gray-600">
+            {nickname}
+          </p>
+          <p style={{ fontSize: text }} className="text-gray-600">
+            {createdAt}
+          </p>
         </div>
       </div>
     </div>
