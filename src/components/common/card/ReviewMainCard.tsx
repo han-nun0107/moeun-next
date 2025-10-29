@@ -13,7 +13,7 @@ const ReviewMainCard = ({
   text = '15px',
 }: ReviewCardProps) => {
   return (
-    <div className="flex w-[300px] cursor-pointer gap-19">
+    <div className="flex w-full cursor-pointer gap-19">
       <CardImage
         img={img}
         alt={alt}
@@ -33,8 +33,12 @@ const ReviewMainCard = ({
           <p className="text-[22px] text-[#333]">{feedback}</p>
         </div>
         <div className="mt-15 mb-[50px] flex gap-8">
-          <p className={`text-[${text}] text-gray-600`}>{nickname}</p>
-          <p className={`text-[${text}] text-gray-600`}>{createdAt}</p>
+          <p style={{ fontSize: text }} className="text-gray-600">
+            {nickname}
+          </p>
+          <p style={{ fontSize: text }} className="text-gray-600">
+            {createdAt}
+          </p>
         </div>
         <Button variant="REVIEW_BUTTON">이 전통주가 궁금하다면?</Button>
       </div>
