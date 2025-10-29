@@ -1,14 +1,18 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
 import Logo from '@/assets/icons/logo/logo-white.svg'
 import { Button } from '@/components'
-import { MainStep, QuestionStep, ResultStep } from '@/components/test'
 import { IMAGE_URLS } from '@/constants'
 import { useTasteTest } from '@/hooks/test/useTestClient'
 import { TEST_BOTTOM_BUTTON } from '@/mocks/test/resultProduct'
 import { cn } from '@/utils/cn'
+
+const MainStep = dynamic(() => import('@/components/test/MainStep'))
+const QuestionStep = dynamic(() => import('@/components/test/QuestionStep'))
+const ResultStep = dynamic(() => import('@/components/test/ResultStep'))
 
 const TestClient = () => {
   const {

@@ -22,11 +22,15 @@ const BannerCarousel = ({
   type = 'main',
 }: CarouselProps) => {
   return (
-    <div className="relative w-full">
+    <div className="relative min-h-[600px] w-full overflow-hidden">
       <div
         className={cn(
-          'absolute top-1/2 left-1/2 z-10 flex h-95 w-320 -translate-x-1/2 -translate-y-1/2 flex-col justify-center',
-          `gap-${gap}`
+          'absolute inset-0 z-10 ml-80 flex flex-col items-start justify-center',
+          {
+            'gap-5': gap === 5,
+            'gap-7': gap === 7,
+            'gap-10': gap === 10,
+          }
         )}
       >
         <p className={cn(className)}>{text.title}</p>
@@ -58,9 +62,10 @@ const BannerCarousel = ({
             src={image.img}
             alt={image.alt}
             width={1920}
-            height={image.height}
+            height={600}
             priority
-            className="w-full object-cover"
+            fetchPriority="high"
+            className="h-[600px] w-full object-cover"
           />
         </SwiperSlide>
       </Carousel>

@@ -1,6 +1,11 @@
 'use client'
 
-import { SearchDetail, SearchInput, SearchResult } from '@/components/search'
+import dynamic from 'next/dynamic'
+
+import { SearchInput } from '@/components/search'
+
+const SearchDetail = dynamic(() => import('@/components/search/SearchDetail'))
+const SearchResult = dynamic(() => import('@/components/search/SearchResult'))
 
 const Search = () => {
   return (

@@ -1,12 +1,15 @@
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 
 import Share from '@/assets/icons/test/share.svg'
-import { Button, Modal } from '@/components'
+import { Button } from '@/components'
 import { IMAGE_URLS } from '@/constants'
 import { useMainStep } from '@/hooks/test/useMainStep'
 import { MainTestProps } from '@/types/test/test'
 
 import TestModal from './TestModal'
+
+const Modal = dynamic(() => import('@/components/common/Modal'))
 
 const MainStep = (props: MainTestProps) => {
   const { handleOpenModal, handleCloseModal } = useMainStep(props)
