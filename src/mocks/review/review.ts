@@ -1,0 +1,149 @@
+import { IMAGE_URLS } from '@/constants/imageUrls'
+type LiveReviewData = {
+  id: string
+  image: string
+  alt: string
+  rating: number
+  desc: string
+  nickname: string
+}
+
+type ReviewData = LiveReviewData & {
+  createdAt: string
+}
+
+export const reviewData: ReviewData[] = [
+  {
+    id: '1',
+    image: IMAGE_URLS.Product.Default,
+    alt: 'test',
+    rating: 5,
+    desc: 'test',
+    nickname: 'test',
+    createdAt: 'test',
+  },
+  {
+    id: '2',
+    image: IMAGE_URLS.Product.Default,
+    alt: 'test2',
+    rating: 5,
+    desc: 'test2',
+    nickname: 'test2',
+    createdAt: 'test2',
+  },
+  {
+    id: '3',
+    image: IMAGE_URLS.Product.Default,
+    alt: 'test3',
+    rating: 5,
+    desc: 'test3',
+    nickname: 'test3',
+    createdAt: 'test3',
+  },
+]
+
+export const monthlyReviewData: ReviewData[] = [
+  {
+    id: '1',
+    image: IMAGE_URLS.Product.Default,
+    alt: 'test',
+    rating: 5,
+    desc: 'test',
+    nickname: 'test',
+    createdAt: '2025-10-29',
+  },
+  {
+    id: '2',
+    image: IMAGE_URLS.Product.Default,
+    alt: 'test2',
+    rating: 5,
+    desc: 'test2',
+    nickname: 'test2',
+    createdAt: '2025-10-29',
+  },
+  {
+    id: '3',
+    image: IMAGE_URLS.Product.Default,
+    alt: 'test3',
+    rating: 5,
+    desc: 'test3',
+    nickname: 'test3',
+    createdAt: '2025-10-29',
+  },
+  {
+    id: '4',
+    image: IMAGE_URLS.Product.Default,
+    alt: 'test4',
+    rating: 5,
+    desc: 'test4',
+    nickname: 'test4',
+    createdAt: '2025-10-29',
+  },
+]
+
+export const liveReviewData: LiveReviewData[] = [
+  {
+    id: '1',
+    image: IMAGE_URLS.Product.Default,
+    alt: 'test',
+    rating: 5,
+    desc: 'test',
+    nickname: 'test',
+  },
+  {
+    id: '2',
+    image: IMAGE_URLS.Product.Default,
+    alt: 'test2',
+    rating: 5,
+    desc: 'test2',
+    nickname: 'test2',
+  },
+  {
+    id: '3',
+    image: IMAGE_URLS.Product.Default,
+    alt: 'test3',
+    rating: 5,
+    desc: 'test3',
+    nickname: 'test3',
+  },
+  {
+    id: '4',
+    image: IMAGE_URLS.Product.Default,
+    alt: 'test4',
+    rating: 4.5,
+    desc: 'test4',
+    nickname: 'test4',
+  },
+  {
+    id: '5',
+    image: IMAGE_URLS.Product.Default,
+    alt: 'test5',
+    rating: 3.5,
+    desc: 'test5',
+    nickname: 'test5',
+  },
+  {
+    id: '6',
+    image: IMAGE_URLS.Product.Default,
+    alt: 'test6',
+    rating: 1,
+    desc: 'test6',
+    nickname: 'test6',
+  },
+  {
+    id: '7',
+    image: IMAGE_URLS.Product.Default,
+    alt: 'test7',
+    rating: 4,
+    desc: 'test7',
+    nickname: 'test7',
+  },
+  {
+    id: '8',
+    image: IMAGE_URLS.Product.Default,
+    alt: 'test8',
+    rating: 2.5,
+    desc: 'test8',
+    nickname: 'test8',
+  },
+]

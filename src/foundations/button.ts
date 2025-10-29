@@ -138,9 +138,15 @@ export const BUTTON_VARIANTS = {
 
   /* 테스트 페이지 버튼 A,B */
   TEST_BUTTON: ['w-115 h-14 rounded-[60px] border border-[#F2544B]'].join(' '),
+
   /* 제품 검색 필터 적용하기 버튼 */
   FILTER_BUTTON: [
     'w-29 h-10 rounded-[6px] border border-[#d9d9d9] bg-[#333] text-[#fff] font-base',
+  ].join(' '),
+
+  /* 후기 페이지 후기 버튼 */
+  REVIEW_BUTTON: [
+    'w-[570px] h-18 bg-[#f2544b] rounded-[8px] font-bold text-[#fff] text-[22px]',
   ].join(' '),
 } as const
 

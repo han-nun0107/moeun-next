@@ -16,11 +16,11 @@ export const IMAGE_URLS = {
   },
   Popular: {
     Product: [
-      '/popular-product/product1.png',
-      '/popular-product/product2.png',
-      '/popular-product/product3.png',
-      '/popular-product/product4.png',
-      '/popular-product/product1.png',
+      '/popular-product/Product1.png',
+      '/popular-product/Product2.png',
+      '/popular-product/Product3.png',
+      '/popular-product/Product4.png',
+      '/popular-product/Product1.png',
     ],
   },
   Test: {
