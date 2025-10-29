@@ -1,14 +1,6 @@
-import { StaticImageData } from 'next/image'
+import { PackageModalCardProps } from '@/types/card/card'
 
 import CardImage from './CardImage'
-
-type PackageModalCardProps = {
-  title: string
-  alcohol: string
-  aroma: string
-  img: string | StaticImageData
-  alt: string
-}
 
 const PackageModalCard = ({
   title,
@@ -19,7 +11,7 @@ const PackageModalCard = ({
 }: PackageModalCardProps) => {
   return (
     <div>
-      <CardImage src={img} alt={alt} width={189} height={183} />
+      <CardImage img={img} alt={alt} width={189} height={183} />
       <div className="mt-5 gap-8">
         <h3 className="text-lg font-bold text-[#333]">{title}</h3>
         <h3 className="text-lg text-[#333]">{alcohol}도</h3>

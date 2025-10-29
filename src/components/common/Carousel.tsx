@@ -29,6 +29,7 @@ type CarouselProps = {
   navigation?: boolean
   navigationHeight?: number
   className?: string
+  type?: 'monthly' | 'live'
 }
 
 const Carousel = ({
@@ -42,10 +43,15 @@ const Carousel = ({
   navigation = false,
   navigationHeight,
   className = '',
+  type = 'live',
 }: CarouselProps) => {
   const slideElements = Children.toArray(children)
-  const navigationPrevClass = 'swiper-button-prev-custom'
-  const navigationNextClass = 'swiper-button-next-custom'
+  const navigationPrevClass = cn(
+    type !== 'live' ? 'swiper-button-prev-monthly' : 'swiper-button-prev-custom'
+  )
+  const navigationNextClass = cn(
+    type !== 'live' ? 'swiper-button-next-monthly' : 'swiper-button-next-custom'
+  )
 
   return (
     <div className={cn('relative', className)}>
@@ -89,8 +95,8 @@ const Carousel = ({
                 variant="ICON"
                 className={cn(
                   direction === 'prev'
-                    ? `${navigationPrevClass} swiper-button-prev-custom`
-                    : `${navigationNextClass} swiper-button-next-custom`
+                    ? navigationPrevClass
+                    : navigationNextClass
                 )}
                 aria-label={label}
               >

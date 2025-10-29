@@ -1,26 +1,16 @@
 'use client'
 
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 import { useState } from 'react'
 
 import TestImage from '@/assets/test.png'
+import { CardImageProps } from '@/types/card/card'
 import { cn } from '@/utils/cn'
-import isValidUrl from '@/utils/validUrl'
 
 import HeartButton from './HeartButton'
 
-type CardImageProps = {
-  src?: string | StaticImageData | null
-  alt: string
-  width: number
-  height: number
-  initialLiked?: boolean
-  className?: string
-  showHeart?: boolean
-}
-
 const CardImage = ({
-  src,
+  img,
   alt,
   width,
   height,
@@ -39,7 +29,7 @@ const CardImage = ({
       style={{ width: width, height: height }}
     >
       <Image
-        src={typeof src === 'string' && isValidUrl(src) ? src : TestImage}
+        src={img}
         alt={alt}
         fill
         priority

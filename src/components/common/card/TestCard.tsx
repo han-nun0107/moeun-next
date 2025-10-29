@@ -1,23 +1,14 @@
-import { StaticImageData } from 'next/image'
-
 import Tag from '@/components/common/Tag'
+import { TestCardProps } from '@/types/card/card'
 
 import CardImage from './CardImage'
-
-type TestCardProps = {
-  name: string
-  description: string
-  img: string | StaticImageData
-  alt: string
-  tags: string[]
-}
 
 const TestCard = ({ name, description, img, alt, tags }: TestCardProps) => {
   return (
     <>
       <div>
         <CardImage
-          src={img}
+          img={img}
           alt={alt}
           width={132}
           height={128}

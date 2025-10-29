@@ -14,6 +14,8 @@ type PackageSectionProps = {
 
 type PackageSection = {
   Component: React.ComponentType<PackageSectionProps>
+  title: string
+  desc: string[]
   type?: 'monthly' | 'package'
 }
 

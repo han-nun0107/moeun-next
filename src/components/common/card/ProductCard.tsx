@@ -1,14 +1,6 @@
-import { StaticImageData } from 'next/image'
+import { ProductCardProps } from '@/types/card/card'
 
 import CardImage from './CardImage'
-
-type ProductCardProps = {
-  title: string
-  subtitle: string
-  price: string
-  img: string | StaticImageData
-  alt: string
-}
 
 const ProductCard = ({
   title,
@@ -20,7 +12,7 @@ const ProductCard = ({
   return (
     <div className="flex cursor-pointer flex-col gap-1">
       <CardImage
-        src={img}
+        img={img}
         alt={alt}
         width={300}
         height={290}
