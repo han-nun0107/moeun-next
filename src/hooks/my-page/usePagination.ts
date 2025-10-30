@@ -17,7 +17,8 @@ export const usePagination = ({
 
   const [currentPage, setCurrentPage] = useState(1)
 
-  const totalPages = Math.ceil(mockData.length / ITEMS_PER_PAGE) || 1
+  const totalPages =
+    mockData.length === 0 ? 1 : Math.ceil(mockData.length / ITEMS_PER_PAGE)
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
   const endIndex = startIndex + ITEMS_PER_PAGE
