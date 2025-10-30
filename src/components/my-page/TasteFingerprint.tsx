@@ -1,28 +1,14 @@
 'use client'
 
 import { ChevronDownIcon } from 'lucide-react'
-import { useState } from 'react'
 
+import questionMark from '@/assets/icons/my-page/my-question.svg'
 import { Button, GaugeBar } from '@/components'
-import { TasteScore } from '@/types/gauge-bar/tasteTypes'
+import { useGauge } from '@/hooks/my-page/useGauge'
+import { cn } from '@/utils/cn'
 
 const TasteFingerprint = () => {
-  const [isExpanded, setIsExpanded] = useState(false)
-
-  const GAUGE_VALUES: TasteScore[] = [
-    { type: 'sweetness_level', score: 4 },
-    { type: 'acidity_level', score: 3.5 },
-    { type: 'body_level', score: 5 },
-    { type: 'carbonation_level', score: 1.5 },
-    { type: 'bitterness_level', score: 2 },
-    { type: 'aroma_level', score: 3.5 },
-  ]
-
-  const displayedGauges = isExpanded ? GAUGE_VALUES : GAUGE_VALUES.slice(0, 3)
-
-  const toggleExpand = () => {
-    setIsExpanded((prev) => !prev)
-  }
+  const { isExpanded, displayedGauges, toggleExpand } = useGauge()
 
   return (
     <article className="relative mt-10">
@@ -47,16 +33,30 @@ const TasteFingerprint = () => {
             >
               {isExpanded ? '접어보기' : '펼쳐보기'}
               <span
-                className={`flex-center ml-[10px] h-4 w-4 rounded-full bg-[#000] transition-transform ${
-                  isExpanded ? 'rotate-180' : ''
-                }`}
+                className={cn(
+                  'flex-center ml-[10px] h-4 w-4 rounded-full bg-[#000] transition-transform',
+                  {
+                    'rotate-180': isExpanded,
+                  }
+                )}
               >
                 <ChevronDownIcon size={16} className="text-white" />
               </span>
             </Button>
           </div>
           <div className="ml-25 flex max-w-96 flex-col">
-            <h3 className="text-bold-lg text-[#333]">나의 지문 요약</h3>
+            <div className="flex items-center">
+              <h3 className="text-bold-lg text-[#333]">
+                <span className="mr-3 mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#d9d9d9]">
+                  <img
+                    src={questionMark.src}
+                    alt="지문 요약 아이콘"
+                    className="inline h-5 w-6"
+                  />
+                </span>
+                나의 지문 요약
+              </h3>
+            </div>
             <p className="text-base leading-relaxed text-[#333]">
               최근 피드백을 보니 다른 분들에 비해 단맛에는 조금 둔감하고,
               산미에는 더 민감하게 반응하는 섬세한 입맛을 가지고 계세요!
