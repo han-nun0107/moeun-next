@@ -119,9 +119,8 @@ export const BUTTON_VARIANTS = {
     'text-[#fff]',
     'text-lg',
     'font-bold',
-    'border',
     'border-[#fff]',
-    'rounded-[60px]',
+    'circle-border',
   ].join(' '),
 
   /* 소셜 로그인 버튼 */
@@ -137,16 +136,61 @@ export const BUTTON_VARIANTS = {
   ].join(' '),
 
   /* 테스트 페이지 버튼 A,B */
-  TEST_BUTTON: ['w-115 h-14 rounded-[60px] border border-[#F2544B]'].join(' '),
+  TEST_BUTTON: ['w-115', 'h-14', 'circle-border', 'border-[#F2544B]'].join(' '),
 
   /* 제품 검색 필터 적용하기 버튼 */
   FILTER_BUTTON: [
-    'w-29 h-10 rounded-[6px] border border-[#d9d9d9] bg-[#333] text-[#fff] font-base',
+    'w-29',
+    'h-10',
+    'rounded-[6px]',
+    'border',
+    'border-[#d9d9d9]',
+    'bg-[#333]',
+    'text-[#fff]',
+    'font-base',
   ].join(' '),
 
   /* 후기 페이지 후기 버튼 */
   REVIEW_BUTTON: [
-    'w-[570px] h-18 bg-[#f2544b] rounded-[8px] font-bold text-[#fff] text-[22px]',
+    'w-[570px]',
+    'h-18',
+    'bg-[#f2544b]',
+    'rounded-[8px]',
+    'font-bold',
+    'text-[#fff]',
+    'text-[22px]',
+  ].join(' '),
+
+  /* 마이페이지 패키지 구성하기 버튼 */
+  MY_PAGE_PACKAGE: [
+    'w-44',
+    'h-10',
+    'bg-[#333]',
+    'border',
+    'border-[#d9d9d9]',
+    'text-[#fff]',
+    'text-base',
+  ].join(' '),
+
+  /* 마이페이지 테스트 다시하기 버튼 */
+  MY_PAGE_RETRY: [
+    'w-[175px]',
+    'h-10',
+    'bg-[#fff]',
+    'text-[#f2544b]',
+    'text-lg',
+    'text-bold',
+    'rounded-[60px]',
+  ].join(' '),
+
+  /* 펼쳐보기 버튼 */
+  EXPAND: [
+    'w-30',
+    'h-10',
+    'bg-[#fff]',
+    'text-[#333]',
+    'text-sm',
+    'rounded-[60px]',
   ].join(' '),
 } as const
 

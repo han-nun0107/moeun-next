@@ -36,4 +36,12 @@ body {
   .flex-center {
     @apply flex items-center justify-center;
   }
+
+  .text-bold-lg {
+    @apply text-lg font-bold;
+  }
+
+  .circle-border {
+    @apply rounded-[60px] border;
+  }
 }
