@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import refetchBtn from '@/assets/icons/review/refetch_btn.svg'
+import refetchBtn from '@/assets/icons/review/refetch.svg'
 import { Button, Card } from '@/components'
 import { liveReviewData } from '@/mocks/review/review'
 
@@ -17,12 +17,14 @@ const LiveReview = () => {
             한 잔 취향을 이용한 고객님들의 실시간 후기
           </p>
           <Button variant="ICON" aria-label="실시간 후기 새로고침">
-            <Image
-              src={refetchBtn.src}
-              alt="실시간 후기 새로고침"
-              width={40}
-              height={40}
-            />
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d9d9d9] bg-[#fff]">
+              <Image
+                src={refetchBtn.src}
+                alt="실시간 후기 새로고침"
+                width={20}
+                height={20}
+              />
+            </div>
           </Button>
         </div>
 
