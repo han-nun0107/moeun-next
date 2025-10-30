@@ -1,6 +1,7 @@
 import { IMAGE_URLS } from '@/constants/imageUrls'
+import type { Product } from '@/types/product'
 
-const MONTHLY = [
+const MONTHLY: Product[] = [
   {
     img: IMAGE_URLS.Product.Default,
     alt: 'monthly',

@@ -1,20 +1,9 @@
 import { IMAGE_URLS } from '@/constants/imageUrls'
-type LiveReviewData = {
-  id: string
-  image: string
-  alt: string
-  rating: number
-  desc: string
-  nickname: string
-}
+import type { Review } from '@/types/review'
 
-type ReviewData = LiveReviewData & {
-  createdAt: string
-}
-
-export const reviewData: ReviewData[] = [
+export const reviewData: Review[] = [
   {
-    id: '1',
+    id: 1,
     image: IMAGE_URLS.Product.Default,
     alt: 'test',
     rating: 5,
@@ -23,7 +12,7 @@ export const reviewData: ReviewData[] = [
     createdAt: 'test',
   },
   {
-    id: '2',
+    id: 2,
     image: IMAGE_URLS.Product.Default,
     alt: 'test2',
     rating: 5,
@@ -32,7 +21,7 @@ export const reviewData: ReviewData[] = [
     createdAt: 'test2',
   },
   {
-    id: '3',
+    id: 3,
     image: IMAGE_URLS.Product.Default,
     alt: 'test3',
     rating: 5,
@@ -42,9 +31,9 @@ export const reviewData: ReviewData[] = [
   },
 ]
 
-export const monthlyReviewData: ReviewData[] = [
+export const monthlyReviewData: Review[] = [
   {
-    id: '1',
+    id: 1,
     image: IMAGE_URLS.Product.Default,
     alt: 'test',
     rating: 5,
@@ -53,7 +42,7 @@ export const monthlyReviewData: ReviewData[] = [
     createdAt: '2025-10-29',
   },
   {
-    id: '2',
+    id: 2,
     image: IMAGE_URLS.Product.Default,
     alt: 'test2',
     rating: 5,
@@ -62,7 +51,7 @@ export const monthlyReviewData: ReviewData[] = [
     createdAt: '2025-10-29',
   },
   {
-    id: '3',
+    id: 3,
     image: IMAGE_URLS.Product.Default,
     alt: 'test3',
     rating: 5,
@@ -71,7 +60,7 @@ export const monthlyReviewData: ReviewData[] = [
     createdAt: '2025-10-29',
   },
   {
-    id: '4',
+    id: 4,
     image: IMAGE_URLS.Product.Default,
     alt: 'test4',
     rating: 5,
@@ -81,9 +70,9 @@ export const monthlyReviewData: ReviewData[] = [
   },
 ]
 
-export const liveReviewData: LiveReviewData[] = [
+export const liveReviewData: Review[] = [
   {
-    id: '1',
+    id: 1,
     image: IMAGE_URLS.Product.Default,
     alt: 'test',
     rating: 5,
@@ -91,7 +80,7 @@ export const liveReviewData: LiveReviewData[] = [
     nickname: 'test',
   },
   {
-    id: '2',
+    id: 2,
     image: IMAGE_URLS.Product.Default,
     alt: 'test2',
     rating: 5,
@@ -99,7 +88,7 @@ export const liveReviewData: LiveReviewData[] = [
     nickname: 'test2',
   },
   {
-    id: '3',
+    id: 3,
     image: IMAGE_URLS.Product.Default,
     alt: 'test3',
     rating: 5,
@@ -107,7 +96,7 @@ export const liveReviewData: LiveReviewData[] = [
     nickname: 'test3',
   },
   {
-    id: '4',
+    id: 4,
     image: IMAGE_URLS.Product.Default,
     alt: 'test4',
     rating: 4.5,
@@ -115,7 +104,7 @@ export const liveReviewData: LiveReviewData[] = [
     nickname: 'test4',
   },
   {
-    id: '5',
+    id: 5,
     image: IMAGE_URLS.Product.Default,
     alt: 'test5',
     rating: 3.5,
@@ -123,7 +112,7 @@ export const liveReviewData: LiveReviewData[] = [
     nickname: 'test5',
   },
   {
-    id: '6',
+    id: 6,
     image: IMAGE_URLS.Product.Default,
     alt: 'test6',
     rating: 1,
@@ -131,7 +120,7 @@ export const liveReviewData: LiveReviewData[] = [
     nickname: 'test6',
   },
   {
-    id: '7',
+    id: 7,
     image: IMAGE_URLS.Product.Default,
     alt: 'test7',
     rating: 4,
@@ -139,7 +128,7 @@ export const liveReviewData: LiveReviewData[] = [
     nickname: 'test7',
   },
   {
-    id: '8',
+    id: 8,
     image: IMAGE_URLS.Product.Default,
     alt: 'test8',
     rating: 2.5,
