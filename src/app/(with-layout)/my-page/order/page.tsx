@@ -1,8 +1,13 @@
+import { ItemRowContent } from '@/components'
+import { mockOrderData } from '@/mocks/itemRow'
+
 const Order = () => {
   return (
-    <div>
-      <h1>Order</h1>
-    </div>
+    <section className="h-screen">
+      <article>
+        <ItemRowContent items={mockOrderData} type="order" />
+      </article>
+    </section>
   )
 }
 
