@@ -32,4 +32,7 @@ export const IMAGE_URLS = {
     Solsongju: '/test/solsongju.png',
     Jeonju: '/test/jeonju.png',
   },
+  MyPage: {
+    BaseTaste: '/my-page/base-taste.png',
+  },
 }
