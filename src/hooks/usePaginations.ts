@@ -1,16 +1,18 @@
 import { useMemo, useCallback } from 'react'
 
+type UsePaginationProps = {
+  currentPage: number
+  totalPages: number
+  onPageChange: (page: number) => void
+  siblingCount?: number
+}
+
 export function usePagination({
   currentPage,
   totalPages,
   onPageChange,
   siblingCount = 1, // 현재 페이지 양옆 몇 개를 보여줄지
-}: {
-  currentPage: number
-  totalPages: number
-  onPageChange: (page: number) => void
-  siblingCount?: number
-}) {
+}: UsePaginationProps) {
   const DOTS = '...'
 
   const paginationRange = useMemo(() => {
