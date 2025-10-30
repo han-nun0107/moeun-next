@@ -1,4 +1,3 @@
-// 공통 타입 정의
 export type ItemRowType = 'cart' | 'order' | 'tasting'
 
 export type BaseItemRow = {

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '내 입맛에 맞는 전통주 테스트',
     description: '전통주 취향 테스트로 나만의 주류 스타일을 알아보세요.',
-    images: ['/images/test/main.png'], // IMAGE_URLS 대신 정적 경로 권장
+    images: ['/images/test/main.png'],
     type: 'website',
   },
   alternates: {
