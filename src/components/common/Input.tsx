@@ -9,7 +9,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string
   placeholder?: string
   maxLength?: number
-  inputType?: 'nickname' | 'search' | 'checkbox'
+  inputType?: 'nickname' | 'search' | 'checkbox' | 'radio'
   label?: string
   labelClassName?: string
 }
