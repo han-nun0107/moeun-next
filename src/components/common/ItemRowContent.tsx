@@ -7,7 +7,7 @@ import type { ItemRow } from '@/types/item-row'
 
 type ItemRowProps = {
   items: ItemRow[]
-  type: 'cart' | 'order' | 'tasting'
+  type: 'cart' | 'order' | 'tasting' | 'free'
   onQuantityChange?: () => void
   checkedItems?: (number | string)[]
   onCheckChange?: (itemId: number | string, isChecked: boolean) => void
