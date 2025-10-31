@@ -6,6 +6,7 @@ export const mockOrderData: ItemRow[] = [
     type: 'order',
     order_date: '2024-10-25',
     product: {
+      id: 1,
       main_image_url:
         'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400',
       name: '무선 블루투스 헤드폰',
@@ -20,6 +21,7 @@ export const mockOrderData: ItemRow[] = [
     type: 'order',
     order_date: '2024-10-28',
     product: {
+      id: 2,
       main_image_url:
         'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400',
       name: '프리미엄 손목시계',
@@ -34,6 +36,7 @@ export const mockOrderData: ItemRow[] = [
     type: 'order',
     order_date: '2024-10-29',
     product: {
+      id: 3,
       main_image_url:
         'https://images.unsplash.com/photo-1560343090-f0409e92791a?w=400',
       name: '캔버스 백팩',
@@ -48,6 +51,7 @@ export const mockOrderData: ItemRow[] = [
     type: 'order',
     order_date: '2024-10-30',
     product: {
+      id: 4,
       main_image_url:
         'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400',
       name: '선글라스',
@@ -62,6 +66,7 @@ export const mockOrderData: ItemRow[] = [
     type: 'order',
     order_date: '2024-10-31',
     product: {
+      id: 5,
       main_image_url:
         'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400',
       name: '운동화',
