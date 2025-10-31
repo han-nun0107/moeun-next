@@ -58,7 +58,7 @@ const ItemRowList = (props: ItemRow) => {
           carbonation={props.carbonation}
           aroma={props.aroma}
           bitterness={props.bitterness}
-          confidence={props.confidence?.toString() || ''}
+          confidence={props.confidence}
         />
       )
     }

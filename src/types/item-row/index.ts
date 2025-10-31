@@ -51,12 +51,12 @@ export type ItemRow =
       type: 'tasting'
       order?: string
       feedback?: string
-      sweetness?: number
-      acidity?: number
-      body?: number
-      carbonation?: number
-      aroma?: number
-      bitterness?: number
+      sweetness: number
+      acidity: number
+      body: number
+      carbonation: number
+      aroma: number
+      bitterness: number
       confidence?: number
       rating?: number
       created_at?: string

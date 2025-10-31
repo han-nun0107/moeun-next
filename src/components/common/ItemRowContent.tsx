@@ -7,7 +7,7 @@ import type { ItemRow } from '@/types/item-row'
 
 type ItemRowProps = {
   items: ItemRow[]
-  type: 'cart' | 'order' | 'tasting' | 'free'
+  type: 'cart' | 'order' | 'tasting'
   onQuantityChange?: () => void
   checkedItems?: (number | string)[]
   onCheckChange?: (itemId: number | string, isChecked: boolean) => void
@@ -37,23 +37,32 @@ const ItemRowContent = ({
 
   return (
     <ItemRowLabel type={type}>
-      {itemList.map((item, idx) => (
-        <ItemRowList
-          key={`${item.id}-${idx}`}
-          {...item}
-          type={type}
-          checked={item.id != null && checkedItems?.includes(item.id)}
-          onCheckChange={(isChecked: boolean) => {
-            if (item.id != null) {
-              onCheckChange?.(item.id, isChecked)
-            }
-          }}
-          onQuantityChange={async (newQuantity: number) => {
-            await handleQuantityChange(idx, newQuantity)
-            onQuantityChange?.()
-          }}
-        />
-      ))}
+      {itemList.map((item, idx) => {
+        switch (item.type) {
+          case 'cart':
+            return (
+              <ItemRowList
+                key={`${item.id}-${idx}`}
+                {...item}
+                checked={item.id != null && checkedItems?.includes(item.id)}
+                onCheckChange={(isChecked: boolean) => {
+                  if (item.id != null) {
+                    onCheckChange?.(item.id, isChecked)
+                  }
+                }}
+                onQuantityChange={async (newQuantity: number) => {
+                  await handleQuantityChange(idx, newQuantity)
+                  onQuantityChange?.()
+                }}
+              />
+            )
+          case 'order':
+          case 'tasting':
+            return <ItemRowList key={`${item.id}-${idx}`} {...item} />
+          default:
+            return null
+        }
+      })}
     </ItemRowLabel>
   )
 }

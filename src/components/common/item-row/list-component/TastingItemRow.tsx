@@ -8,13 +8,13 @@ type TastingItemRowProps = {
   name: string
   order: string
   feedback: string
-  sweetness?: string
-  acidity?: string
-  body?: string
-  carbonation?: string
-  aroma?: string
-  bitterness?: string
-  confidence?: string
+  sweetness?: number
+  acidity?: number
+  body?: number
+  carbonation?: number
+  aroma?: number
+  bitterness?: number
+  confidence?: number
 }
 
 const TastingItemRow = ({
