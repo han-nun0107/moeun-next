@@ -22,8 +22,12 @@ export const useModal = ({
   useEffect(() => {
     if (!isOpen) return
 
+    const scrollbarWidth = window.innerWidth - document.body.clientWidth
     const originalOverflow = document.body.style.overflow
+    const originalPaddingRight = document.body.style.paddingRight
+
     document.body.style.overflow = 'hidden'
+    document.body.style.paddingRight = `${scrollbarWidth}px`
 
     const handleEsc = (e: KeyboardEvent) => {
       if (isCloseable && e.key === 'Escape') {
@@ -36,6 +40,7 @@ export const useModal = ({
     return () => {
       document.removeEventListener('keydown', handleEsc)
       document.body.style.overflow = originalOverflow
+      document.body.style.paddingRight = originalPaddingRight
     }
   }, [isOpen, isCloseable])
 

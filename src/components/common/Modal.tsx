@@ -58,7 +58,7 @@ const Modal = ({
             {title && (
               <h2
                 id="modal-title"
-                className="text-center text-[32px] font-bold whitespace-pre-wrap text-[#333]"
+                className="text-center text-[32px] font-bold whitespace-pre-wrap text-[#333] "
               >
                 {title}
               </h2>
