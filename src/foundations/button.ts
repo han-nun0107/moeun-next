@@ -254,6 +254,18 @@ export const BUTTON_VARIANTS = {
     'text-sm',
     'text-[#fff]',
   ].join(' '),
+
+  /* 카드 결제하기 버튼 */
+  CARD_PAY: [
+    'w-35',
+    'h-13',
+    'bg-[#2e2f2f]',
+    'rounded-md',
+    'text-lg',
+    'font-semibold',
+    'text-[#ffffff]',
+    'tracking-[-0.02em]',
+  ].join(' '),
 } as const
 
 export const DEFAULT_BUTTON_VARIANT = 'CONTAINED'
