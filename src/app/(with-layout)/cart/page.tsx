@@ -6,7 +6,6 @@ import Button from '@/components/common/Button'
 import ItemRowContent from '@/components/common/ItemRowContent'
 import useCartItem from '@/hooks/item-row/useCartItem'
 import { mockCartResponse } from '@/mocks/cart/cart'
-import type { ItemRow } from '@/types/item-row'
 
 const Cart = () => {
   const invalidateCart = () => {}
