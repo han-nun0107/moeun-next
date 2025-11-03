@@ -22,7 +22,7 @@ const ReviewSummaryForm = ({
         <div className="mt-7">
           <div className="flex flex-wrap gap-4">
             {imagePreviews.map((preview, index) => (
-              <div key={index} className="relative">
+              <div key={preview} className="relative">
                 <img
                   src={preview}
                   alt={`미리보기 ${index + 1}`}
