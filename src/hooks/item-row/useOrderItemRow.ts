@@ -10,6 +10,9 @@ export const useOrderItemRow = ({
   reviewed,
   feedback_id,
   productId,
+  price,
+  quantity,
+  order,
 }: UseOrderItemRowProps) => {
   const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -32,6 +35,15 @@ export const useOrderItemRow = ({
     return typeof id === 'string' ? Number(id) : id
   }
 
+  const numericPrice = typeof price === 'number' ? price : Number(price ?? 0)
+  const numericQuantity =
+    typeof quantity === 'number' ? quantity : Number(quantity ?? 0)
+  const totalPrice = numericPrice * numericQuantity
+  const orderString = String(order ?? '')
+  const datePart = orderString.slice(0, 10)
+  const timePart = orderString.slice(11, 19)
+  const orderDate = `${datePart} ${timePart}`
+
   const getButtonConfig = () => ({
     variant: hasNotReviewed ? ('FEEDBACK' as const) : ('BUY' as const),
     text: hasNotReviewed ? '후기 남기기' : '본품 구매하기',
@@ -45,5 +57,7 @@ export const useOrderItemRow = ({
     closeModal,
     getOrderItemId,
     getButtonConfig,
+    totalPrice,
+    orderDate,
   }
 }

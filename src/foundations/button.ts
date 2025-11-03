@@ -222,6 +222,28 @@ export const BUTTON_VARIANTS = {
     'text-bold-lg',
     'text-[#fff]',
   ].join(' '),
+
+  /* 태그 색상 */
+  TAG: [
+    'h-6',
+    'w-13',
+    'rounded-[3px]',
+    'border',
+    'text-[11px]',
+    'transition',
+  ].join(' '),
+
+  /* 피드백 보내기 버튼 */
+  FEEDBACK_SUBMIT: [
+    'w-[600px]',
+    'h-[72px]',
+    'bg-[#f2544b]',
+    'rounded-lg',
+    'text-2xl',
+    'font-bold',
+    'text-[#ffffff]',
+    'tracking-[-0.02em]',
+  ].join(' '),
 } as const
 
 export const DEFAULT_BUTTON_VARIANT = 'CONTAINED'

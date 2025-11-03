@@ -28,7 +28,7 @@ const RecommendedModal = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      className="h-230 w-full overflow-y-auto"
+      className="review-modal-scroll h-225 w-full overflow-auto"
     >
       <article>
         <div className="flex flex-col items-center justify-center gap-6 text-center">

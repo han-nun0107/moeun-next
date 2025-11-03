@@ -15,6 +15,9 @@ export type UseOrderItemRowProps = {
   reviewed: boolean
   feedback_id?: number | null
   productId?: Product['id']
+  price?: OrderItemRowProps['price']
+  quantity?: OrderItemRowProps['quantity']
+  order?: OrderItemRowProps['order']
 }
 
 export type ButtonConfig = {

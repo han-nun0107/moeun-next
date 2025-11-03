@@ -5,20 +5,20 @@ import { Dropdown, Modal, Button } from '@/components'
 import { MY_PAGE } from '@/constants/my-page/myPage'
 import { useSelectCartModal } from '@/hooks/my-page/useSelectCartModal'
 import { recommendedDropdown } from '@/mocks/modal/recommendedDropdown'
+import { ModalProps } from '@/types/modal/modal'
 import { cn } from '@/utils/cn'
 
-const SelectCartModal = ({
-  isOpen,
-  onClose,
-}: {
-  isOpen: boolean
-  onClose: () => void
-}) => {
+const SelectCartModal = ({ isOpen, onClose }: ModalProps) => {
   const { setSelectedRegion, pickupDate, setPickupDate, handleClick } =
     useSelectCartModal()
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      title="지역 및 픽업날짜 선택"
+      isCloseable
+    >
       <article className="flex-center flex-col">
         <div>
           <img
