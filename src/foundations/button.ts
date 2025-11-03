@@ -192,6 +192,36 @@ export const BUTTON_VARIANTS = {
     'text-sm',
     'rounded-[60px]',
   ].join(' '),
+
+  /* 추천 모달 버튼 */
+  RECOMMENDED: [
+    'w-[74px]',
+    'h-[74px]',
+    'rounded-full',
+    'bg-[#f2f2f2]',
+    'text-[#333]',
+    'flex-center',
+  ].join(' '),
+
+  /* 추천 모달 장바구니 버튼 */
+  RECOMMENDED_BUY: [
+    'w-150',
+    'h-18',
+    'rounded-xl',
+    'bg-[#f2544b]',
+    'text-[#fff]',
+    'text-2xl',
+    'font-bold',
+  ].join(' '),
+
+  /* 주문, 날짜 버튼 */
+  ORDER_DATE: [
+    'w-[295px]',
+    'h-[65px]',
+    'rounded-[12px]',
+    'text-bold-lg',
+    'text-[#fff]',
+  ].join(' '),
 } as const
 
 export const DEFAULT_BUTTON_VARIANT = 'CONTAINED'

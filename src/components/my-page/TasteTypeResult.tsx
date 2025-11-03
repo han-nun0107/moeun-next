@@ -1,9 +1,14 @@
+'use client'
+
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 import { Button, RetryIcon } from '@/components'
 import { IMAGE_URLS } from '@/constants'
 
 const TasteTypeResult = () => {
+  const router = useRouter()
+
   return (
     <article className="flex-center flex-col">
       <div className="mt-[22px] h-93 w-315 bg-[#f2544b]">
@@ -34,6 +39,7 @@ const TasteTypeResult = () => {
             variant="MY_PAGE_RETRY"
             className="flex-center mt-[30px] gap-2"
             aria-label="테스트 다시하기"
+            onClick={() => router.push('/test')}
           >
             <RetryIcon className="h-4 w-4 text-[#f2544b]" />
             <span className="text-bold-lg text-[#f2544b]">테스트 다시하기</span>

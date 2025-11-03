@@ -10,6 +10,8 @@ body {
   --naver-primary: #03c75a;
   --naver-text: #fff;
   --google-primary: #dfdfdf;
+  --color-black-100: #000;
+  --color-black-200: #333;
 }
 
 @layer components {
