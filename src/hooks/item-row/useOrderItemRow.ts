@@ -1,8 +1,8 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
 
+import { useModalState } from '@/hooks/useModalState'
 import type { UseOrderItemRowProps } from '@/types/item-row'
 
 export const useOrderItemRow = ({
@@ -15,12 +15,8 @@ export const useOrderItemRow = ({
   order,
 }: UseOrderItemRowProps) => {
   const router = useRouter()
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
+  const { isOpen: isModalOpen, openModal, closeModal } = useModalState()
   const hasNotReviewed = reviewed === false
-
-  const openModal = () => setIsModalOpen(true)
-  const closeModal = () => setIsModalOpen(false)
 
   const handleClick = () => {
     if (hasNotReviewed) {

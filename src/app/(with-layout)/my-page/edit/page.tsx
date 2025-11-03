@@ -2,9 +2,12 @@
 
 import { useState } from 'react'
 
-import { Button } from '@/components'
+import { Button, AlarmModal, EditNickNameModal } from '@/components'
+import ResignationModal from '@/components/common/modal/ResignationModal'
+import { useEditPageModals } from '@/hooks/my-page/useEditPageModals'
 
 const Edit = () => {
+  const { nickNameModal, alarmModal, resignationModal } = useEditPageModals()
   const [selected, setSelected] = useState('비동의')
 
   const MARKETING = [
@@ -27,11 +30,16 @@ const Edit = () => {
               <Button
                 variant="ICON"
                 aria-label="닉네임 수정"
+                onClick={nickNameModal.open}
                 className="h-9 w-14 rounded-md bg-[#f2f2f2] text-sm text-[#333]"
               >
                 수정
               </Button>
             </dd>
+            <EditNickNameModal
+              isOpen={nickNameModal.isOpen}
+              onClose={nickNameModal.close}
+            />
           </dl>
           <dl className="grid h-14 grid-cols-[1fr_3.92fr] items-center border-b border-[#e1e1e1]">
             <dt className="font-semibold text-[#333]">
@@ -46,7 +54,12 @@ const Edit = () => {
                     name="marketing"
                     value={item.value}
                     checked={selected === item.value}
-                    onChange={(e) => setSelected(e.target.value)}
+                    onChange={(e) => {
+                      setSelected(e.target.value)
+                      if (e.target.value === '동의') {
+                        alarmModal.open()
+                      }
+                    }}
                     className="mr-2 accent-[#f2544b]"
                   />
                   <label htmlFor={item.id}>{item.value}</label>
@@ -54,17 +67,23 @@ const Edit = () => {
               ))}
             </dd>
           </dl>
+          <AlarmModal isOpen={alarmModal.isOpen} onClose={alarmModal.close} />
         </article>
 
-        <footer className="flex w-full justify-center pb-8">
+        <footer className="flex w-full justify-center pb-25">
           <Button
             variant="ICON"
             aria-label="회원 탈퇴"
+            onClick={resignationModal.open}
             className="w-[66px] border-b border-[#666] text-[#666]"
           >
             회원 탈퇴
           </Button>
         </footer>
+        <ResignationModal
+          isOpen={resignationModal.isOpen}
+          onClose={resignationModal.close}
+        />
       </section>
     </main>
   )
