@@ -1,19 +1,22 @@
 import { useState } from 'react'
 
+import { useModalState } from '@/hooks/useModalState'
 import { RECOMMENDED } from '@/mocks/modal/recommended'
 
 type RecommendedItem = (typeof RECOMMENDED)[number]
 
 export const useRecommendedModal = () => {
-  const [isRecommendedModalOpen, setIsRecommendedModalOpen] = useState(false)
-  const [isSelectCartModalOpen, setIsSelectCartModalOpen] = useState(false)
+  const {
+    isOpen: isRecommendedModalOpen,
+    openModal: openRecommendedModal,
+    closeModal: closeRecommendedModal,
+  } = useModalState()
+  const {
+    isOpen: isSelectCartModalOpen,
+    openModal: openSelectCartModal,
+    closeModal: closeSelectCartModal,
+  } = useModalState()
   const [selectedItems, setSelectedItems] = useState<RecommendedItem[]>([])
-
-  const openRecommendedModal = () => setIsRecommendedModalOpen(true)
-  const closeRecommendedModal = () => setIsRecommendedModalOpen(false)
-
-  const openSelectCartModal = () => setIsSelectCartModalOpen(true)
-  const closeSelectCartModal = () => setIsSelectCartModalOpen(false)
 
   const LIST_DATA = RECOMMENDED.filter((item) => item.type === 'list').slice(
     0,

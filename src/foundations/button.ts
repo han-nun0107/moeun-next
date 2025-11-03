@@ -244,6 +244,16 @@ export const BUTTON_VARIANTS = {
     'text-[#ffffff]',
     'tracking-[-0.02em]',
   ].join(' '),
+
+  /* 닉네임 변경 버튼 */
+  NICKNAME: [
+    'w-14',
+    'h-9',
+    'bg-black-200',
+    'rounded-[6px]',
+    'text-sm',
+    'text-[#fff]',
+  ].join(' '),
 } as const
 
 export const DEFAULT_BUTTON_VARIANT = 'CONTAINED'
