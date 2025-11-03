@@ -8,7 +8,7 @@ import type { ItemRow } from '@/types/item-row'
 type ItemRowProps = {
   items: ItemRow[]
   type: 'cart' | 'order' | 'tasting'
-  onQuantityChange?: () => void
+  onQuantityChange?: (itemId: number | string, newQuantity: number) => void
   checkedItems?: (number | string)[]
   onCheckChange?: (itemId: number | string, isChecked: boolean) => void
 }
@@ -52,7 +52,9 @@ const ItemRowContent = ({
                 }}
                 onQuantityChange={async (newQuantity: number) => {
                   await handleQuantityChange(idx, newQuantity)
-                  onQuantityChange?.()
+                  if (item.id != null) {
+                    onQuantityChange?.(item.id, newQuantity)
+                  }
                 }}
               />
             )
