@@ -58,7 +58,7 @@ const SelectCartModal = ({ isOpen, onClose }: ModalProps) => {
             <Button
               key={button.value}
               variant="ORDER_DATE"
-              onClick={() => handleClick(button.type as 'CART' | 'CONTINUE')}
+              onClick={() => handleClick(button.type)}
               className={cn(
                 button.type === 'CART' ? 'bg-[#f2544b]' : 'bg-[#0f0f0f]'
               )}
