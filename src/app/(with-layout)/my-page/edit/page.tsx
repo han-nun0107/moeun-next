@@ -4,11 +4,12 @@ import { useState } from 'react'
 
 import { Button, AlarmModal, EditNickNameModal } from '@/components'
 import ResignationModal from '@/components/common/modal/ResignationModal'
+import { useEditPage } from '@/hooks/my-page/useEditPage'
 import { useEditPageModals } from '@/hooks/my-page/useEditPageModals'
 
 const Edit = () => {
   const { nickNameModal, alarmModal, resignationModal } = useEditPageModals()
-  const [selected, setSelected] = useState('비동의')
+  const { selected, handleMarketingChange } = useEditPage()
 
   const MARKETING = [
     { id: 'agree', value: '동의' },
@@ -54,12 +55,7 @@ const Edit = () => {
                     name="marketing"
                     value={item.value}
                     checked={selected === item.value}
-                    onChange={(e) => {
-                      setSelected(e.target.value)
-                      if (e.target.value === '동의') {
-                        alarmModal.open()
-                      }
-                    }}
+                    onChange={handleMarketingChange}
                     className="mr-2 accent-[#f2544b]"
                   />
                   <label htmlFor={item.id}>{item.value}</label>
