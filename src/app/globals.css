@@ -47,3 +47,10 @@ body {
     @apply rounded-[60px] border;
   }
 }
+
+@layer utilities {
+  .review-modal-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
+  }
+}
