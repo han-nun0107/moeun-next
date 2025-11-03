@@ -118,6 +118,8 @@ const useTastingReview = (orderItemId?: number, onClose?: () => void) => {
       alert('유효하지 않은 주문 항목입니다.')
       return false
     }
+
+    return true
   }
 
   const handleSubmitAndClose = () => {
