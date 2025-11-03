@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-
 import { Button, AlarmModal, EditNickNameModal } from '@/components'
 import ResignationModal from '@/components/common/modal/ResignationModal'
 import { useEditPage } from '@/hooks/my-page/useEditPage'
@@ -9,7 +7,9 @@ import { useEditPageModals } from '@/hooks/my-page/useEditPageModals'
 
 const Edit = () => {
   const { nickNameModal, alarmModal, resignationModal } = useEditPageModals()
-  const { selected, handleMarketingChange } = useEditPage()
+  const { selected, handleMarketingChange } = useEditPage({
+    openAlarmModal: alarmModal.open,
+  })
 
   const MARKETING = [
     { id: 'agree', value: '동의' },
