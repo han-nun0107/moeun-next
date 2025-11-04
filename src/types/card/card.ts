@@ -31,7 +31,7 @@ export type TestCardProps = DetailCardProps & {
 export type ProductCardProps = DetailCardProps & {
   title: string
   subtitle: string
-  price: number
+  price: number | string
 }
 
 export type PackageModalCardProps = DetailCardProps & {
