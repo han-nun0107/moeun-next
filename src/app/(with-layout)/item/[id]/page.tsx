@@ -5,6 +5,7 @@ import DetailInformation from '@/components/detail/DetailInformation'
 import DetailProduct from '@/components/detail/DetailProduct'
 import { useDetailPage } from '@/hooks/detail/useDetailPage'
 import { detailMock } from '@/mocks/detail/detailMock'
+
 const Detail = () => {
   const {
     dropdownValues,

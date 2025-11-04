@@ -24,7 +24,6 @@ const DetailProduct = ({
   quantity,
   onIncreaseQuantity,
   onDecreaseQuantity,
-  isDecreaseDisabled,
   dropdownValues: _dropdownValues,
   handleDropdownChange,
   onAddCart,
@@ -74,27 +73,27 @@ const DetailProduct = ({
           <div className="flex items-center">
             <div>수량</div>
             <div className="ml-[110px] inline-flex h-8 w-20 items-center justify-center rounded-[5px] bg-[#f6f6f6]">
-              <button
+              <Button
+                variant="ICON"
                 aria-label="수량 감소"
                 onClick={onDecreaseQuantity}
-                disabled={isDecreaseDisabled}
+                disabled={quantity <= 1}
                 className={cn(
-                  'flex h-[15px] w-[15px] cursor-pointer items-center justify-center rounded-[4px]',
-                  isDecreaseDisabled
-                    ? 'cursor-not-allowed bg-[#e1e1e1]'
-                    : 'bg-[#e1e1e1]'
+                  'flex-center h-[15px] w-[15px] cursor-pointer rounded-[4px] bg-[#e1e1e1]',
+                  quantity <= 1 && 'cursor-not-allowed opacity-50'
                 )}
               >
                 <Minus size={16} />
-              </button>
+              </Button>
               <span className="w-6 text-center">{quantity}</span>
-              <button
+              <Button
+                variant="ICON"
                 aria-label="수량 증가"
                 onClick={onIncreaseQuantity}
-                className="flex h-[15px] w-[15px] cursor-pointer items-center justify-center rounded-[4px] bg-[#000000] text-white"
+                className="flex-center h-[15px] w-[15px] cursor-pointer rounded-[4px] bg-[#000000] text-white"
               >
                 <Plus size={16} />
-              </button>
+              </Button>
             </div>
           </div>
 
