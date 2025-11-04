@@ -1,12 +1,12 @@
 // 양조장 정보
-export interface BreweryInfo {
+export type BreweryInfo = {
   id: number
   name: string
   region: string | null
 }
 
 // 맛 프로파일 세부 점수
-export interface TasteProfile {
+export type TasteProfile = {
   sweetness: number
   acidity: number
   body: number
@@ -16,7 +16,7 @@ export interface TasteProfile {
 }
 
 // 술 정보
-export interface DrinkInfo {
+export type DrinkInfo = {
   id: number
   name: string
   brewery: BreweryInfo
@@ -31,7 +31,7 @@ export interface DrinkInfo {
 }
 
 // 패키지 상세 정보
-export interface PackageDetail {
+export type PackageDetail = {
   id: number
   name: string
   drinks: {
@@ -43,14 +43,14 @@ export interface PackageDetail {
 }
 
 // 이미지 정보
-export interface ProductImage {
+export type ProductImage = {
   image_url: string
   is_main: boolean
   created_at: string
 }
 
 // 최종 상품 타입
-export interface ProductDetail {
+export type ProductDetail = {
   id: string
   name: string
   product_type: 'individual' | 'package'
@@ -89,17 +89,17 @@ export type ProductCardShape = Pick<
   drink: { brewery: { name: string } } | null
 }
 
-export type Product = {
+export type Product = Pick<
+  ProductDetail,
+  'name' | 'product_type' | 'main_image_url' | 'brewery_name'
+> & {
   id: string | number
-  name: string
-  product_type: 'individual' | 'package'
-  main_image_url: string
   price: number | string
+  subtitle: string
+  title: string
+  img: string
+  alt: string
   final_price?: number
-  short_description?: string
-  brewery_name?: string
-  is_featured?: boolean
-  description?: string
   discount_rate?: number
   is_on_sale?: boolean
   view_count?: number
@@ -109,8 +109,7 @@ export type Product = {
   status?: 'ACTIVE' | 'INACTIVE'
   created_at?: string
   updated_at?: string
-  subtitle: string
-  title: string
-  img: string
-  alt: string
+  short_description?: string
+  is_featured?: boolean
+  description?: string
 }
