@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 import { Card } from '@/components'
 import RECOMMENDED from '@/mocks/main/recommended'
@@ -27,7 +28,18 @@ const LikePage = () => {
         </h1>
         <div className="mx-auto grid grid-cols-4 gap-7">
           {RECOMMENDED.map((item) => (
-            <Card key={item.id} type="product" data={item} />
+            <Link key={item.id} href={`/item/${item.id}`}>
+              <Card
+                type="product"
+                data={{
+                  img: item.img,
+                  alt: item.alt,
+                  title: item.title,
+                  subtitle: item.subtitle,
+                  price: item.price,
+                }}
+              />
+            </Link>
           ))}
         </div>
       </article>

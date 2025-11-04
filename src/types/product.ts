@@ -94,7 +94,7 @@ export type Product = {
   name: string
   product_type: 'individual' | 'package'
   main_image_url: string
-  price: number
+  price: number | string
   final_price?: number
   short_description?: string
   brewery_name?: string
