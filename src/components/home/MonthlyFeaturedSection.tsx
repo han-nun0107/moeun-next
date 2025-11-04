@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { Card } from '@/components'
 import { ProductTitle } from '@/components/home'
 import MONTHLY from '@/mocks/main/monthly'
@@ -23,17 +25,18 @@ const MonthlyFeaturedSection = ({
         <ProductTitle title={title} desc={desc} />
         <div className="flex gap-[23.4px]">
           {products.map((product, index) => (
-            <Card
-              type="product"
-              key={`${product.title}-${index}`}
-              data={{
-                title: product.title,
-                subtitle: product.subtitle,
-                price: product.price,
-                img: product.img,
-                alt: product.alt,
-              }}
-            />
+            <Link key={`${product.title}-${index}`} href={`/item/${index + 1}`}>
+              <Card
+                type="product"
+                data={{
+                  title: product.title,
+                  subtitle: product.subtitle,
+                  price: product.price,
+                  img: product.img,
+                  alt: product.alt,
+                }}
+              />
+            </Link>
           ))}
         </div>
       </div>
