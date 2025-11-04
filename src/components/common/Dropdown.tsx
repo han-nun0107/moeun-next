@@ -4,12 +4,12 @@ import ArrowIcon from '@/assets/icons/dropdown/arrow.svg'
 import Button from '@/components/common/Button'
 import { dropdownOptions } from '@/constants'
 import { useDropdown } from '@/hooks/useDropdown'
-import { DropdownProps } from '@/types/dropdown'
+import type { DropdownProps } from '@/types/dropdown'
 import { cn } from '@/utils/cn'
 
 const Dropdown = ({
   placeholder = '편의점 매장을 선택해 주세요.',
-  options = dropdownOptions,
+  options = dropdownOptions.MY_PAGE,
   onSelect,
   className = '',
 }: DropdownProps) => {

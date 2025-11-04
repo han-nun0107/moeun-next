@@ -89,7 +89,7 @@ export type ProductCardShape = Pick<
   drink: { brewery: { name: string } } | null
 }
 
-export interface Product {
+export type Product = {
   id: string | number
   name: string
   product_type: 'individual' | 'package'
@@ -109,4 +109,8 @@ export interface Product {
   status?: 'ACTIVE' | 'INACTIVE'
   created_at?: string
   updated_at?: string
+  subtitle: string
+  title: string
+  img: string
+  alt: string
 }

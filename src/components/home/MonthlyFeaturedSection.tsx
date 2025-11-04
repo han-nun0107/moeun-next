@@ -12,7 +12,8 @@ const MonthlyFeaturedSection = ({
   desc,
   type = 'monthly',
 }: MonthlyFeaturedSectionProps) => {
-  const products = type === 'package' ? PACKAGE_RECOMMENDED : MONTHLY
+  const products =
+    type === 'package' ? PACKAGE_RECOMMENDED.slice(0, 4) : MONTHLY.slice(0, 3)
 
   return (
     <section className="flex items-center justify-center py-25">
@@ -24,8 +25,11 @@ const MonthlyFeaturedSection = ({
       >
         <ProductTitle title={title} desc={desc} />
         <div className="flex gap-[23.4px]">
-          {products.map((product, index) => (
-            <Link key={`${product.title}-${index}`} href={`/item/${index + 1}`}>
+          {products.map((product) => (
+            <Link
+              key={`${product.name}-${product.id}`}
+              href={`/item/${product.id}`}
+            >
               <Card
                 type="product"
                 data={{
