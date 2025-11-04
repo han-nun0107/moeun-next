@@ -3,6 +3,7 @@ import { StaticImageData } from 'next/image'
 export type DetailCardProps = {
   img: string | StaticImageData
   alt: string
+  className?: string
 }
 
 export type ReviewCardProps = DetailCardProps & {

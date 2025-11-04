@@ -1,0 +1,65 @@
+import type { ProductDetail } from '@/types/product'
+
+export const detailMock: ProductDetail = {
+  id: 'mock-001',
+  name: '한모금 생막걸리',
+  product_type: 'individual',
+  drink: {
+    id: 101,
+    name: '한모금 생막걸리',
+    brewery: {
+      id: 11,
+      name: '한모금양조장',
+      region: '경기 고양',
+    },
+    ingredients: '쌀, 누룩, 정제수',
+    alcohol_type: 'makgeolli',
+    alcohol_type_display: '막걸리',
+    abv: 6,
+    volume_ml: 750,
+    taste_profile: {
+      sweetness: 3,
+      acidity: 2,
+      body: 3,
+      carbonation: 2,
+      bitterness: 1,
+      aroma: 3,
+    },
+    created_at: '2025-01-01T00:00:00Z',
+    updated_at: '2025-01-01T00:00:00Z',
+  },
+  package: null,
+  price: 12900,
+  original_price: 15900,
+  discount: 3000,
+  discount_rate: 19,
+  final_price: 12900,
+  is_on_sale: true,
+  description: '쌀 본연의 고소함과 은은한 단맛이 조화로운 생막걸리.',
+  description_image_url:
+    'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=1600&auto=format&fit=crop',
+  is_gift_suitable: false,
+  is_award_winning: false,
+  is_regional_specialty: true,
+  is_limited_edition: false,
+  is_premium: false,
+  is_organic: false,
+  view_count: 1234,
+  order_count: 321,
+  like_count: 87,
+  review_count: 42,
+  status: 'ACTIVE',
+  images: [
+    {
+      image_url:
+        'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=1200&auto=format&fit=crop',
+      is_main: true,
+      created_at: '2025-01-01T00:00:00Z',
+    },
+  ],
+  created_at: '2025-01-01T00:00:00Z',
+  updated_at: '2025-01-01T00:00:00Z',
+  main_image_url:
+    'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=1200&auto=format&fit=crop',
+  brewery_name: '한모금양조장',
+}

@@ -1,8 +1,9 @@
 import { DetailCardProps } from '@/types/card/card'
+import { cn } from '@/utils/cn'
 
 import CardImage from './CardImage'
 
-const DetailCard = ({ img, alt }: DetailCardProps) => {
+const DetailCard = ({ img, alt, className }: DetailCardProps) => {
   return (
     <div>
       <CardImage
@@ -11,7 +12,7 @@ const DetailCard = ({ img, alt }: DetailCardProps) => {
         width={560}
         height={560}
         showHeart={true}
-        className="bg-[#f5f5f5]"
+        className={cn('bg-[#f5f5f5]', className)}
       />
     </div>
   )

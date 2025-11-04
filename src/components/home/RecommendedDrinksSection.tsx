@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { Card } from '@/components'
 import { ProductTitle } from '@/components/home'
 import RECOMMENDED from '@/mocks/main/recommended'
@@ -11,17 +13,18 @@ const RecommendedDrinksSection = ({ title, desc }: MainSectionProps) => {
 
         <div className="grid grid-cols-4 gap-[27px]">
           {RECOMMENDED.map((item, idx) => (
-            <Card
-              type="product"
-              key={`${item.title}-${idx}`}
-              data={{
-                img: item.img,
-                alt: item.alt,
-                title: item.title,
-                subtitle: item.subtitle,
-                price: item.price,
-              }}
-            />
+            <Link key={`${item.title}-${idx}`} href={`/item/${idx + 1}`}>
+              <Card
+                type="product"
+                data={{
+                  img: item.img,
+                  alt: item.alt,
+                  title: item.title,
+                  subtitle: item.subtitle,
+                  price: item.price,
+                }}
+              />
+            </Link>
           ))}
         </div>
       </div>

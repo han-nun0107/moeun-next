@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { Card, Pagination } from '@/components'
 import { useSearch } from '@/hooks/search/useSearch'
 
@@ -12,17 +14,18 @@ const SearchResult = () => {
       </h3>
       <div className="grid grid-cols-4 gap-7 pt-5">
         {currentItems.map((item, idx) => (
-          <Card
-            type="product"
-            key={`${item.title}-${idx}`}
-            data={{
-              img: item.img,
-              alt: item.alt,
-              title: item.title,
-              subtitle: item.subtitle,
-              price: item.price,
-            }}
-          />
+          <Link key={`${item.title}-${idx}`} href={`/item/${idx + 1}`}>
+            <Card
+              type="product"
+              data={{
+                img: item.img,
+                alt: item.alt,
+                title: item.title,
+                subtitle: item.subtitle,
+                price: item.price,
+              }}
+            />
+          </Link>
         ))}
       </div>
 
