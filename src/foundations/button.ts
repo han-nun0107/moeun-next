@@ -5,9 +5,9 @@ export const BUTTON_VARIANTS = {
     'w-30',
     'rounded-4xl',
     'border',
-    'border-[#d9d9d9]',
+    'border-gray-300',
     'font-semibold',
-    'text-[#666666]',
+    'text-gray-700',
   ].join(' '),
 
   /* 로그인 버튼 */
@@ -15,12 +15,12 @@ export const BUTTON_VARIANTS = {
     'h-13',
     'w-41',
     'rounded-[60px]',
-    'bg-[#f2544b]',
+    'bg-red-500',
     'text-center',
     'leading-[52px]',
     'font-semibold',
     'text-white',
-    'hover:bg-[#e04439]',
+    'hover:bg-red-550',
   ].join(' '),
 
   /* 아이콘 버튼 */
@@ -35,12 +35,12 @@ export const BUTTON_VARIANTS = {
     'justify-between',
     'rounded-[5px]',
     'border',
-    'border-[#d9d9d9]',
+    'border-gray-300',
     'bg-white',
     'px-3',
     'text-sm',
-    'text-[#666666]',
-    'hover:border-[#bfbfbf]',
+    'text-gray-700',
+    'hover:border-gray-350',
     'focus:border-blue-500',
     'focus:outline-none',
   ].join(' '),
@@ -53,15 +53,15 @@ export const BUTTON_VARIANTS = {
     'w-8',
     'cursor-pointer',
     'rounded-sm',
-    'text-[#333]',
+    'text-black-200',
   ].join(' '),
 
   /* 피드백 버튼 */
   FEEDBACK: [
     'w-35',
     'h-12',
-    'bg-[#f2f2f2]',
-    'text-[#333333]',
+    'bg-gray-50',
+    'text-black-200',
     'text-lg',
     'rounded-md',
     'tracking-[0.05em]',
@@ -71,8 +71,8 @@ export const BUTTON_VARIANTS = {
   BUY: [
     'w-36',
     'h-12',
-    'bg-[#000000]',
-    'text-[#ffffff]',
+    'bg-black-50',
+    'text-white-100',
     'tracking-[0.05em]',
     'rounded-md',
   ].join(' '),
@@ -81,8 +81,8 @@ export const BUTTON_VARIANTS = {
   MAIN_TEST: [
     'w-49',
     'h-14',
-    'bg-[#2e2f2f]',
-    'text-[#ffffff]',
+    'bg-gray-900',
+    'text-white-100',
     'text-lg',
     'tracking-[0.05em]',
     'rounded-md',
@@ -92,8 +92,8 @@ export const BUTTON_VARIANTS = {
   TEST: [
     'w-115',
     'h-15',
-    'bg-[#2d2d2d]',
-    'text-[#ffffff]',
+    'bg-gray-920',
+    'text-white-100',
     'text-2xl',
     'font-bold',
     'tracking-[0.05em]',
@@ -104,8 +104,8 @@ export const BUTTON_VARIANTS = {
   TEST_JOIN: [
     'w-115',
     'h-14',
-    'bg-[#fff]',
-    'text-[#2e2f2f]',
+    'bg-white-100',
+    'text-gray-900',
     'text-2xl',
     'font-bold',
     'tracking-[0.05em]',
@@ -116,10 +116,10 @@ export const BUTTON_VARIANTS = {
   TEST_BOTTOM: [
     'w-[225px]',
     'h-[54px]',
-    'text-[#fff]',
+    'text-white-100',
     'text-lg',
     'font-bold',
-    'border-[#fff]',
+    'border-white-100',
     'circle-border',
   ].join(' '),
 
@@ -136,7 +136,7 @@ export const BUTTON_VARIANTS = {
   ].join(' '),
 
   /* 테스트 페이지 버튼 A,B */
-  TEST_BUTTON: ['w-115', 'h-14', 'circle-border', 'border-[#F2544B]'].join(' '),
+  TEST_BUTTON: ['w-115', 'h-14', 'circle-border', 'border-red-500'].join(' '),
 
   /* 제품 검색 필터 적용하기 버튼 */
   FILTER_BUTTON: [
@@ -144,9 +144,9 @@ export const BUTTON_VARIANTS = {
     'h-10',
     'rounded-[6px]',
     'border',
-    'border-[#d9d9d9]',
-    'bg-[#333]',
-    'text-[#fff]',
+    'border-gray-300',
+    'bg-black-200',
+    'text-white-100',
     'font-base',
   ].join(' '),
 
@@ -154,10 +154,10 @@ export const BUTTON_VARIANTS = {
   REVIEW_BUTTON: [
     'w-[570px]',
     'h-18',
-    'bg-[#f2544b]',
+    'bg-red-500',
     'rounded-[8px]',
     'font-bold',
-    'text-[#fff]',
+    'text-white-100',
     'text-[22px]',
   ].join(' '),
 
@@ -165,10 +165,10 @@ export const BUTTON_VARIANTS = {
   MY_PAGE_PACKAGE: [
     'w-44',
     'h-10',
-    'bg-[#333]',
+    'bg-black-200',
     'border',
-    'border-[#d9d9d9]',
-    'text-[#fff]',
+    'border-gray-300',
+    'text-white-100',
     'text-base',
   ].join(' '),
 
@@ -176,8 +176,8 @@ export const BUTTON_VARIANTS = {
   MY_PAGE_RETRY: [
     'w-[175px]',
     'h-10',
-    'bg-[#fff]',
-    'text-[#f2544b]',
+    'bg-white-100',
+    'text-red-500',
     'text-lg',
     'text-bold',
     'rounded-[60px]',
@@ -187,8 +187,8 @@ export const BUTTON_VARIANTS = {
   EXPAND: [
     'w-30',
     'h-10',
-    'bg-[#fff]',
-    'text-[#333]',
+    'bg-white-100',
+    'text-black-200',
     'text-sm',
     'rounded-[60px]',
   ].join(' '),
@@ -198,8 +198,8 @@ export const BUTTON_VARIANTS = {
     'w-[74px]',
     'h-[74px]',
     'rounded-full',
-    'bg-[#f2f2f2]',
-    'text-[#333]',
+    'bg-gray-50',
+    'text-black-200',
     'flex-center',
   ].join(' '),
 
@@ -208,8 +208,8 @@ export const BUTTON_VARIANTS = {
     'w-150',
     'h-18',
     'rounded-xl',
-    'bg-[#f2544b]',
-    'text-[#fff]',
+    'bg-red-500',
+    'text-white-100',
     'text-2xl',
     'font-bold',
   ].join(' '),
@@ -220,7 +220,7 @@ export const BUTTON_VARIANTS = {
     'h-[65px]',
     'rounded-[12px]',
     'text-bold-lg',
-    'text-[#fff]',
+    'text-white-100',
   ].join(' '),
 
   /* 태그 색상 */
@@ -237,11 +237,11 @@ export const BUTTON_VARIANTS = {
   FEEDBACK_SUBMIT: [
     'w-[600px]',
     'h-[72px]',
-    'bg-[#f2544b]',
+    'bg-red-500',
     'rounded-lg',
     'text-2xl',
     'font-bold',
-    'text-[#ffffff]',
+    'text-white-100',
     'tracking-[-0.02em]',
   ].join(' '),
 
@@ -252,18 +252,18 @@ export const BUTTON_VARIANTS = {
     'bg-black-200',
     'rounded-[6px]',
     'text-sm',
-    'text-[#fff]',
+    'text-white-100',
   ].join(' '),
 
   /* 카드 결제하기 버튼 */
   CARD_PAY: [
     'w-35',
     'h-13',
-    'bg-[#2e2f2f]',
+    'bg-gray-900',
     'rounded-md',
     'text-lg',
     'font-semibold',
-    'text-[#ffffff]',
+    'text-white-100',
     'tracking-[-0.02em]',
   ].join(' '),
 
@@ -271,26 +271,26 @@ export const BUTTON_VARIANTS = {
   VARIANT12: [
     'w-[280px]',
     'h-[72px]',
-    'bg-[#ffffff]',
+    'bg-white-100',
     'rounded-[8px]',
-    'text-[#666666]',
+    'text-gray-700',
     'font-bold',
     'text-lg',
     'border',
-    'border-[#666666]',
+    'border-gray-700',
   ].join(' '),
 
   //상세페이지 구매하기
   VARIANT13: [
     'w-[280px]',
     'h-[72px]',
-    'bg-[#f2544b]',
+    'bg-red-500',
     'rounded-[8px]',
-    'text-[#ffffff]',
+    'text-white-100',
     'font-bold',
     'text-lg',
     'border',
-    'border-[#f2544b]',
+    'border-red-500',
   ].join(' '),
 } as const
 

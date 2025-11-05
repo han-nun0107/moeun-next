@@ -29,7 +29,12 @@ const StarRating = ({
   emptyColor = '#f2f2f2',
   ariaLabel = '별점 선택',
 }: StarRatingProps) => {
-  const { rating: currentRating, handleClick, handleKeyDown, getFillWidth } = useStarRating({
+  const {
+    rating: currentRating,
+    handleClick,
+    handleKeyDown,
+    getFillWidth,
+  } = useStarRating({
     rating,
     defaultRating,
     onChange,
@@ -45,7 +50,7 @@ const StarRating = ({
       aria-valuenow={currentRating}
       tabIndex={readOnly ? -1 : 0}
       className={cn(
-        'flex items-center gap-1 outline-none focus:outline-none focus-visible:outline-none ring-0 focus:ring-0',
+        'flex items-center gap-1 ring-0 outline-none focus:ring-0 focus:outline-none focus-visible:outline-none',
         readOnly ? 'cursor-default' : 'cursor-pointer',
         className
       )}
@@ -87,7 +92,7 @@ const StarRating = ({
       {showRatingValue && (
         <span
           className={cn(
-            'ml-2 font-bold text-[#333333]',
+            'text-black-200 ml-2 font-bold',
             readOnly ? 'text-base' : 'ml-5 text-5xl'
           )}
         >

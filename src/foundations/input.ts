@@ -4,18 +4,18 @@ export const INPUT_VARIANTS = {
     'w-48',
     'border',
     'px-4',
-    'text-[#333]',
-    'border-[#d9d9d9]',
+    'text-black-200',
+    'border-gray-300',
     'rounded-md',
-    'bg-[#fff]',
+    'bg-white-100',
   ].join(' '),
   SEARCH: [
     'h-8',
     'w-90',
     'border-b-2',
-    'border-b-[#000]',
+    'border-black-100',
     'px-2.5',
-    'bg-[#fff]',
+    'bg-white-100',
   ].join(' '),
 } as const
 

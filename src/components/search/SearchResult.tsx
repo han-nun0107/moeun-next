@@ -9,7 +9,7 @@ const SearchResult = () => {
 
   return (
     <article className="mb-25">
-      <h3 className="border-b-2 border-[#333] pb-5 text-2xl font-bold">
+      <h3 className="border-black-200 border-b-2 pb-5 text-2xl font-bold">
         검색 결과
       </h3>
       <div className="grid grid-cols-4 gap-7 pt-5">

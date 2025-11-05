@@ -20,7 +20,7 @@ const ReviewStarTag = ({
   return (
     <>
       <div className="mt-12 flex w-full flex-col items-center">
-        <p className="text-lg font-bold text-[#333333]">전체 평점</p>
+        <p className="text-bold-lg text-black-200">전체 평점</p>
         <StarRating
           size={51}
           showRatingValue={false}
@@ -38,10 +38,10 @@ const ReviewStarTag = ({
               variant="TAG"
               onClick={() => handleToggleTag(tag.value)}
               className={cn(
-                'border-[#f2544b]',
+                'border-red-500',
                 isSelected
-                  ? 'bg-[#f2544b] text-white'
-                  : 'text-[#f2544b] hover:bg-[#fff1f0]'
+                  ? 'bg-red-500 text-white'
+                  : 'text-red-500 hover:bg-rose-50'
               )}
             >
               {tag.label}
@@ -49,7 +49,7 @@ const ReviewStarTag = ({
           )
         })}
       </div>
-      <p className="mt-3 text-xs text-[#666666]">
+      <p className="mt-3 text-xs text-gray-700">
         {MY_PAGE.MAX_SELECT_TAGS}개 선택 ({selectedTags.length}/
         {MY_PAGE.MAX_SELECT_TAGS})
       </p>

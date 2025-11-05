@@ -12,10 +12,10 @@ const TestCard = ({ name, description, img, alt, tags }: TestCardProps) => {
           alt={alt}
           width={132}
           height={128}
-          className="bg-[#fff]"
+          className="bg-white-100"
         />
-        <h3 className="mt-2 text-sm font-bold text-[#333]">{name}</h3>
-        <p className="mt-2 text-xs font-bold text-[#666]">{description}</p>
+        <h3 className="text-black-200 mt-2 text-sm font-bold">{name}</h3>
+        <p className="mt-2 text-xs font-bold text-gray-700">{description}</p>
         <div className="mt-2 flex flex-wrap gap-1">
           {tags.map((tag) => (
             <Tag key={tag} tagName={tag} />

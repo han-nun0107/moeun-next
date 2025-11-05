@@ -26,10 +26,7 @@ const Pagination = ({
   })
 
   return (
-    <nav
-      aria-label="pagination"
-      className={cn('flex items-center justify-center gap-4', className)}
-    >
+    <nav aria-label="pagination" className={cn('flex-center gap-4', className)}>
       {/* 이전 버튼 */}
       <Button
         variant="ICON"
@@ -47,7 +44,7 @@ const Pagination = ({
           if (page === '...') {
             return (
               <li key={`dots-${idx}`}>
-                <span className="px-2 text-gray-400 select-none">...</span>
+                <span className="px-2 text-gray-700 select-none">...</span>
               </li>
             )
           }
@@ -60,8 +57,7 @@ const Pagination = ({
                 onClick={() => onPageChange(page as number)}
                 variant="PAGINATION"
                 className={cn(
-                  page === currentPage &&
-                    'bg-[#F2544B] font-semibold text-white'
+                  page === currentPage && 'bg-red-500 font-semibold text-white'
                 )}
               >
                 {page}

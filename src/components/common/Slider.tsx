@@ -20,7 +20,7 @@ const Slider = ({
 
   return (
     <div className={clsx('flex w-[480px] items-center', className)}>
-      <span className="text-5 mr-[44px] w-13 text-center font-bold text-[#333333] select-none">
+      <span className="text-5 text-black-200 mr-[44px] w-13 text-center font-bold select-none">
         {label}
       </span>
       <div className="flex items-center">
@@ -39,7 +39,7 @@ const Slider = ({
             'transition-none'
           )}
         >
-          <SliderPrimitive.Track className="relative h-full w-full rounded-full bg-[#DFDFDF] transition-none">
+          <SliderPrimitive.Track className="relative h-full w-full rounded-full bg-gray-200 transition-none">
             <SliderPrimitive.Range
               className="absolute h-full rounded-full transition-none"
               style={{ backgroundColor: color }}
@@ -47,7 +47,7 @@ const Slider = ({
           </SliderPrimitive.Track>
           <SliderPrimitive.Thumb asChild>
             <div
-              className="flex h-[40px] w-[40px] items-center justify-center rounded-full border-[3px] bg-[#FFFFFF] outline-none transition-none will-change-transform"
+              className="flex-center bg-white-100 h-[40px] w-[40px] rounded-full border-[3px] transition-none will-change-transform outline-none"
               style={{ borderColor: color }}
             >
               <div

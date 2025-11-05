@@ -31,7 +31,7 @@ const RecommendedModal = ({
       className="review-modal-scroll h-225 w-full overflow-auto"
     >
       <article>
-        <div className="flex flex-col items-center justify-center gap-6 text-center">
+        <div className="flex-center flex-col gap-6 text-center">
           <h1 className="text-black-200 w-80 text-[32px] font-bold">
             김오즈님 취향에 어울리는 전통주를 추천해 드려요
           </h1>

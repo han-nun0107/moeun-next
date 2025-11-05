@@ -33,11 +33,9 @@ const Detail = () => {
       <DetailInformation data={detailMock} />
 
       <div>
-        <div className="border-b-2 pb-5 text-lg font-bold">
-          구매 및 수령 방식
-        </div>
-        <div className="mt-[35px] h-40 w-313 bg-[#f2f2f2]">
-          <span className="flex h-full items-center justify-center font-semibold">
+        <div className="text-bold-lg border-b-2 pb-5">구매 및 수령 방식</div>
+        <div className="mt-[35px] h-40 w-313 bg-gray-50">
+          <span className="flex-center h-full font-semibold">
             수도권 픽업 가능한 상품입니다.
           </span>
         </div>

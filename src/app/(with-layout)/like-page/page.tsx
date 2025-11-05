@@ -23,7 +23,7 @@ const LikePage = () => {
   return (
     <section className="mx-auto my-25 w-full max-w-320">
       <article className="flex h-full flex-col gap-16">
-        <h1 className="border-b-2 border-[#000] pb-5 text-2xl font-bold text-[#333]">
+        <h1 className="border-black-100 text-black-200 border-b-2 pb-5 text-2xl font-bold">
           찜한 상품
         </h1>
         <div className="mx-auto grid grid-cols-4 gap-7">

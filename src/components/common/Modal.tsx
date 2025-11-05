@@ -41,7 +41,7 @@ const Modal = ({
     <Portal containerId={PORTAL_CONTAINER_ID.MODAL}>
       <div
         onClick={handleOverlayClick}
-        className="fixed inset-0 flex items-center justify-center bg-black/25"
+        className="flex-center fixed inset-0 bg-black/25"
         style={{ zIndex: Z_INDEX.MODAL_OVERLAY }}
       >
         <FocusLock>
@@ -58,7 +58,7 @@ const Modal = ({
             {title && (
               <h2
                 id="modal-title"
-                className="text-center text-[32px] font-bold whitespace-pre-wrap text-[#333] "
+                className="text-black-200 text-center text-[32px] font-bold whitespace-pre-wrap"
               >
                 {title}
               </h2>

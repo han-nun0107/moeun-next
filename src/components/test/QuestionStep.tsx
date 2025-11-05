@@ -46,7 +46,7 @@ const QuestionStep = ({
             key={question?.id}
             className="mt-19 flex w-full flex-col items-center"
           >
-            <p className="text-[#666666]">
+            <p className="text-gray-700">
               {index + 1} / {mockTasteTestData.length}
             </p>
             <p className="mt-19 mb-3.5 text-[26px] font-bold">
@@ -60,8 +60,8 @@ const QuestionStep = ({
                   variant="TEST_BUTTON"
                   className={cn(
                     isClicked === key
-                      ? 'bg-[#F2544B] text-[#FFFFFF]'
-                      : 'bg-[#FFFFFF] text-[#F2544B]'
+                      ? 'text-white-100 bg-red-500'
+                      : 'bg-white-100 text-red-500'
                   )}
                   onClick={() => {
                     handlerAnswer(key as 'A' | 'B')
@@ -84,10 +84,10 @@ const QuestionStep = ({
                   <Button
                     key={index}
                     variant="TEST"
-                    className={`mt-[168px] mb-[57px] text-[#FFFFFF] ${
+                    className={`text-white-100 mt-[168px] mb-[57px] ${
                       btn.text === '결과 확인 하기' && !isClicked
                         ? 'cursor-not-allowed'
-                        : 'bg-[#2E2F2F]'
+                        : 'bg-gray-900'
                     }`}
                     onClick={btn.onclick}
                     disabled={btn.text === '결과 확인 하기' && !isClicked}

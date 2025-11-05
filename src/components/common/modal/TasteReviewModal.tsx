@@ -27,7 +27,7 @@ const TasteReviewModal = ({ isOpen, onClose, orderItemId }: ModalProps) => {
       isCloseable
       className="review-modal-scroll h-225 w-170 overflow-auto"
     >
-      <div className="mt-5 flex flex-col items-center justify-center text-lg text-[#666666]">
+      <div className="flex-center mt-5 flex-col text-lg text-gray-700">
         <p>제품이 김오즈님의 취향에 맞으셨나요?</p>
         <p>
           시음 후기 작성을 통해 더 적합한 전통주를 추천받고, 나만의 시음 후기를

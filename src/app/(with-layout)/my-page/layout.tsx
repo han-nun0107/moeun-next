@@ -18,11 +18,11 @@ const MyPageLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <nav
-        className="fixed top-[90px] left-0 h-[calc(100vh-90px)] w-[260px] bg-[#F2F2F2] px-[52px] pt-[62px]"
+        className="fixed top-[90px] left-0 h-[calc(100vh-90px)] w-[260px] bg-gray-50 px-[52px] pt-[62px]"
         style={{ zIndex: Z_INDEX.SIDEBAR }}
       >
-        <h2 className="mb-8 text-3xl font-bold text-[#333]">마이페이지</h2>
-        <ul className="text-18px flex flex-col gap-4 text-[#666]">
+        <h2 className="text-black-200 mb-8 text-3xl font-bold">마이페이지</h2>
+        <ul className="text-18px flex flex-col gap-4 text-gray-300">
           {menuItems.map(({ to, label }) => {
             const isActive = pathname === to
 

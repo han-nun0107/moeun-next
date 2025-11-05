@@ -41,21 +41,21 @@ const TastingItemRow = ({
   })
 
   return (
-    <div className="flex items-center border-b border-[#e1e1e1] py-4 text-[#666666]">
-      <div className="ml-10 flex items-center justify-center gap-4">
+    <div className="flex items-center border-b border-gray-100 py-4 text-gray-700">
+      <div className="flex-center ml-10 gap-4">
         <Image
           src={img || IMAGE_URLS.Product.Default}
           alt={name}
           width={100}
           height={100}
-          className="h-25 w-25 rounded-[5px] border border-[#d9d9d9] object-cover"
+          className="h-25 w-25 rounded-[5px] border border-gray-300 object-cover"
         />
         <p className="w-36 text-left text-base font-bold whitespace-nowrap">
           {name}
         </p>
       </div>
       <div className="ml-38 w-[20%] text-center text-lg">{order}</div>
-      <div className="ml-34 w-95 text-left text-lg leading-6 font-semibold tracking-[0.05em] text-[#666666]">
+      <div className="ml-34 w-95 text-left text-lg leading-6 font-semibold tracking-[0.05em] text-gray-700">
         {fullTasteDisplay}
         <p className="font-normal">{feedback}</p>
       </div>

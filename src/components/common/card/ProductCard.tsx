@@ -18,9 +18,9 @@ const ProductCard = ({
         height={290}
         showHeart={true}
       />
-      <h3 className="mt-4 text-left text-lg font-bold text-[#333]">{title}</h3>
-      <p className="text-left text-base text-[#666]">{subtitle}</p>
-      <p className="text-left text-base font-bold text-[#333]">{price}</p>
+      <h3 className="text-bold-lg text-black-200 mt-4 text-left">{title}</h3>
+      <p className="text-left text-base text-gray-700">{subtitle}</p>
+      <p className="text-black-200 text-left text-base font-bold">{price}</p>
     </div>
   )
 }

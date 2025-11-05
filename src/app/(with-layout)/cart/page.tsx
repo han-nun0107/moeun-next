@@ -26,8 +26,8 @@ const Cart = () => {
   })
 
   return (
-    <div className="mt-25 flex flex-col items-center justify-center">
-      <h1 className="text-[40px] font-bold text-[#333333]">장바구니</h1>
+    <div className="flex-center mt-25 flex-col">
+      <h1 className="text-black-200 text-[40px] font-bold">장바구니</h1>
       <ItemRowContent
         type="cart"
         items={
@@ -42,18 +42,18 @@ const Cart = () => {
       />
       {data?.cart_items && data.cart_items.length > 0 && (
         <>
-          <div className="mt-25 h-20 w-320 bg-[#f2f2f2]">
+          <div className="mt-25 h-20 w-320 bg-gray-50">
             <div className="flex-center h-full w-full gap-7">
-              <div className="text-[#333333]">
+              <div className="text-black-200">
                 상품금액 합계
                 <span className="ml-3 text-2xl font-bold">
                   {checkedTotalPrice.toLocaleString()}원
                 </span>
               </div>
-              <div className="flex-center text-bold-lg h-7 w-7 rounded-[50%] bg-[#f2544b] text-center text-[#ffffff]">
+              <div className="flex-center text-bold-lg text-white-100 h-7 w-7 rounded-[50%] bg-red-500 text-center">
                 <Equal size={15} strokeWidth={4} />
               </div>
-              <div className="text-[#333333]">
+              <div className="text-black-200">
                 총 결제 금액
                 <span className="ml-3 text-2xl font-bold">
                   {checkedTotalPrice.toLocaleString()}원

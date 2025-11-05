@@ -19,7 +19,7 @@ export function QuantityInput({
         aria-label="수량 감소"
         onClick={onDecrease}
         variant="ICON"
-        className="rounded-[4px] bg-[#cccccc]"
+        className="bg-gray-320 rounded-[4px]"
       >
         <img src={MinusIcon.src} alt="minus" />
       </Button>
@@ -30,7 +30,7 @@ export function QuantityInput({
         aria-label="수량 증가"
         onClick={onIncrease}
         variant="ICON"
-        className="rounded-[4px] bg-[#000000]"
+        className="bg-black-100 rounded-[4px]"
       >
         <img src={PlusIcon.src} alt="plus" />
       </Button>

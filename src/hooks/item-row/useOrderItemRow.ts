@@ -43,7 +43,7 @@ export const useOrderItemRow = ({
   const getButtonConfig = () => ({
     variant: hasNotReviewed ? ('FEEDBACK' as const) : ('BUY' as const),
     text: hasNotReviewed ? '후기 남기기' : '본품 구매하기',
-    className: hasNotReviewed ? 'text-[#333333]' : 'text-white',
+    className: hasNotReviewed ? 'text-black-200' : 'text-white',
   })
 
   return {

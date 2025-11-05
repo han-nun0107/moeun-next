@@ -34,7 +34,7 @@ const Dropdown = ({
         aria-expanded={isOpen}
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <span className={selected ? 'text-gray-900' : 'text-[#666]'}>
+        <span className={selected ? 'text-gray-900' : 'text-gray-700'}>
           {selected ? selected.label : placeholder}
         </span>
         <img
@@ -49,13 +49,13 @@ const Dropdown = ({
       {isOpen && (
         <ul
           role="listbox"
-          className="absolute z-10 mt-2 w-full rounded-[5px] border border-[#d9d9d9] bg-white text-xs text-[#666] shadow-lg"
+          className="absolute z-10 mt-2 w-full rounded-[5px] border border-gray-300 bg-white text-xs text-gray-700 shadow-lg"
         >
           {options.map((option) => (
             <li
               key={option.value}
               role="option"
-              className="cursor-pointer px-4 py-2 first:rounded-t-[5px] last:rounded-b-[5px] hover:bg-[#f5f5f5]"
+              className="hover:bg-gray-25 cursor-pointer px-4 py-2 first:rounded-t-[5px] last:rounded-b-[5px]"
               aria-selected={selected?.value === option.value}
               onClick={() => handleSelect(option)}
             >

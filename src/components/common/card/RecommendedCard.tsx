@@ -42,11 +42,11 @@ const RecommendedCard = ({
           )}
         </div>
       </div>
-      <div className="flex items-center justify-center">
+      <div className="flex-center">
         <Button
           variant="RECOMMENDED"
           onClick={() => onSelect(id)}
-          className={cn(isSelected && 'bg-[#000] text-[#fff]')}
+          className={cn(isSelected && 'bg-black-100 text-white-100')}
         >
           {isSelected ? <Minus size={40} /> : <Plus size={40} />}
         </Button>
