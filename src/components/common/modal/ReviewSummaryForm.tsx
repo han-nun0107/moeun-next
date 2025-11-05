@@ -16,7 +16,7 @@ const ReviewSummaryForm = ({
   return (
     <>
       <div className="mt-12">
-        <p className="border-b-2 pb-3 text-xl font-bold text-[#333333]">
+        <p className="text-black-200 border-b-2 pb-3 text-xl font-bold">
           시음 사진 등록하기 <span className="font-normal">(선택)</span>
         </p>
         <div className="mt-7">
@@ -42,10 +42,10 @@ const ReviewSummaryForm = ({
               />
               <label
                 htmlFor="file-upload"
-                className="ml-5 flex h-[150px] w-[150px] cursor-pointer items-center justify-center rounded-[10px] bg-[#f2f2f2] transition hover:bg-[#e0e0e0]"
+                className="flex-center hover:bg-gray-150 ml-5 h-[150px] w-[150px] cursor-pointer rounded-[10px] bg-gray-50 transition"
                 aria-label="사진 등록"
               >
-                <Plus size={24} className="text-[#333]" />
+                <Plus size={24} className="text-black-200" />
               </label>
             </div>
           </div>
@@ -53,7 +53,7 @@ const ReviewSummaryForm = ({
       </div>
 
       <div className="mt-12">
-        <p className="border-b-2 pb-3 text-xl font-bold text-[#333333]">
+        <p className="text-black-200 border-b-2 pb-3 text-xl font-bold">
           시음 한 줄 평 <span className="font-normal">(선택)</span>
         </p>
         <div className="flex items-center justify-center">
@@ -63,7 +63,7 @@ const ReviewSummaryForm = ({
             maxLength={100}
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            className="mt-8 h-25 w-140 resize-none rounded-[6px] border border-[#d9d9d9] px-4 py-3 text-lg text-[#333333] placeholder-[#666666] outline-none"
+            className="text-black-200 mt-8 h-25 w-140 resize-none rounded-[6px] border border-gray-300 px-4 py-3 text-lg placeholder-gray-700 outline-none"
           />
         </div>
       </div>

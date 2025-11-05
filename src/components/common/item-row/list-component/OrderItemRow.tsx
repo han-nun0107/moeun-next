@@ -42,11 +42,11 @@ const OrderItemRow = ({
   const buttonConfig = getButtonConfig()
 
   return (
-    <div className="flex items-center border-b border-[#e1e1e1] py-4 text-center text-[#666666]">
+    <div className="flex items-center border-b border-gray-100 py-4 text-center text-gray-700">
       <div className="w-[15%] min-w-[80px] text-lg">{orderDate}</div>
 
       <div className="flex w-[40%] min-w-[250px] items-center gap-4 pl-2">
-        <div className="ml-36 flex items-center justify-center overflow-hidden border">
+        <div className="flex-center ml-36 overflow-hidden border">
           <Image
             src={img || IMAGE_URLS.Product.Default}
             alt={name || '상품 이미지'}
@@ -55,7 +55,7 @@ const OrderItemRow = ({
             className="h-25 w-25"
           />
         </div>
-        <p className="text-left text-lg font-bold">{name}</p>
+        <p className="text-bold-lg text-left">{name}</p>
       </div>
 
       <div className="mx-auto w-20 text-lg">{quantity}</div>

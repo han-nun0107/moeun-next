@@ -16,7 +16,7 @@ const MonthlyFeaturedSection = ({
     type === 'package' ? PACKAGE_RECOMMENDED.slice(0, 4) : MONTHLY.slice(0, 3)
 
   return (
-    <section className="flex items-center justify-center py-25">
+    <section className="flex-center py-25">
       <div
         className={cn(
           'flex h-95 w-320 gap-24',

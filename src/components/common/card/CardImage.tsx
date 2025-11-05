@@ -23,7 +23,7 @@ const CardImage = ({
   return (
     <div
       className={cn(
-        'relative flex-shrink-0 overflow-hidden rounded-md border border-[#d9d9d9]',
+        'relative flex-shrink-0 overflow-hidden rounded-md border border-gray-300',
         className
       )}
       style={{ width: width, height: height }}

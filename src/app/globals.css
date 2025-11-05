@@ -10,8 +10,34 @@ body {
   --naver-primary: #03c75a;
   --naver-text: #fff;
   --google-primary: #dfdfdf;
+
+  --color-white-100: #fff;
+
   --color-black-100: #000;
   --color-black-200: #333;
+
+  --color-gray-10: #f6f6f6;
+  --color-gray-25: #f5f5f5;
+  --color-gray-50: #f2f2f2;
+  --color-gray-100: #e1e1e1;
+  --color-gray-150: #e0e0e0;
+  --color-gray-200: #dfdfdf;
+  --color-gray-300: #d9d9d9;
+  --color-gray-320: #ccc;
+  --color-gray-350: #bfbfbf;
+  --color-gray-700: #666;
+  --color-gray-900: #2e2f2f;
+  --color-gray-920: #2d2d2d;
+  --color-gray-950: #0f0f0f;
+
+  --color-red-500: #f2544b;
+  --color-red-550: #e04439;
+  --color-red-600: #d1362d;
+
+  --color-rose-50: #fff1f0;
+  --color-rose-100: #ffe5e3;
+
+  --color-orange-400: #ff9819;
 }
 
 @layer components {

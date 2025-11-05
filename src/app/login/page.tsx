@@ -69,7 +69,7 @@ const Login = () => {
           />
         </Link>
       </div>
-      <main className="flex w-full items-center justify-center xl:w-[45%]">
+      <main className="flex-center w-full xl:w-[45%]">
         <div className="flex w-full flex-col">
           <header className="flex flex-col items-center gap-5">
             <Link href="/" aria-label="홈으로 이동">
@@ -80,7 +80,7 @@ const Login = () => {
                 height={60}
               />
             </Link>
-            <h1 className="mb-20 text-[22px] text-[#333]">
+            <h1 className="text-black-200 mb-20 text-[22px]">
               로그인하고 나만의 전통주를 즐겨보세요!
             </h1>
           </header>

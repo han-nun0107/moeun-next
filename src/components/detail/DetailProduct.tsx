@@ -48,14 +48,14 @@ const DetailProduct = ({
               {data.name}
             </h1>
             <div className="flex items-center gap-3">
-              <span className="flex h-[26px] w-[45px] items-center justify-center rounded-[5px] bg-[#ffe5e3] text-sm font-bold text-[#f2544b]">
+              <span className="flex-center h-[26px] w-[45px] rounded-[5px] bg-rose-100 text-sm font-bold text-red-500">
                 -{data.discount_rate}%
               </span>
               <span className="text-black-200 text-[29px] font-bold">
                 {data.price.toLocaleString()}원
               </span>
               {data.original_price !== null && (
-                <span className="ml-2 text-sm text-gray-400 line-through">
+                <span className="ml-2 text-sm text-gray-700 line-through">
                   {data.original_price.toLocaleString()}원
                 </span>
               )}
@@ -63,23 +63,23 @@ const DetailProduct = ({
           </div>
           <div className="mr-2 mb-3 flex items-center justify-end gap-2">
             <StarRating defaultRating={5} readOnly />
-            <span className="mr-2 text-sm text-[#666666] underline">
+            <span className="mr-2 text-sm text-gray-700 underline">
               ({data.review_count}개의 리뷰)
             </span>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-6 border-b border-[#D9D9D9] pb-5">
+        <div className="mt-8 flex flex-col gap-6 border-b border-gray-300 pb-5">
           <div className="flex items-center">
             <div>수량</div>
-            <div className="ml-[110px] inline-flex h-8 w-20 items-center justify-center rounded-[5px] bg-[#f6f6f6]">
+            <div className="bg-gray-10 ml-[110px] inline-flex h-8 w-20 items-center justify-center rounded-[5px]">
               <Button
                 variant="ICON"
                 aria-label="수량 감소"
                 onClick={onDecreaseQuantity}
                 disabled={quantity <= 1}
                 className={cn(
-                  'flex-center h-[15px] w-[15px] cursor-pointer rounded-[4px] bg-[#e1e1e1]',
+                  'flex-center h-[15px] w-[15px] cursor-pointer rounded-[4px] bg-gray-100',
                   quantity <= 1 && 'cursor-not-allowed opacity-50'
                 )}
               >
@@ -90,7 +90,7 @@ const DetailProduct = ({
                 variant="ICON"
                 aria-label="수량 증가"
                 onClick={onIncreaseQuantity}
-                className="flex-center h-[15px] w-[15px] cursor-pointer rounded-[4px] bg-[#000000] text-white"
+                className="flex-center bg-black-100 h-[15px] w-[15px] cursor-pointer rounded-[4px] text-white"
               >
                 <Plus size={16} />
               </Button>
@@ -117,7 +117,7 @@ const DetailProduct = ({
 
         <div className="mt-6">
           <div className="mb-9 flex items-center justify-between">
-            <span className="text-[#666666]">총 상품 금액</span>
+            <span className="text-gray-700">총 상품 금액</span>
             <span className="text-black-200 text-[30px] font-bold">
               {(data.price * quantity).toLocaleString()}원
             </span>

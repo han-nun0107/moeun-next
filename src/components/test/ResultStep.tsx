@@ -14,12 +14,12 @@ const ResultStep = () => {
   return (
     <div className="flex h-full w-full flex-col items-center">
       <div className="flex flex-col items-center gap-10">
-        <p className="leading-1.3 mt-20 text-[22px] font-bold text-[#666]">
+        <p className="leading-1.3 mt-20 text-[22px] font-bold text-gray-700">
           김오즈님의 취향 유형은...
         </p>
         <div className="flex flex-col items-center gap-1">
-          <h1 className="text-[40px] font-black text-[#ff9819]">달콤고소파</h1>
-          <p className="text-xl font-bold text-[#333]">
+          <h1 className="text-[40px] font-black text-orange-400">달콤고소파</h1>
+          <p className="text-black-200 text-xl font-bold">
             달콤하면서도 구수한, 밸런스 좋은 맛을 선호하는 당신!
           </p>
         </div>
@@ -33,12 +33,12 @@ const ResultStep = () => {
       />
       <div className="mt-10 flex items-center gap-3">
         <Image src={kakao.src} alt="카카오톡 이미지" width={50} height={50} />
-        <div className="flex h-[50px] w-[50px] items-center justify-center rounded-4xl border border-[#d9d9d9] bg-[#f2f2f2]">
+        <div className="flex-center h-[50px] w-[50px] rounded-4xl border border-gray-300 bg-gray-50">
           <Image src={share.src} alt="공유하기 이미지" width={24} height={28} />
         </div>
       </div>
       <div className="mt-20 flex flex-col">
-        <p className="text-xl font-bold text-[#333]">
+        <p className="text-black-200 text-xl font-bold">
           달콤고소파 유형을 위한 첫 번째 추천 조합
         </p>
         <div className="mt-4 mb-10 flex gap-5">

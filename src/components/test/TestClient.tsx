@@ -29,7 +29,7 @@ const TestClient = () => {
   return (
     <section
       className={cn(
-        'flex w-full items-center justify-center bg-[#f2f2f2]',
+        'flex w-full items-center justify-center bg-gray-50',
         step === 'result' ? 'h-[1620px]' : 'h-[1130px]'
       )}
     >
@@ -39,7 +39,7 @@ const TestClient = () => {
           step === 'result' ? 'h-[1454px]' : 'h-[872px]'
         )}
       >
-        <div className="flex h-[70px] items-center justify-center rounded-t-[20px] bg-[#f2544b]">
+        <div className="flex h-[70px] items-center justify-center rounded-t-[20px] bg-red-500">
           <Link href="/">
             <img src={Logo.src} alt="로고" className="h-6 w-13" />
           </Link>
@@ -80,7 +80,7 @@ const TestClient = () => {
         </div>
 
         {step === 'result' && (
-          <div className="flex h-[103px] w-full items-center justify-center gap-[10px] rounded-b-[20px] bg-[#f2544b]">
+          <div className="flex h-[103px] w-full items-center justify-center gap-[10px] rounded-b-[20px] bg-red-500">
             {TEST_BOTTOM_BUTTON.map((button) => (
               <Link
                 key={button.id}

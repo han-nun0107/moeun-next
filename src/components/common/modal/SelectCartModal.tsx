@@ -49,7 +49,7 @@ const SelectCartModal = ({ isOpen, onClose }: ModalProps) => {
               type="date"
               value={pickupDate}
               onChange={(e) => setPickupDate(e.target.value)}
-              className="h-8 w-66 rounded-[5px] border border-[#d9d9d9] px-3"
+              className="h-8 w-66 rounded-[5px] border border-gray-300 px-3"
             />
           </div>
         </div>
@@ -60,7 +60,7 @@ const SelectCartModal = ({ isOpen, onClose }: ModalProps) => {
               variant="ORDER_DATE"
               onClick={() => handleClick(button.type)}
               className={cn(
-                button.type === 'CART' ? 'bg-[#f2544b]' : 'bg-[#0f0f0f]'
+                button.type === 'CART' ? 'bg-red-500' : 'bg-gray-950'
               )}
             >
               {button.label}

@@ -7,7 +7,7 @@ import { MainSectionProps } from '@/types/main/mainSection'
 
 const RecommendedDrinksSection = ({ title, desc }: MainSectionProps) => {
   return (
-    <section className="flex items-center justify-center pb-25">
+    <section className="flex-center pb-25">
       <div className="flex w-320 flex-col gap-[50px]">
         <ProductTitle title={title} desc={desc} />
 

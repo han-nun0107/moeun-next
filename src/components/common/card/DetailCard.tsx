@@ -12,7 +12,7 @@ const DetailCard = ({ img, alt, className }: DetailCardProps) => {
         width={560}
         height={560}
         showHeart={true}
-        className={cn('bg-[#f5f5f5]', className)}
+        className={cn('bg-gray-25', className)}
       />
     </div>
   )
