@@ -38,6 +38,13 @@ body {
   --color-rose-100: #ffe5e3;
 
   --color-orange-400: #ff9819;
+
+  --text-text-40: 40px;
+  --text-text-32: 32px;
+  --text-text-26: 26px;
+  --text-text-22: 22px;
+  --text-text-20: 20px;
+  --text-text-11: 11px;
 }
 
 @layer components {
@@ -71,6 +78,22 @@ body {
 
   .circle-border {
     @apply rounded-[60px] border;
+  }
+
+  .text-bold-text-40 {
+    @apply text-text-40 font-bold;
+  }
+
+  .text-bold-text-32 {
+    @apply text-text-32 font-bold;
+  }
+
+  .text-light-text-22 {
+    @apply text-text-22 font-light;
+  }
+
+  .text-bold-text-20 {
+    @apply text-text-20 font-bold;
   }
 }
 

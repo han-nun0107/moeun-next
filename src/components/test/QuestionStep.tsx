@@ -49,10 +49,10 @@ const QuestionStep = ({
             <p className="text-gray-700">
               {index + 1} / {mockTasteTestData.length}
             </p>
-            <p className="mt-19 mb-3.5 text-[26px] font-bold">
+            <p className="text-text-26 mt-19 mb-3.5 font-bold">
               Q{question?.id}.
             </p>
-            <p className="mt-3 mb-[60px] text-[26px]">{question?.question}</p>
+            <p className="text-text-26 mt-3 mb-[60px]">{question?.question}</p>
             <div className="flex flex-col items-center space-y-[14px]">
               {Object.entries(question?.options || {}).map(([key, value]) => (
                 <Button

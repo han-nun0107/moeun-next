@@ -24,7 +24,7 @@ const Slider = ({
         {label}
       </span>
       <div className="flex items-center">
-        <div className="mr-3 text-[22px] font-light">
+        <div className="text-light-text-22 mr-3">
           {formatValue ? formatValue(0) : '0'}
         </div>
         <SliderPrimitive.Root
@@ -57,7 +57,7 @@ const Slider = ({
             </div>
           </SliderPrimitive.Thumb>
         </SliderPrimitive.Root>
-        <div className="ml-3 text-[22px] font-light">
+        <div className="text-light-text-22 ml-3">
           {formatValue ? formatValue(displayValue) : displayValue.toFixed(1)}
         </div>
       </div>

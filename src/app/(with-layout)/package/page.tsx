@@ -10,7 +10,7 @@ const Package = async () => {
         gap={1}
         type="package"
         variant="BUY"
-        className="text-[26px]"
+        className="text-text-26"
       />
 
       <div className="flex flex-col gap-25">

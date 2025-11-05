@@ -17,7 +17,7 @@ const MainStep = (props: MainTestProps) => {
   return (
     <>
       <div className="mt-19 flex flex-col gap-2 text-center">
-        <h1 className="text-black-200 text-[40px] font-bold">
+        <h1 className="text-black-200 text-bold-text-40">
           내 입맛에 맞는 전통주는?
         </h1>
         <div className="text-lg text-gray-700">

@@ -80,7 +80,7 @@ const Login = () => {
                 height={60}
               />
             </Link>
-            <h1 className="text-black-200 mb-20 text-[22px]">
+            <h1 className="text-black-200 text-text-22 mb-20">
               로그인하고 나만의 전통주를 즐겨보세요!
             </h1>
           </header>

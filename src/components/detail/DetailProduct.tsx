@@ -44,7 +44,7 @@ const DetailProduct = ({
       <div className="space-y-4">
         <div className="grid grid-cols-2 border-b pb-4">
           <div className="ml-6">
-            <h1 className="text-black-200 mb-3 text-[40px] font-bold">
+            <h1 className="text-black-200 text-bold-text-40 mb-3">
               {data.name}
             </h1>
             <div className="flex items-center gap-3">

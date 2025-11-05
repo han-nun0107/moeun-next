@@ -27,7 +27,7 @@ const MyPage = () => {
   return (
     <section className="mr-80 mb-25">
       <div className="border-black-100 flex items-center justify-between border-b-2 pb-5">
-        <h1 className="text-[32px] font-bold">마이페이지</h1>
+        <h1 className="text-bold-text-32">마이페이지</h1>
         <Button variant="MY_PAGE_PACKAGE" onClick={openRecommendedModal}>
           나만의 패키지 구성하기
         </Button>

@@ -14,11 +14,13 @@ const ResultStep = () => {
   return (
     <div className="flex h-full w-full flex-col items-center">
       <div className="flex flex-col items-center gap-10">
-        <p className="leading-1.3 mt-20 text-[22px] font-bold text-gray-700">
+        <p className="leading-1.3 text-text-22 mt-20 font-bold text-gray-700">
           김오즈님의 취향 유형은...
         </p>
         <div className="flex flex-col items-center gap-1">
-          <h1 className="text-[40px] font-black text-orange-400">달콤고소파</h1>
+          <h1 className="text-text-40 font-black text-orange-400">
+            달콤고소파
+          </h1>
           <p className="text-black-200 text-xl font-bold">
             달콤하면서도 구수한, 밸런스 좋은 맛을 선호하는 당신!
           </p>

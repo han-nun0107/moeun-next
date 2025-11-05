@@ -158,7 +158,7 @@ export const BUTTON_VARIANTS = {
     'rounded-[8px]',
     'font-bold',
     'text-white-100',
-    'text-[22px]',
+    'text-text-22',
   ].join(' '),
 
   /* 마이페이지 패키지 구성하기 버튼 */
@@ -229,7 +229,7 @@ export const BUTTON_VARIANTS = {
     'w-13',
     'rounded-[3px]',
     'border',
-    'text-[11px]',
+    'text-text-11',
     'transition',
   ].join(' '),
 
