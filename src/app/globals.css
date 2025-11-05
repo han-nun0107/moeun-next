@@ -49,19 +49,19 @@ body {
 
 @layer components {
   .swiper-button-prev-custom {
-    @apply absolute top-1/2 left-[-50px] z-10 -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2 text-white transition hover:bg-black/60;
+    @apply text-white-100 absolute top-1/2 left-[-50px] z-10 -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2 transition hover:bg-black/60;
   }
 
   .swiper-button-next-custom {
-    @apply absolute top-1/2 right-[-50px] z-10 -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2 text-white transition hover:bg-black/60;
+    @apply text-white-100 absolute top-1/2 right-[-50px] z-10 -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2 transition hover:bg-black/60;
   }
 
   .swiper-button-prev-monthly {
-    @apply absolute top-[230px] left-[-50px] z-10 -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2 text-white transition hover:bg-black/60;
+    @apply text-white-100 absolute top-[230px] left-[-50px] z-10 -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2 transition hover:bg-black/60;
   }
 
   .swiper-button-next-monthly {
-    @apply absolute top-[230px] right-[-50px] z-10 -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2 text-white transition hover:bg-black/60;
+    @apply text-white-100 absolute top-[230px] right-[-50px] z-10 -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2 transition hover:bg-black/60;
   }
 
   .feedback-title {

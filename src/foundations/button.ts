@@ -19,7 +19,7 @@ export const BUTTON_VARIANTS = {
     'text-center',
     'leading-[52px]',
     'font-semibold',
-    'text-white',
+    'text-white-100',
     'hover:bg-red-550',
   ].join(' '),
 

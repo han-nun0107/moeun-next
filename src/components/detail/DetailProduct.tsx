@@ -90,7 +90,7 @@ const DetailProduct = ({
                 variant="ICON"
                 aria-label="수량 증가"
                 onClick={onIncreaseQuantity}
-                className="flex-center bg-black-100 h-[15px] w-[15px] cursor-pointer rounded-[4px] text-white"
+                className="flex-center bg-black-100 text-white-100 h-[15px] w-[15px] cursor-pointer rounded-[4px]"
               >
                 <Plus size={16} />
               </Button>
