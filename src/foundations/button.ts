@@ -71,7 +71,7 @@ export const BUTTON_VARIANTS = {
   BUY: [
     'w-36',
     'h-12',
-    'bg-black-50',
+    'bg-black-100',
     'text-white-100',
     'tracking-[0.05em]',
     'rounded-md',
