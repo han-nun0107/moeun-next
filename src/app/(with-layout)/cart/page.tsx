@@ -27,7 +27,7 @@ const Cart = () => {
 
   return (
     <div className="flex-center mt-25 flex-col">
-      <h1 className="text-black-200 text-[40px] font-bold">장바구니</h1>
+      <h1 className="text-black-200 text-bold-text-40">장바구니</h1>
       <ItemRowContent
         type="cart"
         items={

@@ -32,7 +32,7 @@ const RecommendedModal = ({
     >
       <article>
         <div className="flex-center flex-col gap-6 text-center">
-          <h1 className="text-black-200 w-80 text-[32px] font-bold">
+          <h1 className="text-black-200 text-bold-text-32 w-80">
             김오즈님 취향에 어울리는 전통주를 추천해 드려요
           </h1>
           <p className="text-black-200 text-lg">
@@ -40,7 +40,7 @@ const RecommendedModal = ({
           </p>
         </div>
         <article>
-          <h3 className="border-black-100 text-black-200 mt-11 w-full border-b-2 pb-3 text-[20px] font-bold">
+          <h3 className="border-black-100 text-black-200 text-bold-text-22 mt-11 w-full border-b-2 pb-3">
             추천 리스트
           </h3>
           <div className="mt-7 grid grid-cols-3 gap-4">
@@ -63,7 +63,7 @@ const RecommendedModal = ({
           </div>
         </article>
         <article>
-          <h3 className="border-black-100 text-black-200 mt-11 w-full border-b-2 pb-3 text-[20px] font-bold">
+          <h3 className="border-black-100 text-black-200 text-bold-text-22 mt-11 w-full border-b-2 pb-3">
             패키지 리스트
           </h3>
           <div className="mt-7 mb-25 grid grid-cols-3 gap-4">

@@ -35,7 +35,7 @@ const BannerCarousel = ({
       >
         <p className={cn(className)}>{text.title}</p>
         <div className={cn('flex flex-col gap-10')}>
-          <div className="text-black-200 text-[40px] leading-[1.4] font-bold">
+          <div className="text-black-200 text-bold-text-40 leading-[1.4]">
             <h3>{text.content}</h3>
             {text.content2 && <p>{text.content2}</p>}
             {text.content3 && <p>{text.content3}</p>}

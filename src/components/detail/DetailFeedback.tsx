@@ -14,7 +14,7 @@ const DetailFeedback = () => {
         <div className="flex">
           <div className="flex flex-col gap-3">
             <StarRating defaultRating={5} readOnly />
-            <div className="text-black-200 w-140 text-[22px]">
+            <div className="text-black-200 text-text-22 w-140">
               한 잔 취향에서 테스트 후 구매했는데 너무 달콤하고 맛있어요! 술에
               대해 잘 몰라서 어떤 걸 사야할 지 고민됐었는데 덕분에 제 취향도
               알게 되어서 좋았어요! 그리고 패키지도 예뻐서 선물용으로도 좋을 것

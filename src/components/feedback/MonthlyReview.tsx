@@ -9,7 +9,7 @@ const MonthlyReview = () => {
   return (
     <article>
       <div className="flex h-200 w-full flex-col items-center bg-gray-50">
-        <h2 className="text-black-200 mt-25 text-[40px] font-bold">
+        <h2 className="text-black-200 text-bold-text-40 mt-25">
           한 잔 취향 이 달의 후기
         </h2>
         <div className="mt-15 h-123 w-360">

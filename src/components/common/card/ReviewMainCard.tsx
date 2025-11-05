@@ -30,7 +30,7 @@ const ReviewMainCard = ({
             fillColor="#f2544b"
             size={17}
           />
-          <p className="text-black-200 text-[22px]">{feedback}</p>
+          <p className="text-black-200 text-text-22">{feedback}</p>
         </div>
         <div className="mt-15 mb-[50px] flex gap-8">
           <p style={{ fontSize: text }} className="text-gray-600">
