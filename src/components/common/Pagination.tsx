@@ -57,7 +57,8 @@ const Pagination = ({
                 onClick={() => onPageChange(page as number)}
                 variant="PAGINATION"
                 className={cn(
-                  page === currentPage && 'bg-red-500 font-semibold text-white'
+                  page === currentPage &&
+                    'text-white-100 bg-red-500 font-semibold'
                 )}
               >
                 {page}

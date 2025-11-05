@@ -22,7 +22,7 @@ const MyPageLayout = ({ children }: { children: React.ReactNode }) => {
         style={{ zIndex: Z_INDEX.SIDEBAR }}
       >
         <h2 className="text-black-200 mb-8 text-3xl font-bold">마이페이지</h2>
-        <ul className="text-18px flex flex-col gap-4 text-gray-300">
+        <ul className="text-18px flex flex-col gap-4 text-gray-700">
           {menuItems.map(({ to, label }) => {
             const isActive = pathname === to
 

@@ -9,7 +9,9 @@ import RenderInfo from './RenderInfo'
 const Footer = () => {
   return (
     <footer className="relative text-sm" style={{ zIndex: Z_INDEX.FOOTER }}>
-      <div className={cn('h-[255px] w-full bg-gray-900 pb-12.5 text-white')}>
+      <div
+        className={cn('text-white-100 h-[255px] w-full bg-gray-900 pb-12.5')}
+      >
         <div className="flex justify-between">
           <div className="flex flex-col gap-1 py-12.5 pl-80">
             {FOOTER_INFO_GROUPS.map((infoGroup, idx) => (

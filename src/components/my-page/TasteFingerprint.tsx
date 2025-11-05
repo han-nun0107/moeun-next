@@ -40,7 +40,7 @@ const TasteFingerprint = () => {
                   }
                 )}
               >
-                <ChevronDownIcon size={16} className="text-white" />
+                <ChevronDownIcon size={16} className="text-white-100" />
               </span>
             </Button>
           </div>

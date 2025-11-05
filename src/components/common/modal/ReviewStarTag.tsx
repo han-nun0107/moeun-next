@@ -40,7 +40,7 @@ const ReviewStarTag = ({
               className={cn(
                 'border-red-500',
                 isSelected
-                  ? 'bg-red-500 text-white'
+                  ? 'text-white-100 bg-red-500'
                   : 'text-red-500 hover:bg-rose-50'
               )}
             >
