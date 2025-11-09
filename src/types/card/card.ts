@@ -12,6 +12,8 @@ export type ReviewCardProps = DetailCardProps & {
   nickname: string
   createdAt?: string
   text?: string
+  product_id?: string
+  onClick?: () => void
 }
 
 export type CardImageProps = DetailCardProps & {

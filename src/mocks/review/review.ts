@@ -40,6 +40,7 @@ export const monthlyReviewData: Review[] = [
     desc: 'test',
     nickname: 'test',
     createdAt: '2025-10-29',
+    product_id: 101,
   },
   {
     id: 2,
@@ -49,6 +50,7 @@ export const monthlyReviewData: Review[] = [
     desc: 'test2',
     nickname: 'test2',
     createdAt: '2025-10-29',
+    product_id: 102,
   },
   {
     id: 3,
@@ -58,6 +60,7 @@ export const monthlyReviewData: Review[] = [
     desc: 'test3',
     nickname: 'test3',
     createdAt: '2025-10-29',
+    product_id: 103,
   },
   {
     id: 4,
@@ -67,6 +70,7 @@ export const monthlyReviewData: Review[] = [
     desc: 'test4',
     nickname: 'test4',
     createdAt: '2025-10-29',
+    product_id: 104,
   },
 ]
 
@@ -78,6 +82,7 @@ export const liveReviewData: Review[] = [
     rating: 5,
     desc: 'test',
     nickname: 'test',
+    product_id: 105,
   },
   {
     id: 2,
@@ -86,6 +91,7 @@ export const liveReviewData: Review[] = [
     rating: 5,
     desc: 'test2',
     nickname: 'test2',
+    product_id: 106,
   },
   {
     id: 3,
@@ -94,6 +100,7 @@ export const liveReviewData: Review[] = [
     rating: 5,
     desc: 'test3',
     nickname: 'test3',
+    product_id: 107,
   },
   {
     id: 4,
@@ -102,6 +109,7 @@ export const liveReviewData: Review[] = [
     rating: 4.5,
     desc: 'test4',
     nickname: 'test4',
+    product_id: 108,
   },
   {
     id: 5,
@@ -110,6 +118,7 @@ export const liveReviewData: Review[] = [
     rating: 3.5,
     desc: 'test5',
     nickname: 'test5',
+    product_id: 109,
   },
   {
     id: 6,
@@ -118,6 +127,7 @@ export const liveReviewData: Review[] = [
     rating: 1,
     desc: 'test6',
     nickname: 'test6',
+    product_id: 110,
   },
   {
     id: 7,
@@ -126,6 +136,7 @@ export const liveReviewData: Review[] = [
     rating: 4,
     desc: 'test7',
     nickname: 'test7',
+    product_id: 111,
   },
   {
     id: 8,
@@ -134,5 +145,6 @@ export const liveReviewData: Review[] = [
     rating: 2.5,
     desc: 'test8',
     nickname: 'test8',
+    product_id: 112,
   },
 ]

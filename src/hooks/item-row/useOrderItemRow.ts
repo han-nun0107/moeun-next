@@ -23,7 +23,7 @@ export const useOrderItemRow = ({
       openModal()
     } else {
       const targetId = productId ?? feedback_id
-      router.push(`/product/${targetId}`)
+      router.push(`/item/${targetId}`)
     }
   }
 

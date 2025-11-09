@@ -1,19 +1,7 @@
 'use client'
 
 import { Button, Modal, RecommendedCard } from '@/components'
-import { RECOMMENDED } from '@/mocks/modal/recommended'
-
-type RecommendedItem = (typeof RECOMMENDED)[number]
-
-type RecommendedModalProps = {
-  isOpen: boolean
-  onClose: () => void
-  selectedItems: RecommendedItem[]
-  onSelect: (id: number) => void
-  listData: RecommendedItem[]
-  packageData: RecommendedItem[]
-  onAddToCart: () => void
-}
+import { RecommendedModalProps } from '@/types/modal/modal'
 
 const RecommendedModal = ({
   isOpen,
@@ -83,7 +71,11 @@ const RecommendedModal = ({
             ))}
           </div>
         </article>
-        <Button variant="RECOMMENDED_BUY" onClick={onAddToCart}>
+        <Button
+          variant="RECOMMENDED_BUY"
+          onClick={onAddToCart}
+          className="text-2xl"
+        >
           장바구니에 담기
         </Button>
       </article>
