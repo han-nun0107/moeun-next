@@ -1,15 +1,11 @@
 import { Button, Card, RetryIcon, ReviewModal } from '@/components'
 import { useReviewModal } from '@/hooks/modal/useReviewModal'
+import { liveReviewData } from '@/mocks/review/review'
 
 const LiveReview = () => {
-  const {
-    isOpen,
-    selectedReview,
-    handleOpenModal,
-    handleCloseModal,
-    LIVE_MOCK_DATA,
-  } = useReviewModal()
-
+  const { isOpen, selectedReview, handleOpenModal, handleCloseModal } =
+    useReviewModal()
+  const LIVE_MOCK_DATA = liveReviewData.slice(0, 4)
   return (
     <article className="flex-center flex-col">
       <div className="flex flex-col items-start justify-between">

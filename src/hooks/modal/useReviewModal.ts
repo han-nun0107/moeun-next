@@ -18,13 +18,10 @@ export const useReviewModal = () => {
     closeModal()
   }
 
-  const LIVE_MOCK_DATA = liveReviewData.slice(0, 4)
-
   return {
     isOpen,
     selectedReview,
     handleOpenModal,
     handleCloseModal,
-    LIVE_MOCK_DATA,
   }
 }
