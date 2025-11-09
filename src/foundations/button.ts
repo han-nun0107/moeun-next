@@ -158,7 +158,7 @@ export const BUTTON_VARIANTS = {
     'rounded-[8px]',
     'font-bold',
     'text-white-100',
-    'text-text-22',
+    'text-[22px]',
   ].join(' '),
 
   /* 마이페이지 패키지 구성하기 버튼 */
@@ -179,7 +179,7 @@ export const BUTTON_VARIANTS = {
     'bg-white-100',
     'text-red-500',
     'text-lg',
-    'text-bold',
+    'font-bold',
     'rounded-[60px]',
   ].join(' '),
 
@@ -189,7 +189,7 @@ export const BUTTON_VARIANTS = {
     'h-10',
     'bg-white-100',
     'text-black-200',
-    'text-sm',
+    'text-[14px]',
     'rounded-[60px]',
   ].join(' '),
 
@@ -210,7 +210,6 @@ export const BUTTON_VARIANTS = {
     'rounded-xl',
     'bg-red-500',
     'text-white-100',
-    'text-2xl',
     'font-bold',
   ].join(' '),
 
@@ -219,7 +218,8 @@ export const BUTTON_VARIANTS = {
     'w-[295px]',
     'h-[65px]',
     'rounded-[12px]',
-    'text-bold-lg',
+    'text-lg',
+    'font-bold',
     'text-white-100',
   ].join(' '),
 

@@ -12,7 +12,7 @@ const ResignationModal = ({ isOpen, onClose }: ModalProps) => {
         variant="RECOMMENDED_BUY"
         aria-label="탈퇴"
         onClick={onClose}
-        className="mt-12"
+        className="mt-12 text-lg font-bold"
       >
         탈퇴
       </Button>

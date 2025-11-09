@@ -6,4 +6,7 @@ export type Review = {
   desc: string
   nickname: string
   createdAt?: string
+  product_id?: number
+  product_name?: string
+  user_id?: string
 }

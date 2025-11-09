@@ -1,7 +1,11 @@
-import { Card, Button, RetryIcon } from '@/components'
+import { Card, Button, RetryIcon, ReviewModal } from '@/components'
+import { useReviewModal } from '@/hooks/modal/useReviewModal'
 import { liveReviewData } from '@/mocks/review/review'
 
 const SimilarReview = () => {
+  const { isOpen, selectedReview, handleOpenModal, handleCloseModal } =
+    useReviewModal()
+
   return (
     <article className="flex-center flex-col">
       <div>
@@ -25,10 +29,29 @@ const SimilarReview = () => {
                 rating: item.rating,
                 feedback: item.desc,
                 nickname: item.nickname,
+                createdAt: item.createdAt,
+                product_id: item.product_id
+                  ? String(item.product_id)
+                  : undefined,
+                onClick: () => handleOpenModal(item),
               }}
             />
           ))}
         </div>
+        {selectedReview && (
+          <ReviewModal
+            isOpen={isOpen}
+            onClose={handleCloseModal}
+            review={selectedReview.desc}
+            imgSrc={selectedReview.image}
+            imgAlt={selectedReview.alt}
+            product_name={selectedReview.product_name ?? ''}
+            defaultRating={selectedReview.rating}
+            userId={selectedReview.user_id ?? selectedReview.nickname}
+            date={selectedReview.createdAt ?? ''}
+            product_id={String(selectedReview.product_id ?? '')}
+          />
+        )}
       </div>
     </article>
   )

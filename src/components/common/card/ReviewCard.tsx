@@ -11,9 +11,23 @@ const ReviewCard = ({
   alt,
   createdAt,
   text = '15px',
+  onClick,
 }: ReviewCardProps) => {
   return (
-    <div className="w-[300px] cursor-pointer">
+    <div
+      className="w-[300px] cursor-pointer"
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(event) => {
+        if (!onClick) return
+
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault()
+          onClick()
+        }
+      }}
+    >
       <CardImage
         img={img}
         alt={alt}

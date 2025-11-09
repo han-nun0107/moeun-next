@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { StarRating, Button } from '@/components'
 import { ReviewCardProps } from '@/types/card/card'
 
@@ -11,9 +13,10 @@ const ReviewMainCard = ({
   alt,
   createdAt,
   text = '15px',
+  product_id,
 }: ReviewCardProps) => {
   return (
-    <div className="flex w-full cursor-pointer gap-19">
+    <div className="flex w-full gap-19">
       <CardImage
         img={img}
         alt={alt}
@@ -40,7 +43,9 @@ const ReviewMainCard = ({
             {createdAt}
           </p>
         </div>
-        <Button variant="REVIEW_BUTTON">이 전통주가 궁금하다면?</Button>
+        <Link href={`/item/${product_id}`}>
+          <Button variant="REVIEW_BUTTON">이 전통주가 궁금하다면?</Button>
+        </Link>
       </div>
     </div>
   )

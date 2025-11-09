@@ -40,7 +40,7 @@ const CartItemRow = ({
           onChange={(e) => onCheckChange?.(e.target.checked)}
           className="ml-12 h-5 w-5 accent-red-500"
         />
-        <Link href={`/product/${detailId}`}>
+        <Link href={`/item/${detailId}`}>
           <Image
             src={img || IMAGE_URLS.Product.Default}
             alt={name || '상품 이름'}

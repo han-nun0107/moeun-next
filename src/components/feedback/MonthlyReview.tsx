@@ -35,6 +35,7 @@ const MonthlyReview = () => {
                   feedback: item.desc,
                   nickname: item.nickname,
                   createdAt: item.createdAt,
+                  product_id: String(item.product_id ?? item.id),
                 }}
               />
             ))}
