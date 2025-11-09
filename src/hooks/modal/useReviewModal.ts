@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 import { useModalState } from '@/hooks/useModalState'
-import { liveReviewData } from '@/mocks/review/review'
 import { Review } from '@/types/review'
 
 export const useReviewModal = () => {
