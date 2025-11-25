@@ -4,7 +4,7 @@ import {
   RecommendedDrinksSection,
 } from '@/components/home'
 
-import { PACKAGE_TITLE } from './title'
+import { getPackageTitle } from './title'
 
 type PackageSectionProps = {
   title: string
@@ -19,18 +19,25 @@ type PackageSection = {
   type?: 'monthly' | 'package'
 }
 
-export const PACKAGE_SECTIONS: PackageSection[] = [
-  {
-    Component: MonthlyFeaturedSection,
-    ...PACKAGE_TITLE[0],
-    type: 'package',
-  },
-  {
-    Component: PopularPackagesSection,
-    ...PACKAGE_TITLE[1],
-  },
-  {
-    Component: RecommendedDrinksSection,
-    ...PACKAGE_TITLE[2],
-  },
-]
+export const getPackageSections = (username?: string): PackageSection[] => {
+  const packageTitles = getPackageTitle(username)
+
+  return [
+    {
+      Component: MonthlyFeaturedSection,
+      ...packageTitles[0],
+      type: 'package',
+    },
+    {
+      Component: PopularPackagesSection,
+      ...packageTitles[1],
+    },
+    {
+      Component: RecommendedDrinksSection,
+      ...packageTitles[2],
+    },
+  ]
+}
+
+// 하위 호환성을 위한 기본 export
+export const PACKAGE_SECTIONS = getPackageSections()

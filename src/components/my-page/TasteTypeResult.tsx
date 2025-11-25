@@ -5,9 +5,13 @@ import { useRouter } from 'next/navigation'
 
 import { Button, RetryIcon } from '@/components'
 import { IMAGE_URLS } from '@/constants'
+import { useLoginStore } from '@/stores/useLoginStore'
+import { getUsername } from '@/utils/getUsername'
 
 const TasteTypeResult = () => {
   const router = useRouter()
+  const { user } = useLoginStore()
+  const username = getUsername(user)
 
   return (
     <article className="flex-center flex-col">
@@ -25,7 +29,7 @@ const TasteTypeResult = () => {
             />
           </div>
           <h1 className="text-white-100 mt-4 text-2xl font-bold">
-            김오즈님 취향 유형은 &apos;깔끔고소&apos; 유형입니다
+            {username}님 취향 유형은 &apos;깔끔고소&apos; 유형입니다
           </h1>
           {/* Todo: api 연결 시 map으로 변경 예정 */}
           <p className="text-white-100 mt-3 text-lg">
