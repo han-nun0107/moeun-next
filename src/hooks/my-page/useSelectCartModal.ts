@@ -12,10 +12,7 @@ export const useSelectCartModal = () => {
   )
   const [pickupDate, setPickupDate] = useState('')
 
-  const handleSubmit = () => {
-    console.log('선택된 지역:', selectedRegion)
-    console.log('선택된 날짜:', pickupDate)
-  }
+  const handleSubmit = () => {}
 
   const handleClick = (type: 'CART' | 'CONTINUE') => {
     if (!selectedRegion || !pickupDate) {

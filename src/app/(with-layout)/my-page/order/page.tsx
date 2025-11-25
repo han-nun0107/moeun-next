@@ -12,7 +12,7 @@ const Order = () => {
   return (
     <section className="flex h-screen flex-col gap-6">
       <article>
-        <div className="min-h-160">
+        <div className="text-text-40 min-h-160">
           <ItemRowContent items={currentItems} type="order" />
         </div>
         <div className="mt-8 flex w-320 justify-center">

@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 
 import GoogleIcon from '@/assets/icons/login/google-icon.svg'
 import KaKaoIcon from '@/assets/icons/login/kakao-icon.svg'
@@ -11,7 +10,7 @@ import LogoRight from '@/assets/icons/logo/logo-black.svg'
 import LogoLeft from '@/assets/icons/logo/logo-white.svg'
 import { Button } from '@/components'
 import { IMAGE_URLS } from '@/constants/imageUrls'
-import { useLoginStore } from '@/stores/useLoginStore'
+import { supabase } from '@/utils/supabase'
 
 type SocialLogin = {
   provider: string
@@ -42,13 +41,17 @@ const SOCIAL_LOGINS: SocialLogin[] = [
 ]
 
 const Login = () => {
-  const { login } = useLoginStore()
+  const handleLogin = async (provider: string) => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: provider as 'google' | 'kakao',
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    })
 
-  const router = useRouter()
-
-  const handleLogin = () => {
-    login()
-    router.push('/')
+    if (error) {
+      console.error('로그인 실패:', error)
+    }
   }
   return (
     <div className="flex h-screen p-5">
@@ -90,7 +93,7 @@ const Login = () => {
                 key={socialLogin.provider}
                 variant="SOCIAL"
                 className={socialLogin.className}
-                onClick={handleLogin}
+                onClick={() => handleLogin(socialLogin.provider)}
               >
                 <Image
                   src={socialLogin.icon}
