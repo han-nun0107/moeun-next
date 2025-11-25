@@ -1,10 +1,12 @@
+'use client'
+
 import Link from 'next/link'
 
 import { Card } from '@/components'
 import { ProductTitle } from '@/components/home'
-import MONTHLY from '@/mocks/main/monthly'
-import PACKAGE_RECOMMENDED from '@/mocks/package/recommended'
+import { useProduct } from '@/hooks/product/useProduct'
 import { MonthlyFeaturedSectionProps } from '@/types/main/mainSection'
+import { Product } from '@/types/product'
 import { cn } from '@/utils/cn'
 
 const MonthlyFeaturedSection = ({
@@ -12,9 +14,7 @@ const MonthlyFeaturedSection = ({
   desc,
   type = 'monthly',
 }: MonthlyFeaturedSectionProps) => {
-  const products =
-    type === 'package' ? PACKAGE_RECOMMENDED.slice(0, 4) : MONTHLY.slice(0, 3)
-
+  const { products } = useProduct(type === 'monthly' ? 'individual' : 'package')
   return (
     <section className="flex-center py-25">
       <div
@@ -25,7 +25,7 @@ const MonthlyFeaturedSection = ({
       >
         <ProductTitle title={title} desc={desc} />
         <div className="flex gap-[23.4px]">
-          {products.map((product) => (
+          {products.map((product: Product) => (
             <Link
               key={`${product.name}-${product.id}`}
               href={`/item/${product.id}`}
@@ -33,11 +33,11 @@ const MonthlyFeaturedSection = ({
               <Card
                 type="product"
                 data={{
-                  title: product.title,
-                  subtitle: product.subtitle,
-                  price: product.price,
-                  img: product.img,
-                  alt: product.alt,
+                  title: product.name,
+                  subtitle: product.description || product.brewery_name || '',
+                  price: product.final_price || product.price || 0,
+                  img: product.main_image_url || product.img || '',
+                  alt: product.name,
                 }}
               />
             </Link>

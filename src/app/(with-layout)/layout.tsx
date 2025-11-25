@@ -1,5 +1,7 @@
 import '../globals.css'
+
 import { Header, Footer } from '@/components'
+import ReactQueryProvider from '@/providers/ReactQueryProvider'
 
 export default function WithLayout({
   children,
@@ -9,7 +11,9 @@ export default function WithLayout({
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <main className="mt-[90px] flex-grow">{children}</main>
+      <ReactQueryProvider>
+        <main className="mt-[90px] flex-grow">{children}</main>
+      </ReactQueryProvider>
       <Footer />
     </div>
   )
