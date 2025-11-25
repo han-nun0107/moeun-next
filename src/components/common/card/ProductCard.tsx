@@ -20,7 +20,9 @@ const ProductCard = ({
       />
       <h3 className="text-bold-lg text-black-200 mt-4 text-left">{title}</h3>
       <p className="text-left text-base text-gray-700">{subtitle}</p>
-      <p className="text-black-200 text-left text-base font-bold">{price}</p>
+      <p className="text-black-200 text-left text-base font-bold">
+        {price.toLocaleString()}원
+      </p>
     </div>
   )
 }
