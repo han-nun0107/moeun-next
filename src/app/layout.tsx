@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import './globals.css'
+import { AuthProvider } from '@/components/auth/AuthProvider'
 import { pretendard } from '@/styles/fonts'
 
 export const metadata: Metadata = {
@@ -42,7 +43,11 @@ export default function RootLayout({
     <html lang="ko" className={pretendard.variable}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link rel="dns-prefetch" href="https://via.placeholder.com" />
       </head>
       <body className="flex flex-col">

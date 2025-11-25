@@ -1,8 +1,10 @@
 'use client'
 
-import DetailFeedback from '@/components/detail/DetailFeedback'
-import DetailInformation from '@/components/detail/DetailInformation'
-import DetailProduct from '@/components/detail/DetailProduct'
+import {
+  DetailFeedback,
+  DetailInformation,
+  DetailProduct,
+} from '@/components/detail'
 import { useDetailPage } from '@/hooks/detail/useDetailPage'
 import { detailMock } from '@/mocks/detail/detailMock'
 
