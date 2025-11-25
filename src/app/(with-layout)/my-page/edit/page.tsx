@@ -4,12 +4,16 @@ import { Button, AlarmModal, EditNickNameModal } from '@/components'
 import ResignationModal from '@/components/common/modal/ResignationModal'
 import { useEditPage } from '@/hooks/my-page/useEditPage'
 import { useEditPageModals } from '@/hooks/my-page/useEditPageModals'
+import { useLoginStore } from '@/stores/useLoginStore'
+import { getUsername } from '@/utils/getUsername'
 
 const Edit = () => {
   const { nickNameModal, alarmModal, resignationModal } = useEditPageModals()
   const { selected, handleMarketingChange } = useEditPage({
     openAlarmModal: alarmModal.open,
   })
+  const { user } = useLoginStore()
+  const username = getUsername(user, '사용자')
 
   const MARKETING = [
     { id: 'agree', value: '동의' },
@@ -27,7 +31,7 @@ const Edit = () => {
           <dl className="grid h-14 grid-cols-[1fr_3.92fr] items-center border-b border-gray-100">
             <dt className="text-black-200 font-semibold">닉네임</dt>
             <dd className="flex items-center gap-3">
-              <p>김오즈</p>
+              <p>{username}</p>
               <Button
                 variant="ICON"
                 aria-label="닉네임 수정"

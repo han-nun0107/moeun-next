@@ -1,7 +1,9 @@
 'use client'
 
 import { Button, Modal, RecommendedCard } from '@/components'
+import { useLoginStore } from '@/stores/useLoginStore'
 import { RecommendedModalProps } from '@/types/modal/modal'
+import { getUsername } from '@/utils/getUsername'
 
 const RecommendedModal = ({
   isOpen,
@@ -12,6 +14,9 @@ const RecommendedModal = ({
   packageData,
   onAddToCart,
 }: RecommendedModalProps) => {
+  const { user } = useLoginStore()
+  const username = getUsername(user)
+
   return (
     <Modal
       isOpen={isOpen}
@@ -21,7 +26,7 @@ const RecommendedModal = ({
       <article>
         <div className="flex-center flex-col gap-6 text-center">
           <h1 className="text-black-200 text-bold-text-32 w-80">
-            김오즈님 취향에 어울리는 전통주를 추천해 드려요
+            {username}님 취향에 어울리는 전통주를 추천해 드려요
           </h1>
           <p className="text-black-200 text-lg">
             깔끔한 단맛과 적당한 도수를 선호하는 당신에게 어울리는

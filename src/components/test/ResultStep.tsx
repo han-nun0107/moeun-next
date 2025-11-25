@@ -7,15 +7,17 @@ import { Button, Card } from '@/components'
 import { IMAGE_URLS } from '@/constants/imageUrls'
 import { mockResultProductData } from '@/mocks/test/resultProduct'
 import { useLoginStore } from '@/stores/useLoginStore'
+import { getUsername } from '@/utils/getUsername'
 
 const ResultStep = () => {
-  const { isLoggedIn } = useLoginStore()
+  const { isLoggedIn, user } = useLoginStore()
+  const username = getUsername(user)
 
   return (
     <div className="flex h-full w-full flex-col items-center">
       <div className="flex flex-col items-center gap-10">
         <p className="leading-1.3 text-text-22 mt-20 font-bold text-gray-700">
-          김오즈님의 취향 유형은...
+          {username}님의 취향 유형은...
         </p>
         <div className="flex flex-col items-center gap-1">
           <h1 className="text-text-40 font-black text-orange-400">

@@ -1,8 +1,16 @@
+'use client'
+
 import { BannerCarousel } from '@/components/home'
 import { CAROUSEL } from '@/constants/carousel/carousel'
-import { PACKAGE_SECTIONS } from '@/constants/package/sections'
+import { getPackageSections } from '@/constants/package/sections'
+import { useLoginStore } from '@/stores/useLoginStore'
+import { getUsername } from '@/utils/getUsername'
 
-const Package = async () => {
+const Package = () => {
+  const { user } = useLoginStore()
+  const username = getUsername(user, undefined)
+  const packageSections = getPackageSections(username)
+
   return (
     <section className="min-h-screen">
       <BannerCarousel
@@ -14,7 +22,7 @@ const Package = async () => {
       />
 
       <div className="flex flex-col gap-25">
-        {PACKAGE_SECTIONS.map(({ Component, title, desc, type }) => (
+        {packageSections.map(({ Component, title, desc, type }) => (
           <Component key={title} title={title} desc={desc} type={type} />
         ))}
       </div>

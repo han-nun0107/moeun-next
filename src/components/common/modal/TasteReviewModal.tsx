@@ -1,13 +1,17 @@
 'use client'
 import { Button, Modal } from '@/components'
 import useTastingReview from '@/hooks/my-page/usetasteReviewModal'
+import { useLoginStore } from '@/stores/useLoginStore'
 import { ModalProps } from '@/types/modal/modal'
+import { getUsername } from '@/utils/getUsername'
 
 import ReviewSlider from './ReviewSlider'
 import ReviewStarTag from './ReviewStarTag'
 import ReviewSummaryForm from './ReviewSummaryForm'
 
 const TasteReviewModal = ({ isOpen, onClose, orderItemId }: ModalProps) => {
+  const { user } = useLoginStore()
+  const username = getUsername(user)
   const {
     review,
     updateReview,
@@ -28,7 +32,7 @@ const TasteReviewModal = ({ isOpen, onClose, orderItemId }: ModalProps) => {
       className="review-modal-scroll h-225 w-170 overflow-auto"
     >
       <div className="flex-center mt-5 flex-col text-lg text-gray-700">
-        <p>제품이 김오즈님의 취향에 맞으셨나요?</p>
+        <p>제품이 {username}님의 취향에 맞으셨나요?</p>
         <p>
           시음 후기 작성을 통해 더 적합한 전통주를 추천받고, 나만의 시음 후기를
           통해
