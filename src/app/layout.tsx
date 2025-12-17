@@ -51,7 +51,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://via.placeholder.com" />
       </head>
       <body className="flex flex-col">
-        {children}
+        <AuthProvider>{children}</AuthProvider>
         <div id="modal-root"></div>
       </body>
     </html>
