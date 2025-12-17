@@ -40,16 +40,32 @@ const SOCIAL_LOGINS: SocialLogin[] = [
   },
 ]
 
+type SupportedProvider = 'google' | 'kakao' | 'naver'
+
 const Login = () => {
   const handleLogin = async (provider: string) => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: provider as 'google' | 'kakao',
+    const supportedProviders: SupportedProvider[] = ['google', 'kakao', 'naver']
+
+    if (!supportedProviders.includes(provider as SupportedProvider)) {
+      // eslint-disable-next-line no-console
+      console.error('지원하지 않는 로그인 제공자입니다:', provider)
+      return
+    }
+
+    const authMethod = supabase.auth.signInWithOAuth as (options: {
+      provider: string
+      options?: { redirectTo?: string }
+    }) => Promise<{ error: Error | null }>
+
+    const { error } = await authMethod({
+      provider,
       options: {
         redirectTo: `${window.location.origin}/auth/callback`,
       },
     })
 
     if (error) {
+      // eslint-disable-next-line no-console
       console.error('로그인 실패:', error)
     }
   }
