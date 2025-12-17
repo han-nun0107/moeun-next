@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import { Card } from '@/components'
 import { ProductTitle } from '@/components/home'
+import { IMAGE_URLS } from '@/constants'
 import { useProduct } from '@/hooks/product/useProduct'
 import { MonthlyFeaturedSectionProps } from '@/types/main/mainSection'
 import { Product } from '@/types/product'
@@ -36,7 +37,10 @@ const MonthlyFeaturedSection = ({
                   title: product.name,
                   subtitle: product.description || product.brewery_name || '',
                   price: product.final_price || product.price || 0,
-                  img: product.main_image_url || product.img || '',
+                  img:
+                    product.main_image_url ||
+                    product.img ||
+                    IMAGE_URLS.Product.Default,
                   alt: product.name,
                 }}
               />

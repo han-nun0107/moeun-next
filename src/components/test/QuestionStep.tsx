@@ -1,8 +1,7 @@
 'use client'
 
-import Button from '@/components/common/Button'
-import { useQuestionStep } from '@/hooks/test/useQuestionStep'
-import { mockTasteTestData } from '@/mocks/test/questions'
+import { Button } from '@/components'
+import { useQuestions, useQuestionStep } from '@/hooks/test'
 import { ProgressStepProps, TestQuestionType } from '@/types/test/test'
 import { cn } from '@/utils/cn'
 
@@ -14,15 +13,32 @@ const QuestionStep = ({
   testResult: _testResult,
   setTestResult: _setTestResult,
 }: ProgressStepProps) => {
+  const { questions, isLoading } = useQuestions()
   const { isClicked, handlerAnswer, handleResult, setIsClicked } =
     useQuestionStep({
       testStep,
       setStep,
     })
 
+  if (isLoading) {
+    return (
+      <div className="flex w-full flex-col items-center justify-center">
+        <p className="text-text-26">질문을 불러오는 중...</p>
+      </div>
+    )
+  }
+
+  if (!questions || questions.length === 0) {
+    return (
+      <div className="flex w-full flex-col items-center justify-center">
+        <p className="text-text-26">질문을 불러올 수 없습니다.</p>
+      </div>
+    )
+  }
+
   return (
     <div className="flex w-full flex-col items-center">
-      {mockTasteTestData?.map((question: TestQuestionType, index: number) => {
+      {questions?.map((question: TestQuestionType, index: number) => {
         if (index !== testStep) return null
         const buttons = [
           {
@@ -31,12 +47,12 @@ const QuestionStep = ({
             onclick: () => setStep('main'),
           },
           {
-            condition: index > 0 && index < mockTasteTestData.length - 1,
+            condition: index > 0 && index < questions.length - 1,
             text: '이전으로 돌아가기',
             onclick: () => setTestStep(testStep - 1),
           },
           {
-            condition: index === mockTasteTestData.length - 1,
+            condition: index === questions.length - 1,
             text: '결과 확인 하기',
             onclick: handleResult,
           },
@@ -47,7 +63,7 @@ const QuestionStep = ({
             className="mt-19 flex w-full flex-col items-center"
           >
             <p className="text-gray-700">
-              {index + 1} / {mockTasteTestData.length}
+              {index + 1} / {questions.length}
             </p>
             <p className="text-text-26 mt-19 mb-3.5 font-bold">
               Q{question?.id}.
@@ -67,7 +83,7 @@ const QuestionStep = ({
                     handlerAnswer(key as 'A' | 'B')
                     setIsClicked(key as 'A' | 'B')
                     setTimeout(() => {
-                      if (testStep < mockTasteTestData.length - 1) {
+                      if (testStep < questions.length - 1) {
                         setTestStep(testStep + 1)
                       }
                     }, 100)
