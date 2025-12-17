@@ -4,8 +4,10 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 import TestImage from '@/assets/test.png'
+import { IMAGE_URLS } from '@/constants/imageUrls'
 import { CardImageProps } from '@/types/card/card'
 import { cn } from '@/utils/cn'
+import { isValidUrl } from '@/utils/isValidUrl'
 
 import HeartButton from './HeartButton'
 
@@ -19,6 +21,9 @@ const CardImage = ({
   showHeart = false,
 }: CardImageProps) => {
   const [liked, setLiked] = useState(initialLiked)
+  const imageSrc = isValidUrl(img as string)
+    ? img
+    : (IMAGE_URLS.Product.Default as string)
 
   return (
     <div
@@ -29,7 +34,7 @@ const CardImage = ({
       style={{ width: width, height: height }}
     >
       <Image
-        src={img}
+        src={imageSrc}
         alt={alt}
         fill
         priority

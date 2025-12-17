@@ -4,21 +4,26 @@ import { useEffect } from 'react'
 
 import { useLoginStore } from '@/stores/useLoginStore'
 import { supabase } from '@/utils/supabase'
+import { syncPendingResponses } from '@/utils/syncPendingResponses'
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const { checkSession, setUser } = useLoginStore()
 
   useEffect(() => {
-    // 초기 세션 확인
     const initSession = async () => {
       await checkSession()
 
-      // Supabase auth state 변경 감지
+      const { user } = useLoginStore.getState()
+      if (user?.id) {
+        await syncPendingResponses(user.id)
+      }
+
       const {
         data: { subscription },
-      } = supabase.auth.onAuthStateChange((_event, session) => {
+      } = supabase.auth.onAuthStateChange(async (_event, session) => {
         if (session?.user) {
           setUser(session.user)
+          await syncPendingResponses(session.user.id)
         } else {
           setUser(null)
         }
@@ -30,8 +35,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     initSession()
-  }, [checkSession, setUser])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return <>{children}</>
 }
-
