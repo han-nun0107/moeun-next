@@ -10,8 +10,8 @@ export const useProduct = (type: 'package' | 'individual') => {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ['products'],
-    queryFn: getProducts,
+    queryKey: ['products', type],
+    queryFn: () => getProducts(type),
   })
 
   const apiProducts = queryData?.data || []
