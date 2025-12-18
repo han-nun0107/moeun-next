@@ -3,7 +3,7 @@
 import { Button, RecommendedModal } from '@/components'
 import SelectCartModal from '@/components/common/modal/SelectCartModal'
 import { TasteTypeResult, TasteFingerprint } from '@/components/my-page'
-import { useRecommendedModal } from '@/hooks/my-page/useRecommendedModal'
+import { useRecommendedModal } from '@/hooks/my-page'
 
 const MyPage = () => {
   const {

@@ -2,8 +2,7 @@
 
 import { Button, AlarmModal, EditNickNameModal } from '@/components'
 import ResignationModal from '@/components/common/modal/ResignationModal'
-import { useEditPage } from '@/hooks/my-page/useEditPage'
-import { useEditPageModals } from '@/hooks/my-page/useEditPageModals'
+import { useEditPage, useEditPageModals } from '@/hooks/my-page'
 import { useLoginStore } from '@/stores/useLoginStore'
 import { getUsername } from '@/utils/getUsername'
 

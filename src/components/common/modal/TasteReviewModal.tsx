@@ -1,6 +1,6 @@
 'use client'
 import { Button, Modal } from '@/components'
-import useTastingReview from '@/hooks/my-page/usetasteReviewModal'
+import { useTastingReview } from '@/hooks/my-page'
 import { useLoginStore } from '@/stores/useLoginStore'
 import { ModalProps } from '@/types/modal/modal'
 import { getUsername } from '@/utils/getUsername'

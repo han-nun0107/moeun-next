@@ -4,7 +4,7 @@ import { ChevronDownIcon } from 'lucide-react'
 
 import questionMark from '@/assets/icons/my-page/my-question.svg'
 import { Button, GaugeBar } from '@/components'
-import { useGauge } from '@/hooks/my-page/useGauge'
+import { useGauge } from '@/hooks/my-page'
 import { cn } from '@/utils/cn'
 
 const TasteFingerprint = () => {

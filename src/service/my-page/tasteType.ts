@@ -11,12 +11,6 @@ export type UserTasteTypeResult = {
   description?: string[]
   characteristics?: string[]
   imageUrl?: string
-  data?: {
-    tasteType: string
-    description?: string[]
-    characteristics?: string[]
-    imageUrl?: string
-  }
 }
 
 const normalize = (s: string) => s.trim()

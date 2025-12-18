@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useState, useMemo } from 'react'
 
 import { MY_PAGE } from '@/constants/my-page/myPage'
-import { getUserAverageScores } from '@/service/my-page/gauge'
+import { getUserAverageScores } from '@/service/my-page'
 import { useLoginStore } from '@/stores/useLoginStore'
 
 export const useGauge = () => {
@@ -17,7 +17,7 @@ export const useGauge = () => {
     error,
   } = useQuery({
     queryKey: ['userAverageScores', user?.id],
-    queryFn: () => (user?.id ? getUserAverageScores(user.id) : null),
+    queryFn: () => getUserAverageScores(user!.id),
     enabled: !!user?.id,
   })
 
