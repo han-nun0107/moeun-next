@@ -1,13 +1,30 @@
+'use client'
 
-
-import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { useState, useMemo } from 'react'
 
 import { MY_PAGE } from '@/constants/my-page/myPage'
+import { getUserAverageScores } from '@/service/my-page/gauge'
+import { useLoginStore } from '@/stores/useLoginStore'
 
 export const useGauge = () => {
   const [isExpanded, setIsExpanded] = useState(false)
+  const { user } = useLoginStore()
 
-  const displayedGauges = isExpanded ? MY_PAGE.GAUGE_VALUES : MY_PAGE.GAUGE_VALUES.slice(0, 3)
+  const {
+    data: gaugeData,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ['userAverageScores', user?.id],
+    queryFn: () => (user?.id ? getUserAverageScores(user.id) : null),
+    enabled: !!user?.id,
+  })
+
+  const displayedGauges = useMemo(() => {
+    const gauges = gaugeData?.data || MY_PAGE.GAUGE_VALUES
+    return isExpanded ? gauges : gauges.slice(0, 3)
+  }, [gaugeData?.data, isExpanded])
 
   const toggleExpand = () => {
     setIsExpanded((prev) => !prev)
@@ -17,5 +34,7 @@ export const useGauge = () => {
     isExpanded,
     displayedGauges,
     toggleExpand,
+    isLoading,
+    error,
   }
 }
