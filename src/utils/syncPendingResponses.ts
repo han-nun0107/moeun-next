@@ -26,16 +26,12 @@ export const syncPendingResponses = async (
     const { error } = await saveUserResponses(userId, responses)
 
     if (error) {
-      // eslint-disable-next-line no-console
-      console.error('대기 중인 응답 동기화 실패:', error)
       return { success: false, error: error.message }
     }
 
     localStorage.removeItem(LOCAL_STORAGE_KEYS.PENDING_RESPONSES)
     return { success: true }
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('대기 중인 응답 동기화 중 오류:', error)
     return {
       success: false,
       error: error instanceof Error ? error.message : '알 수 없는 오류',

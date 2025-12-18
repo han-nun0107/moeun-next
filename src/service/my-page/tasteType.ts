@@ -43,19 +43,27 @@ export const getUserTasteType = async (
       return { data: null, error: new Error('Taste type not found') }
     }
 
-    const { data: tasteTypes, error: tasteTypesError } = await supabase
+    const { data: tasteTypeData, error: tasteTypesError } = await supabase
       .from('taste_types')
       .select('type_name,image_url,description')
+      .eq('type_name', tasteType)
+      .single()
 
+    let matched: TasteTypesRow | null = null
     if (tasteTypesError) {
-      return { data: { tasteType }, error: new Error(tasteTypesError.message) }
+      const { data: allTasteTypes } = await supabase
+        .from('taste_types')
+        .select('type_name,image_url,description')
+
+      if (allTasteTypes) {
+        const rows = allTasteTypes as TasteTypesRow[]
+        matched =
+          rows.find((r) => normalize(r.type_name) === normalize(tasteType)) ||
+          null
+      }
+    } else {
+      matched = tasteTypeData as TasteTypesRow | null
     }
-
-    const rows = (tasteTypes ?? []) as TasteTypesRow[]
-
-    const matched = rows.find(
-      (r) => normalize(r.type_name) === normalize(tasteType)
-    )
 
     if (!matched) {
       return {

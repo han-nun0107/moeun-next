@@ -80,16 +80,12 @@ export const useQuestionStep = ({
       const { data, error } = await saveUserResponses(user.id, responseData)
 
       if (error) {
-        // eslint-disable-next-line no-console
-        console.error('응답 저장 실패:', error)
         return { success: false, error: error.message }
       }
 
       localStorage.removeItem(LOCAL_STORAGE_KEYS.PENDING_RESPONSES)
       return { success: true, data }
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('응답 저장 중 오류:', error)
       return {
         success: false,
         error: error instanceof Error ? error.message : '알 수 없는 오류',

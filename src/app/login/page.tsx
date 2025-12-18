@@ -47,8 +47,6 @@ const Login = () => {
     const supportedProviders: SupportedProvider[] = ['google', 'kakao', 'naver']
 
     if (!supportedProviders.includes(provider as SupportedProvider)) {
-      // eslint-disable-next-line no-console
-      console.error('지원하지 않는 로그인 제공자입니다:', provider)
       return
     }
 
@@ -65,8 +63,7 @@ const Login = () => {
     })
 
     if (error) {
-      // eslint-disable-next-line no-console
-      console.error('로그인 실패:', error)
+      return
     }
   }
   return (

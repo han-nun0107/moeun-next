@@ -1,4 +1,3 @@
-// hooks/useStarRating.ts
 'use client'
 import { useState } from 'react'
 
@@ -28,7 +27,10 @@ const useStarRating = ({
     setRating(newRating)
   }
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>, totalStars: number) => {
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLDivElement>,
+    totalStars: number
+  ) => {
     if (readOnly) return
     if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
       e.preventDefault()
