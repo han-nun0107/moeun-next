@@ -39,5 +39,4 @@ export const getPackageSections = (username?: string): PackageSection[] => {
   ]
 }
 
-// 하위 호환성을 위한 기본 export
 export const PACKAGE_SECTIONS = getPackageSections()

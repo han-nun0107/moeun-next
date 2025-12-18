@@ -11,7 +11,7 @@ export function usePagination({
   currentPage,
   totalPages,
   onPageChange,
-  siblingCount = 1, // 현재 페이지 양옆 몇 개를 보여줄지
+  siblingCount = 1,
 }: UsePaginationProps) {
   const DOTS = '...'
 
