@@ -3,7 +3,7 @@
 import selectCart from '@/assets/icons/my-page/select-cart.svg'
 import { Dropdown, Modal, Button } from '@/components'
 import { MY_PAGE } from '@/constants/my-page/myPage'
-import { useSelectCartModal } from '@/hooks/my-page/useSelectCartModal'
+import { useSelectCartModal } from '@/hooks/my-page'
 import { recommendedDropdown } from '@/mocks/modal/recommendedDropdown'
 import { ModalProps } from '@/types/modal/modal'
 import { cn } from '@/utils/cn'

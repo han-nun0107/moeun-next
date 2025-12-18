@@ -2,7 +2,7 @@
 
 import { ItemRowContent } from '@/components'
 import Pagination from '@/components/common/Pagination'
-import { usePagination } from '@/hooks/my-page/usePagination'
+import { usePagination } from '@/hooks/my-page'
 import { mockOrderData } from '@/mocks/itemRow'
 
 const Order = () => {
