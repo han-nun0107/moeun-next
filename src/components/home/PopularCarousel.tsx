@@ -38,7 +38,7 @@ const PopularCarousel = () => {
       navigationHeight={290}
       className="mt-12 w-full"
     >
-      {products.slice(0, 6).map((product) => (
+      {products.map((product) => (
         <SwiperSlide key={product.id}>
           <div className="flex flex-col items-center gap-5">
             <Link href={`/item/${product.id}`}>
