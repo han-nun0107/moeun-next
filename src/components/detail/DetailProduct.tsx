@@ -34,10 +34,7 @@ const DetailProduct = ({
       <Card
         type="detail"
         data={{
-          img:
-            data.images.find((img) => img.is_main === true)?.image_url ??
-            data.main_image_url ??
-            '',
+          img: data.main_image_url || '',
           alt: data.name,
           className:
             'h-50 w-50 sm:h-100 sm:w-100 md:h-100 md:w-100 lg:h-140 lg:w-140',

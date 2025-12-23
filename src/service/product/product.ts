@@ -311,7 +311,9 @@ export const getRecommendedProducts = async (
   if (result.error) {
     return {
       data: null,
-      error: new ProductError('추천 상품을 불러오는 중 오류가 발생했습니다.'),
+      error: new ProductError(
+        `추천 상품을 불러오는 중 오류가 발생했습니다: ${result.error.message}`
+      ),
     }
   }
 
@@ -330,7 +332,9 @@ export const getPopularProducts = async (
   if (result.error) {
     return {
       data: null,
-      error: new ProductError('인기 상품을 불러오는 중 오류가 발생했습니다.'),
+      error: new ProductError(
+        `인기 상품을 불러오는 중 오류가 발생했습니다: ${result.error.message}`
+      ),
     }
   }
 

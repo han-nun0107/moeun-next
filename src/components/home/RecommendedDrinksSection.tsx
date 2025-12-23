@@ -53,13 +53,10 @@ const RecommendedDrinksSection = ({ title, desc }: MainSectionProps) => {
               <Card
                 type="product"
                 data={{
-                  img:
-                    product.main_image_url ||
-                    product.images[0]?.image_url ||
-                    '',
+                  img: product.main_image_url || '',
                   alt: product.name,
                   title: product.name,
-                  subtitle: product.drink?.brewery?.name || '',
+                  subtitle: '',
                   price: product.final_price,
                 }}
               />
