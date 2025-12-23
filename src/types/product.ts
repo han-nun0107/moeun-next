@@ -46,7 +46,6 @@ export type PackageDetail = {
 export type ProductImage = {
   image_url: string
   is_main: boolean
-  created_at: string
 }
 
 // 최종 상품 타입
