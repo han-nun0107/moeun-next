@@ -54,7 +54,6 @@ export const detailMock: ProductDetail = {
       image_url:
         'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=1200&auto=format&fit=crop',
       is_main: true,
-      created_at: '2025-01-01T00:00:00Z',
     },
   ],
   created_at: '2025-01-01T00:00:00Z',
