@@ -87,6 +87,7 @@ export const addToCart = async (
       price_at_added: options?.priceAtAdded || productPrice,
     }
 
+    // ts-expect-error - Supabase 클라이언트의 insert 메소드 타입이 제대로 추론되지 않음
     const insertResult = await (supabase
       .from(DB_TABLES.CART)
       .insert(cartItem as never)
@@ -155,6 +156,7 @@ export const getCartItems = async (userId: string) => {
 
 export const updateCartItem = async (cartId: number, updates: CartUpdate) => {
   try {
+    // ts-expect-error - Supabase 클라이언트의 update 메소드 타입이 제대로 추론되지 않음
     const updateResult = await (supabase
       .from(DB_TABLES.CART)
       .update(updates as never)

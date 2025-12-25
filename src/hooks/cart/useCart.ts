@@ -108,7 +108,7 @@ export const useCart = () => {
   })
 
   return {
-    cartData: cartData || undefined,
+    cartData,
     isLoading,
     isError,
     error: error as Error | null,

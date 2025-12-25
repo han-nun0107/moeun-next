@@ -26,10 +26,6 @@ const Cart = () => {
   }
 
   const { data, onCheckChange, checkedTotalPrice, checkedItems } = useCartItem({
-    quantity: cartData?.cart_items?.reduce(
-      (total, item) => total + (item.quantity || 0),
-      0
-    ),
     data: cartData,
   })
 

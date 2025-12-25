@@ -5,22 +5,17 @@ import { useEffect, useMemo, useState } from 'react'
 import { CartResponse } from '@/types/item-row'
 
 type UseCartItemLogicParams = {
-  quantity: number | undefined
-  id?: string | number
-  data?: CartResponse
+  data?: CartResponse | null
 }
 
-const useCartItem = ({ quantity, data }: UseCartItemLogicParams) => {
-  const [localQuantity, setLocalQuantity] = useState(() => quantity || 0)
+const useCartItem = ({ data }: UseCartItemLogicParams) => {
   const [checkedItems, setCheckedItems] = useState<number[]>([])
-  const [cartData, setCartData] = useState<CartResponse | undefined>(data)
+  const [cartData, setCartData] = useState<CartResponse | undefined>(
+    data || undefined
+  )
 
   useEffect(() => {
-    setLocalQuantity(quantity || 0)
-  }, [quantity])
-
-  useEffect(() => {
-    setCartData(data)
+    setCartData(data || undefined)
   }, [data])
 
   const onCheckChange = (itemId: number | string, isChecked: boolean) => {
@@ -38,7 +33,6 @@ const useCartItem = ({ quantity, data }: UseCartItemLogicParams) => {
   }, [cartData, checkedItems])
 
   return {
-    localQuantity,
     checkedItems,
     onCheckChange,
     checkedTotalPrice,

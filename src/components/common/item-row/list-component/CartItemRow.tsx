@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 
 import { IMAGE_URLS } from '@/constants/imageUrls'
 import { CartItemRowProps } from '@/types/item-row'
@@ -22,21 +21,13 @@ const CartItemRow = ({
   checked,
   onQuantityChange,
 }: CartItemRowProps) => {
-  const [localQuantity, setLocalQuantity] = useState(quantity || 0)
-
-  useEffect(() => {
-    setLocalQuantity(quantity || 0)
-  }, [quantity])
-
   const handleIncrease = () => {
-    const newQuantity = localQuantity + 1
-    onQuantityChange?.(newQuantity)
+    onQuantityChange?.((quantity || 0) + 1)
   }
 
   const handleDecrease = () => {
-    if (localQuantity <= 1) return
-    const newQuantity = localQuantity - 1
-    onQuantityChange?.(newQuantity)
+    if ((quantity || 0) <= 1) return
+    onQuantityChange?.((quantity || 0) - 1)
   }
 
   return (
@@ -63,7 +54,7 @@ const CartItemRow = ({
       {/* 수량 조절 */}
       <div className="bg-gray-10 mx-auto inline-flex h-8 w-20 items-center justify-center gap-1 rounded-[5px]">
         <QuantityInput
-          value={localQuantity}
+          value={quantity || 0}
           onIncrease={handleIncrease}
           onDecrease={handleDecrease}
         />
