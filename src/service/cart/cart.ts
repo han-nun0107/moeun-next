@@ -34,6 +34,7 @@ export const addToCart = async (
     pickupStoreContact?: string
     pickupDate?: string
     priceAtAdded?: number
+    imageUrl?: string
   }
 ) => {
   try {
@@ -85,6 +86,7 @@ export const addToCart = async (
       pickup_store_contact: options?.pickupStoreContact || null,
       pickup_date: options?.pickupDate || null,
       price_at_added: options?.priceAtAdded || productPrice,
+      image_url: options?.imageUrl || null,
     }
 
     // ts-expect-error - Supabase 클라이언트의 insert 메소드 타입이 제대로 추론되지 않음

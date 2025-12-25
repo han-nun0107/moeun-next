@@ -1,8 +1,10 @@
 'use client'
 
+import { Trash2 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import Button from '@/components/common/Button'
 import { IMAGE_URLS } from '@/constants/imageUrls'
 import { CartItemRowProps } from '@/types/item-row'
 
@@ -20,6 +22,7 @@ const CartItemRow = ({
   onCheckChange,
   checked,
   onQuantityChange,
+  onDelete,
 }: CartItemRowProps) => {
   const handleIncrease = () => {
     onQuantityChange?.((quantity || 0) + 1)
@@ -67,6 +70,17 @@ const CartItemRow = ({
         <p className="text-black-200 mb-2 text-lg underline">{pickupName}</p>
         <p className="text-sm">{pickupAddress}</p>
         <p className="text-sm">{pickupContact}</p>
+      </div>
+
+      <div className="w-[5%] min-w-[50px]">
+        <Button
+          variant="ICON"
+          onClick={onDelete}
+          aria-label="장바구니에서 삭제"
+          className="flex-center h-8 w-8 cursor-pointer rounded text-red-500 hover:bg-red-50"
+        >
+          <Trash2 size={18} />
+        </Button>
       </div>
     </div>
   )
