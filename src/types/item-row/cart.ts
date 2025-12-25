@@ -18,6 +18,7 @@ export type CartSingleItem = {
   quantity?: number
   pickup?: string
   subtotal?: string
+  image_url?: string | null
 }
 
 export type CartPackageItem = {

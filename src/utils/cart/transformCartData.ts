@@ -32,6 +32,7 @@ export const transformCartData = (
       },
       quantity: row.quantity,
       subtotal,
+      image_url: row.image_url || null,
       pickup_store: {
         id: row.id,
         name: row.pickup_store_name || '',

@@ -11,7 +11,7 @@ const ItemRowList = (props: ItemRow) => {
         <CartItemRow
           id={props.id}
           detailId={props.product?.id}
-          img={props.product?.main_image || ''}
+          img={props.image_url || props.product?.main_image || ''}
           name={props.product?.name || ''}
           quantity={props.quantity || 0}
           price={props.subtotal || '0'}

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 
 import type { ItemRow } from '@/types/item-row'
+import { calculateSubtotal, parsePrice } from '@/utils/cart/priceCalculator'
 
 const useItemRow = (items: ItemRow[]) => {
   const [itemList, setItemList] = useState<ItemRow[]>(items)
@@ -17,12 +18,8 @@ const useItemRow = (items: ItemRow[]) => {
         if (index !== itemIndex) return item
 
         if (item.type === 'cart' && item.product) {
-          const priceValue = item.product.price
-          const unitPrice =
-            typeof priceValue === 'string'
-              ? parseFloat(priceValue)
-              : (priceValue ?? 0)
-          const subtotal = String(unitPrice * newQuantity)
+          const unitPrice = parsePrice(item.product.price)
+          const subtotal = calculateSubtotal(unitPrice, newQuantity)
 
           return {
             ...item,

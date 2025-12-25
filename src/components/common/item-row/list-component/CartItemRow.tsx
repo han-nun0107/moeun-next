@@ -2,15 +2,14 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 import { IMAGE_URLS } from '@/constants/imageUrls'
-import useCartItem from '@/hooks/item-row/useCartItem'
 import { CartItemRowProps } from '@/types/item-row'
 
 import { QuantityInput } from './QuantityInput'
 
 const CartItemRow = ({
-  id,
   detailId,
   img,
   name,
@@ -23,10 +22,11 @@ const CartItemRow = ({
   checked,
   onQuantityChange,
 }: CartItemRowProps) => {
-  const { localQuantity } = useCartItem({
-    quantity: quantity || 0,
-    id,
-  })
+  const [localQuantity, setLocalQuantity] = useState(quantity || 0)
+
+  useEffect(() => {
+    setLocalQuantity(quantity || 0)
+  }, [quantity])
 
   const handleIncrease = () => {
     const newQuantity = localQuantity + 1

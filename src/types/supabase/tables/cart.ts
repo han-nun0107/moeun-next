@@ -10,6 +10,7 @@ export type CartTable = {
     pickup_store_contact: string | null
     pickup_date: string | null
     price_at_added: number | null
+    image_url: string | null
     created_at: string
     updated_at: string
   }
@@ -24,6 +25,7 @@ export type CartTable = {
     pickup_store_contact?: string | null
     pickup_date?: string | null
     price_at_added?: number | null
+    image_url?: string | null
     created_at?: string
     updated_at?: string
   }
@@ -38,6 +40,7 @@ export type CartTable = {
     pickup_store_contact?: string | null
     pickup_date?: string | null
     price_at_added?: number | null
+    image_url?: string | null
     created_at?: string
     updated_at?: string
   }

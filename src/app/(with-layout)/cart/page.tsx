@@ -76,9 +76,7 @@ const Cart = () => {
             type: 'cart',
           })) || []
         }
-        onQuantityChange={(itemId, newQuantity) => {
-          handleQuantityChange(itemId, newQuantity)
-        }}
+        onQuantityChange={handleQuantityChange}
         checkedItems={checkedItems}
         onCheckChange={onCheckChange}
       />
