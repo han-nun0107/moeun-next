@@ -5,8 +5,7 @@ import type { DropdownOption } from '@/types/dropdown'
 type UseDropdownProps = {
   onSelect?: (option: DropdownOption) => void
 }
-
-export function useDropdown({ onSelect }: UseDropdownProps) {
+const useDropdown = ({ onSelect }: UseDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [selected, setSelected] = useState<DropdownOption | null>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -41,3 +40,5 @@ export function useDropdown({ onSelect }: UseDropdownProps) {
     dropdownRef,
   }
 }
+
+export default useDropdown

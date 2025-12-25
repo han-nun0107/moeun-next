@@ -2,8 +2,8 @@
 
 import NextIcon from '@/assets/icons/pagination/next.svg'
 import PrevIcon from '@/assets/icons/pagination/prev.svg'
-import Button from '@/components/common/Button'
-import { usePagination } from '@/hooks/usePaginations'
+import { Button } from '@/components'
+import usePagination from '@/hooks/usePaginations'
 import { cn } from '@/utils/cn'
 
 type PaginationProps = {
@@ -40,7 +40,7 @@ const Pagination = ({
 
       {/* 페이지 목록 */}
       <ol className="flex gap-2">
-        {pages.map((page, idx) => {
+        {pages.map((page: number | string, idx: number) => {
           if (page === '...') {
             return (
               <li key={`dots-${idx}`}>

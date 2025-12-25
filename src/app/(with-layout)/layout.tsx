@@ -1,13 +1,9 @@
 import '../globals.css'
 
 import { Header, Footer } from '@/components'
-import ReactQueryProvider from '@/providers/ReactQueryProvider'
+import { ReactQueryProvider } from '@/providers/ReactQueryProvider'
 
-export default function WithLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+const WithLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -18,3 +14,5 @@ export default function WithLayout({
     </div>
   )
 }
+
+export default WithLayout

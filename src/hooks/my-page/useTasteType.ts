@@ -7,7 +7,7 @@ import { getUserTasteType } from '@/service/my-page'
 export const userTasteTypeQueryKey = (userId: string) =>
   ['userTasteType', userId] as const
 
-export function useUserTasteType(userId: string) {
+export const useUserTasteType = (userId: string) => {
   return useQuery({
     queryKey: userTasteTypeQueryKey(userId),
     enabled: !!userId,

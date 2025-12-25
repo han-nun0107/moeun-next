@@ -3,12 +3,10 @@
 import clsx from 'clsx'
 import Image from 'next/image'
 
-import Button from '@/components/common/Button'
+import { Button, TasteReviewModal } from '@/components'
 import { IMAGE_URLS } from '@/constants/imageUrls'
 import { useOrderItemRow } from '@/hooks/item-row/useOrderItemRow'
 import { OrderItemRowProps } from '@/types/item-row'
-
-import TasteReviewModal from '../../modal/TasteReviewModal'
 
 const OrderItemRow = ({
   id,

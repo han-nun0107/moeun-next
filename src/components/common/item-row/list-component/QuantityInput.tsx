@@ -8,11 +8,11 @@ type QuantityInputProps = {
   onDecrease: () => void
 }
 
-export function QuantityInput({
+const QuantityInput = ({
   value,
   onIncrease,
   onDecrease,
-}: QuantityInputProps) {
+}: QuantityInputProps) => {
   return (
     <div className="flex items-center gap-2">
       <Button
@@ -37,3 +37,5 @@ export function QuantityInput({
     </div>
   )
 }
+
+export default QuantityInput
