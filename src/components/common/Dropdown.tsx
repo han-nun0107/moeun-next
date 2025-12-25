@@ -3,7 +3,7 @@
 import ArrowIcon from '@/assets/icons/dropdown/arrow.svg'
 import Button from '@/components/common/Button'
 import { dropdownOptions } from '@/constants'
-import { useDropdown } from '@/hooks/useDropdown'
+import useDropdown from '@/hooks/useDropdown'
 import type { DropdownProps } from '@/types/dropdown'
 import { cn } from '@/utils/cn'
 
@@ -32,7 +32,7 @@ const Dropdown = ({
         variant="DROPDOWN"
         aria-haspopup="listbox"
         aria-expanded={isOpen}
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={() => setIsOpen((prev: boolean) => !prev)}
       >
         <span className={selected ? 'text-gray-900' : 'text-gray-700'}>
           {selected ? selected.label : placeholder}

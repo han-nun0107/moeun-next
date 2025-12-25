@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import { IMAGE_URLS } from '@/constants/imageUrls'
 import { CartItemRowProps } from '@/types/item-row'
 
-import { QuantityInput } from './QuantityInput'
+import QuantityInput from './QuantityInput'
 
 const CartItemRow = ({
   detailId,

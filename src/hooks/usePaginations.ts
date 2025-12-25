@@ -7,12 +7,12 @@ type UsePaginationProps = {
   siblingCount?: number
 }
 
-export function usePagination({
+const usePagination = ({
   currentPage,
   totalPages,
   onPageChange,
   siblingCount = 1,
-}: UsePaginationProps) {
+}: UsePaginationProps) => {
   const DOTS = '...'
 
   const paginationRange = useMemo(() => {
@@ -69,3 +69,5 @@ export function usePagination({
     onPageNext: handleNext,
   }
 }
+
+export default usePagination

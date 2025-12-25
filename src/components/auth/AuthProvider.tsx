@@ -6,7 +6,7 @@ import { useLoginStore } from '@/stores/useLoginStore'
 import { supabase } from '@/utils/supabase'
 import { syncPendingResponses } from '@/utils/syncPendingResponses'
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
+const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const { checkSession, setUser } = useLoginStore()
 
   useEffect(() => {
@@ -39,3 +39,5 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   return <>{children}</>
 }
+
+export default AuthProvider
