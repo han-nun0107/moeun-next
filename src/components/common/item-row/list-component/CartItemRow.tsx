@@ -23,13 +23,21 @@ const CartItemRow = ({
   checked,
   onQuantityChange,
 }: CartItemRowProps) => {
-  const { localQuantity, onIncreaseQuantity, onDecreaseQuantity } = useCartItem(
-    {
-      quantity: quantity || 0,
-      id,
-      onQuantityChange,
-    }
-  )
+  const { localQuantity } = useCartItem({
+    quantity: quantity || 0,
+    id,
+  })
+
+  const handleIncrease = () => {
+    const newQuantity = localQuantity + 1
+    onQuantityChange?.(newQuantity)
+  }
+
+  const handleDecrease = () => {
+    if (localQuantity <= 1) return
+    const newQuantity = localQuantity - 1
+    onQuantityChange?.(newQuantity)
+  }
 
   return (
     <div className="text-black-200 flex items-center border-b border-gray-100 py-5 text-center">
@@ -56,8 +64,8 @@ const CartItemRow = ({
       <div className="bg-gray-10 mx-auto inline-flex h-8 w-20 items-center justify-center gap-1 rounded-[5px]">
         <QuantityInput
           value={localQuantity}
-          onIncrease={onIncreaseQuantity}
-          onDecrease={onDecreaseQuantity}
+          onIncrease={handleIncrease}
+          onDecrease={handleDecrease}
         />
       </div>
       <div className="w-[15%] min-w-[80px] font-medium">

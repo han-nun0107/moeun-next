@@ -21,7 +21,6 @@ export type ItemRowLabelType = {
   className?: string
 }
 
-// Discriminated Union 타입 정의
 export type ItemRow =
   | (BaseItemRow & {
       type: 'cart'
