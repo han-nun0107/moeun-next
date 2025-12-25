@@ -1,29 +1,69 @@
 'use client'
 
 import { Equal } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 import Button from '@/components/common/Button'
 import ItemRowContent from '@/components/common/ItemRowContent'
+import { useCart } from '@/hooks/cart/useCart'
 import useCartItem from '@/hooks/item-row/useCartItem'
-import { mockCartResponse } from '@/mocks/cart/cart'
+import { useLoginStore } from '@/stores/useLoginStore'
+import { convertCartId } from '@/utils/cart/idConverter'
 
 const Cart = () => {
-  const invalidateCart = () => {}
+  const router = useRouter()
+  const { user, isLoggedIn } = useLoginStore()
+  const { cartData, isLoading, isError, updateQuantity } = useCart()
 
-  const {
-    data,
-    updateQuantityAndTotals,
-    onCheckChange,
-    checkedTotalPrice,
-    checkedItems,
-  } = useCartItem({
-    quantity: mockCartResponse.cart_items.reduce(
+  const handleQuantityChange = (
+    itemId: number | string,
+    newQuantity: number
+  ) => {
+    const cartId = convertCartId(itemId)
+    if (cartId !== null) {
+      updateQuantity({ cartId, quantity: newQuantity })
+    }
+  }
+
+  const { data, onCheckChange, checkedTotalPrice, checkedItems } = useCartItem({
+    quantity: cartData?.cart_items?.reduce(
       (total, item) => total + (item.quantity || 0),
       0
     ),
-    data: mockCartResponse,
-    onQuantityChange: invalidateCart,
+    data: cartData,
   })
+
+  if (!isLoggedIn || !user) {
+    return (
+      <div className="flex-center mt-25 flex-col">
+        <h1 className="text-black-200 text-bold-text-40 mb-4">장바구니</h1>
+        <p className="mb-4 text-gray-600">로그인이 필요합니다.</p>
+        <Button variant="CONTAINED" onClick={() => router.push('/login')}>
+          로그인하기
+        </Button>
+      </div>
+    )
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex-center mt-25 flex-col">
+        <h1 className="text-black-200 text-bold-text-40">장바구니</h1>
+        <p className="mt-4 text-gray-600">장바구니를 불러오는 중...</p>
+      </div>
+    )
+  }
+
+  if (isError) {
+    return (
+      <div className="flex-center mt-25 flex-col">
+        <h1 className="text-black-200 text-bold-text-40">장바구니</h1>
+        <p className="mt-4 text-red-500">
+          장바구니를 불러오는 중 오류가 발생했습니다.
+        </p>
+      </div>
+    )
+  }
 
   return (
     <div className="flex-center mt-25 flex-col">
@@ -36,7 +76,9 @@ const Cart = () => {
             type: 'cart',
           })) || []
         }
-        onQuantityChange={updateQuantityAndTotals}
+        onQuantityChange={(itemId, newQuantity) => {
+          handleQuantityChange(itemId, newQuantity)
+        }}
         checkedItems={checkedItems}
         onCheckChange={onCheckChange}
       />

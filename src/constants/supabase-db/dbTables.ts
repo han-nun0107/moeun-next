@@ -5,4 +5,5 @@ export const DB_TABLES = {
   DRINK_INFO: 'drink_info',
   TASTE_PROFILE: 'taste_profile',
   PRODUCT_IMAGE: 'product_image',
+  CART: 'cart',
 } as const

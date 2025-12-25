@@ -66,6 +66,12 @@ export type UseCartItemLogicParams = {
 
 export type CartResponse = {
   cart_items?: CartSingleItem[]
+  results?: CartSingleItem[]
+  count?: number
+  next?: string | null
+  previous?: string | null
+  total_price?: number
+  final_total?: number
 }
 
 export type QuantityInputProps = {

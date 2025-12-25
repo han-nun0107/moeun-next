@@ -29,7 +29,7 @@ const Detail = ({ params }: DetailPageProps) => {
     onDecreaseQuantity,
     handleAddToCart,
     handlePurchase,
-  } = useDetailPage()
+  } = useDetailPage(product)
 
   if (isLoading) {
     return (
