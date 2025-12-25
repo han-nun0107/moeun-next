@@ -9,10 +9,7 @@ import {
 import { useLoginStore } from '@/stores/useLoginStore'
 import type { CartResponse } from '@/types/item-row'
 import { updateCartItemOptimistically } from '@/utils/cart/optimisticUpdate'
-import {
-  transformCartData,
-  type CartRowWithProduct,
-} from '@/utils/cart/transformCartData'
+import { transformCartData } from '@/utils/cart/transformCartData'
 
 export const useCart = () => {
   const { user } = useLoginStore()
@@ -34,7 +31,7 @@ export const useCart = () => {
       if (result.error) {
         throw result.error
       }
-      return transformCartData((result.data as CartRowWithProduct[]) || [])
+      return transformCartData(result.data)
     },
     enabled: !!user?.id,
     staleTime: 1000 * 60,

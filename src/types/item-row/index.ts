@@ -32,6 +32,7 @@ export type ItemRow =
       pickupAddress?: string
       pickupContact?: string
       subtotal?: string
+      image_url?: string | null
       pickup_store?: PickupStore
       product?: Product
       package?: Package

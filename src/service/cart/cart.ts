@@ -87,20 +87,14 @@ export const addToCart = async (
       price_at_added: options?.priceAtAdded || productPrice,
     }
 
-    const insertQuery = (
-      supabase.from(DB_TABLES.CART) as unknown as {
-        insert: (values: CartInsert) => {
-          select: (columns?: string) => {
-            single: () => Promise<{ data: CartRow | null; error: Error | null }>
-          }
-        }
-      }
-    )
-      .insert(cartItem)
+    const insertResult = await (supabase
+      .from(DB_TABLES.CART)
+      .insert(cartItem as never)
       .select()
-      .single()
-
-    const insertResult = await insertQuery
+      .single() as unknown as Promise<{
+      data: CartRow | null
+      error: { message: string } | null
+    }>)
 
     const { data, error } = insertResult
 
@@ -115,6 +109,15 @@ export const addToCart = async (
     }
     return createErrorResponse<CartRow>('장바구니 추가 중 오류가 발생했습니다.')
   }
+}
+
+type CartRowWithProduct = CartRow & {
+  product_detail?: {
+    id: string
+    name: string
+    price: number
+    description_image_url: string
+  } | null
 }
 
 export const getCartItems = async (userId: string) => {
@@ -136,15 +139,15 @@ export const getCartItems = async (userId: string) => {
       .order('created_at', { ascending: false })
 
     if (error) {
-      return createErrorResponse<CartRow[]>(error.message)
+      return createErrorResponse<CartRowWithProduct[]>(error.message)
     }
 
-    return createSuccessResponse(data || [])
+    return createSuccessResponse((data as CartRowWithProduct[]) || [])
   } catch (error) {
     if (error instanceof CartError) {
-      return createErrorResponse<CartRow[]>(error.message)
+      return createErrorResponse<CartRowWithProduct[]>(error.message)
     }
-    return createErrorResponse<CartRow[]>(
+    return createErrorResponse<CartRowWithProduct[]>(
       '장바구니 조회 중 오류가 발생했습니다.'
     )
   }
@@ -152,29 +155,17 @@ export const getCartItems = async (userId: string) => {
 
 export const updateCartItem = async (cartId: number, updates: CartUpdate) => {
   try {
-    const updateQuery = (
-      supabase.from(DB_TABLES.CART) as unknown as {
-        update: (values: CartUpdate) => {
-          eq: (
-            column: string,
-            value: number
-          ) => {
-            select: (columns?: string) => {
-              single: () => Promise<{
-                data: CartRow | null
-                error: Error | null
-              }>
-            }
-          }
-        }
-      }
-    )
-      .update(updates)
+    const updateResult = await (supabase
+      .from(DB_TABLES.CART)
+      .update(updates as never)
       .eq('id', cartId)
       .select()
-      .single()
+      .single() as unknown as Promise<{
+      data: CartRow | null
+      error: { message: string } | null
+    }>)
 
-    const { data, error } = await updateQuery
+    const { data, error } = updateResult
 
     if (error) {
       return createErrorResponse<CartRow>(error.message)
