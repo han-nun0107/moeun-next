@@ -28,6 +28,7 @@ export type ItemRow =
       checked?: boolean
       onCheckChange?: (checked: boolean) => void
       onQuantityChange?: (newQuantity: number) => void
+      onDelete?: () => void
       pickupName?: string
       pickupAddress?: string
       pickupContact?: string

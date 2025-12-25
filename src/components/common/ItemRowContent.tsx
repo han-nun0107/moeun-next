@@ -9,6 +9,7 @@ type ItemRowProps = {
   items: ItemRow[]
   type: 'cart' | 'order' | 'tasting'
   onQuantityChange?: (itemId: number | string, newQuantity: number) => void
+  onDelete?: (itemId: number | string) => void
   checkedItems?: (number | string)[]
   onCheckChange?: (itemId: number | string, isChecked: boolean) => void
 }
@@ -17,6 +18,7 @@ const ItemRowContent = ({
   items,
   type,
   onQuantityChange,
+  onDelete,
   checkedItems,
   onCheckChange,
 }: ItemRowProps) => {
@@ -54,6 +56,11 @@ const ItemRowContent = ({
                   await handleQuantityChange(idx, newQuantity)
                   if (item.id != null) {
                     onQuantityChange?.(item.id, newQuantity)
+                  }
+                }}
+                onDelete={() => {
+                  if (item.id != null) {
+                    onDelete?.(item.id)
                   }
                 }}
               />

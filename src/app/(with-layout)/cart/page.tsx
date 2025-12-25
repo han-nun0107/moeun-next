@@ -13,7 +13,7 @@ import { convertCartId } from '@/utils/cart/idConverter'
 const Cart = () => {
   const router = useRouter()
   const { user, isLoggedIn } = useLoginStore()
-  const { cartData, isLoading, isError, updateQuantity } = useCart()
+  const { cartData, isLoading, isError, updateQuantity, deleteItem } = useCart()
 
   const handleQuantityChange = (
     itemId: number | string,
@@ -22,6 +22,15 @@ const Cart = () => {
     const cartId = convertCartId(itemId)
     if (cartId !== null) {
       updateQuantity({ cartId, quantity: newQuantity })
+    }
+  }
+
+  const handleDelete = (itemId: number | string) => {
+    const cartId = convertCartId(itemId)
+    if (cartId !== null) {
+      if (confirm('장바구니에서 이 상품을 삭제하시겠습니까?')) {
+        deleteItem(cartId)
+      }
     }
   }
 
@@ -73,6 +82,7 @@ const Cart = () => {
           })) || []
         }
         onQuantityChange={handleQuantityChange}
+        onDelete={handleDelete}
         checkedItems={checkedItems}
         onCheckChange={onCheckChange}
       />

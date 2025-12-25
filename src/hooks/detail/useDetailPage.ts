@@ -1,5 +1,6 @@
 'use client'
 
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -10,6 +11,7 @@ import type { ProductDetail } from '@/types/product'
 export const useDetailPage = (product?: ProductDetail) => {
   const router = useRouter()
   const { user } = useLoginStore()
+  const queryClient = useQueryClient()
 
   const [dropdownValues, setDropdownValues] = useState({
     orderRegion: '',
@@ -17,7 +19,6 @@ export const useDetailPage = (product?: ProductDetail) => {
     pickupDate: '',
   })
   const [localQuantity, setLocalQuantity] = useState(1)
-  const [isAddingToCart, setIsAddingToCart] = useState(false)
 
   const handleDropdownChange = (key: string, value: string) => {
     setDropdownValues((prev) => ({
@@ -30,7 +31,42 @@ export const useDetailPage = (product?: ProductDetail) => {
   const onDecreaseQuantity = () =>
     setLocalQuantity((prev) => (prev > 1 ? prev - 1 : 1))
 
-  const handleAddToCart = async () => {
+  const addToCartMutation = useMutation({
+    mutationFn: async ({
+      userId,
+      productId,
+      quantity,
+      options,
+    }: {
+      userId: string
+      productId: number
+      quantity: number
+      options?: {
+        orderRegion?: string
+        pickupStoreName?: string
+        pickupDate?: string
+        priceAtAdded?: number
+        imageUrl?: string
+      }
+    }) => {
+      const result = await addToCart(userId, productId, quantity, options)
+      if (result.error) {
+        throw result.error
+      }
+      return result.data
+    },
+    onSuccess: () => {
+      // 장바구니 쿼리 invalidate하여 최신 데이터 가져오기
+      queryClient.invalidateQueries({ queryKey: ['cart', user?.id] })
+      alert('장바구니에 추가되었습니다.')
+      router.push('/cart')
+    },
+    onError: (error: Error) => {
+      alert(error.message || '장바구니 추가에 실패했습니다.')
+    },
+  })
+
+  const handleAddToCart = () => {
     if (!user) {
       alert('로그인이 필요합니다.')
       router.push('/login')
@@ -42,39 +78,24 @@ export const useDetailPage = (product?: ProductDetail) => {
       return
     }
 
-    setIsAddingToCart(true)
-
-    try {
-      const productId = parseInt(product.id, 10)
-      if (isNaN(productId)) {
-        alert('상품 ID가 올바르지 않습니다.')
-        return
-      }
-
-      const { data, error } = await addToCart(
-        user.id,
-        productId,
-        localQuantity,
-        {
-          orderRegion: dropdownValues.orderRegion || undefined,
-          pickupStoreName: dropdownValues.pickupStore || undefined,
-          pickupDate: dropdownValues.pickupDate || undefined,
-          priceAtAdded: product.price,
-        }
-      )
-
-      if (error) {
-        alert(error.message || '장바구니 추가에 실패했습니다.')
-        return
-      }
-
-      alert('장바구니에 추가되었습니다.')
-      router.push('/cart')
-    } catch (err) {
-      alert('장바구니 추가 중 오류가 발생했습니다.')
-    } finally {
-      setIsAddingToCart(false)
+    const productId = parseInt(product.id, 10)
+    if (isNaN(productId)) {
+      alert('상품 ID가 올바르지 않습니다.')
+      return
     }
+
+    addToCartMutation.mutate({
+      userId: user.id,
+      productId,
+      quantity: localQuantity,
+      options: {
+        orderRegion: dropdownValues.orderRegion || undefined,
+        pickupStoreName: dropdownValues.pickupStore || undefined,
+        pickupDate: dropdownValues.pickupDate || undefined,
+        priceAtAdded: product.price,
+        imageUrl: product.main_image_url,
+      },
+    })
   }
 
   const handlePurchase = () => {
@@ -89,6 +110,6 @@ export const useDetailPage = (product?: ProductDetail) => {
     onDecreaseQuantity,
     handleAddToCart,
     handlePurchase,
-    isAddingToCart,
+    isAddingToCart: addToCartMutation.isPending,
   }
 }

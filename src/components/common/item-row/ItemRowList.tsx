@@ -19,6 +19,7 @@ const ItemRowList = (props: ItemRow) => {
           pickupAddress={props.pickup_store?.address || ''}
           pickupContact={props.pickup_store?.contact || ''}
           onQuantityChange={props.onQuantityChange}
+          onDelete={props.onDelete}
           checked={props.checked}
           onCheckChange={props.onCheckChange}
         />
