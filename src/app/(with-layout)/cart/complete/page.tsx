@@ -28,7 +28,7 @@ const ErrorMessage = ({ message }: { message: string }) => (
 const CartComplete = async ({
   searchParams,
 }: {
-  searchParams: SearchParams
+  searchParams: Promise<SearchParams>
 }) => {
   const secretKey = process.env.TOSS_SECRET_KEY
   if (!secretKey) {
@@ -36,7 +36,7 @@ const CartComplete = async ({
   }
 
   const basicToken = Buffer.from(`${secretKey}:`).toString('base64')
-  const params = searchParams
+  const params = await searchParams
 
   if (!params.orderId) {
     return <ErrorMessage message={COMPLETE_ERROR_MESSAGES.NO_ORDER_ID} />
