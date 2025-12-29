@@ -28,7 +28,7 @@ const ErrorMessage = ({ message }: { message: string }) => (
 const CartComplete = async ({
   searchParams,
 }: {
-  searchParams: Promise<SearchParams>
+  searchParams: SearchParams
 }) => {
   const secretKey = process.env.TOSS_SECRET_KEY
   if (!secretKey) {
@@ -36,7 +36,7 @@ const CartComplete = async ({
   }
 
   const basicToken = Buffer.from(`${secretKey}:`).toString('base64')
-  const params = await searchParams
+  const params = searchParams
 
   if (!params.orderId) {
     return <ErrorMessage message={COMPLETE_ERROR_MESSAGES.NO_ORDER_ID} />
@@ -45,6 +45,7 @@ const CartComplete = async ({
   const paymentsResponse = await fetch(
     `https://api.tosspayments.com/v1/payments/orders/${params.orderId}`,
     {
+      cache: 'no-store',
       headers: {
         Authorization: `Basic ${basicToken}`,
         'Content-Type': 'application/json',
