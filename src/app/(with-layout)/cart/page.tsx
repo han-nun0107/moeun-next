@@ -121,7 +121,7 @@ const Cart = () => {
                 alert('결제할 상품을 선택해주세요.')
                 return
               }
-              onPayment(checkedTotalPrice)
+              onPayment(checkedTotalPrice, checkedItems)
             }}
           >
             결제하기

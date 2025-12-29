@@ -9,6 +9,7 @@ import {
 } from '@/service/cart/cart'
 import { useLoginStore } from '@/stores/useLoginStore'
 import type { CartResponse } from '@/types/item-row'
+import { formatOrderName } from '@/utils/cart/formatOrderName'
 import { updateCartItemOptimistically } from '@/utils/cart/optimisticUpdate'
 import { transformCartData } from '@/utils/cart/transformCartData'
 
@@ -108,7 +109,10 @@ export const useCart = () => {
     },
   })
 
-  const onPayment = async (checkedTotalPrice: number) => {
+  const onPayment = async (
+    checkedTotalPrice: number,
+    checkedItems: (number | string)[]
+  ) => {
     const clientKey = process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY
     if (!clientKey) {
       alert('클라이언트 키가 없습니다.')
@@ -121,11 +125,13 @@ export const useCart = () => {
       customerKey: user?.id ? String(user.id) : 'ANONYMOUS',
     })
 
+    const orderName = formatOrderName(cartData, checkedItems)
+
     await payment.requestPayment({
       method: 'CARD',
       amount: { currency: 'KRW', value: checkedTotalPrice },
       orderId: crypto.randomUUID(),
-      orderName: '테스트 결제',
+      orderName,
       successUrl: `${window.location.origin}/api/payment/confirm`,
       failUrl: `${window.location.origin}/cart/fail`,
     })
