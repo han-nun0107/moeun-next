@@ -23,6 +23,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'd1e2y5wc27crnp.cloudfront.net',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
     ],
     formats: ['image/webp', 'image/avif'],
   },
