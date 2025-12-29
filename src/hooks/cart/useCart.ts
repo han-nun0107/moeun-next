@@ -1,4 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { loadTossPayments } from '@tosspayments/tosspayments-sdk'
 
 import {
   getCartItems,
@@ -107,6 +108,29 @@ export const useCart = () => {
     },
   })
 
+  const onPayment = async (checkedTotalPrice: number) => {
+    const clientKey = process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY
+    if (!clientKey) {
+      alert('클라이언트 키가 없습니다.')
+      return
+    }
+
+    const tossPayments = await loadTossPayments(clientKey)
+
+    const payment = tossPayments.payment({
+      customerKey: user?.id ? String(user.id) : 'ANONYMOUS',
+    })
+
+    await payment.requestPayment({
+      method: 'CARD',
+      amount: { currency: 'KRW', value: checkedTotalPrice },
+      orderId: crypto.randomUUID(),
+      orderName: '테스트 결제',
+      successUrl: `${window.location.origin}/api/payment/confirm`,
+      failUrl: `${window.location.origin}/cart/fail`,
+    })
+  }
+
   return {
     cartData,
     isLoading,
@@ -118,5 +142,6 @@ export const useCart = () => {
     clearCart: clearCartMutation.mutate,
     isUpdating: updateQuantityMutation.isPending,
     isDeleting: deleteItemMutation.isPending,
+    onPayment,
   }
 }

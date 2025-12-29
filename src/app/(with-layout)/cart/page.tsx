@@ -3,8 +3,7 @@
 import { Equal } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
-import Button from '@/components/common/Button'
-import ItemRowContent from '@/components/common/ItemRowContent'
+import { Button, ItemRowContent } from '@/components/common'
 import { useCart } from '@/hooks/cart/useCart'
 import useCartItem from '@/hooks/item-row/useCartItem'
 import { useLoginStore } from '@/stores/useLoginStore'
@@ -13,7 +12,14 @@ import { convertCartId } from '@/utils/cart/idConverter'
 const Cart = () => {
   const router = useRouter()
   const { user, isLoggedIn } = useLoginStore()
-  const { cartData, isLoading, isError, updateQuantity, deleteItem } = useCart()
+  const {
+    cartData,
+    isLoading,
+    isError,
+    updateQuantity,
+    deleteItem,
+    onPayment,
+  } = useCart()
 
   const handleQuantityChange = (
     itemId: number | string,
@@ -115,7 +121,7 @@ const Cart = () => {
                 alert('결제할 상품을 선택해주세요.')
                 return
               }
-              alert('결제되었습니다 (mock)!')
+              onPayment(checkedTotalPrice)
             }}
           >
             결제하기

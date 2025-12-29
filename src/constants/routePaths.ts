@@ -14,7 +14,7 @@ export const ROUTE_PATHS = {
     INDEX: '/my-page',
     TASTE_PROFILE: '/my-page/taste-profile',
     ACCOUNT_EDIT: '/my-page/account-edit',
-    ORDER_HISTORY: '/my-page/order-history',
+    ORDER_HISTORY: '/my-page/order',
     TASTING_HISTORY: '/my-page/tasting-history',
   },
 
