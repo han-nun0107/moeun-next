@@ -119,18 +119,48 @@ export const useCart = () => {
       return
     }
 
+    const orderName = formatOrderName(cartData, checkedItems)
+
+    let orderId: string
+    try {
+      const orderResponse = await fetch('/api/payment/create-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: checkedTotalPrice,
+          orderName,
+        }),
+      })
+
+      if (!orderResponse.ok) {
+        throw new Error('주문 생성 실패')
+      }
+
+      const orderData = await orderResponse.json()
+      orderId = orderData.orderId
+    } catch (error) {
+      if (process.env.NODE_ENV === 'development') {
+        // eslint-disable-next-line no-console
+        console.error(
+          'Failed to create order on server, using client UUID',
+          error
+        )
+      }
+      orderId = crypto.randomUUID()
+    }
+
     const tossPayments = await loadTossPayments(clientKey)
 
     const payment = tossPayments.payment({
       customerKey: user?.id ? String(user.id) : 'ANONYMOUS',
     })
 
-    const orderName = formatOrderName(cartData, checkedItems)
-
     await payment.requestPayment({
       method: 'CARD',
       amount: { currency: 'KRW', value: checkedTotalPrice },
-      orderId: crypto.randomUUID(),
+      orderId,
       orderName,
       successUrl: `${window.location.origin}/api/payment/confirm`,
       failUrl: `${window.location.origin}/cart/fail`,
