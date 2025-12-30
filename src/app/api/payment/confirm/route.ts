@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+import { Payment } from '@/types/toss/toss'
+import { createSupabaseServerClient } from '@/utils/supabase/server-client'
+
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
   const orderId = searchParams.get('orderId')
@@ -23,50 +26,129 @@ export async function GET(request: NextRequest) {
     )
   }
 
+  let supabase
+  try {
+    supabase = createSupabaseServerClient()
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message:
+          error instanceof Error
+            ? error.message
+            : 'Failed to initialize Supabase client',
+      },
+      { status: 500 }
+    )
+  }
+
+  const { data: order, error: findErr } = await supabase
+    .from('orders')
+    .select('id, user_id, total_amount, status')
+    .eq('order_id', orderId)
+    .single()
+
+  if (findErr || !order) {
+    return NextResponse.json({ message: 'Order not found' }, { status: 404 })
+  }
+
+  if (order.status === 'COMPLETED') {
+    return NextResponse.redirect(
+      new URL(
+        `/cart/complete?orderId=${encodeURIComponent(orderId)}`,
+        request.url
+      )
+    )
+  }
+
+  if (order.status !== 'PENDING') {
+    const failUrl = new URL(`/cart/fail`, request.url)
+    failUrl.searchParams.set('code', 'INVALID_ORDER_STATUS')
+    failUrl.searchParams.set('message', `Order status is ${order.status}`)
+    return NextResponse.redirect(failUrl)
+  }
+
+  if (order.total_amount !== clientAmount) {
+    const failUrl = new URL(`/cart/fail`, request.url)
+    failUrl.searchParams.set('code', 'AMOUNT_MISMATCH')
+    failUrl.searchParams.set('message', 'Client amount differs from DB amount')
+    return NextResponse.redirect(failUrl)
+  }
+
   const basicToken = Buffer.from(`${secretKey}:`).toString('base64')
 
-  // 결제 확인 API 호출
-  const r = await fetch('https://api.tosspayments.com/v1/payments/confirm', {
-    method: 'POST',
-    headers: {
-      Authorization: `Basic ${basicToken}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ paymentKey, orderId, amount: clientAmount }),
-  })
+  const response = await fetch(
+    'https://api.tosspayments.com/v1/payments/confirm',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Basic ${basicToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        paymentKey,
+        orderId,
+        amount: order.total_amount,
+      }),
+    }
+  )
 
-  const text = await r.text()
-  if (!r.ok) {
+  const responseText = await response.text()
+
+  if (!response.ok) {
+    await supabase
+      .from('orders')
+      .update({ status: 'FAILED' })
+      .eq('id', order.id)
+
     try {
-      const error = JSON.parse(text)
+      const error = JSON.parse(responseText)
       const failUrl = new URL(`/cart/fail`, request.url)
       failUrl.searchParams.set('code', error.code)
       failUrl.searchParams.set('message', error.message)
       return NextResponse.redirect(failUrl)
-    } catch (e) {
-      return new NextResponse(text, { status: r.status })
+    } catch {
+      return new NextResponse(responseText, { status: response.status })
     }
   }
 
+  let paymentResponse: Payment
   try {
-    const paymentResponse = JSON.parse(text)
-    const actualAmount = paymentResponse.totalAmount
-
-    if (Math.abs(actualAmount - clientAmount) > 0) {
-      return NextResponse.json(
-        {
-          message: 'Payment amount verification failed',
-          code: 'AMOUNT_MISMATCH',
-        },
-        { status: 400 }
-      )
-    }
-  } catch (e) {
-    return new NextResponse(text, { status: r.status })
+    paymentResponse = JSON.parse(responseText)
+  } catch {
+    return new NextResponse(responseText, { status: 500 })
   }
 
-  // confirm 성공하면 payment 객체가 옴
-  // TODO: DB에 주문 정보 저장 (orderId, amount, paymentKey 등)
+  if (paymentResponse.totalAmount !== order.total_amount) {
+    await supabase
+      .from('orders')
+      .update({ status: 'FAILED' })
+      .eq('id', order.id)
+
+    return NextResponse.json(
+      {
+        message: 'Payment amount verification failed',
+        code: 'AMOUNT_MISMATCH',
+      },
+      { status: 400 }
+    )
+  }
+
+  const { error: updErr } = await supabase
+    .from('orders')
+    .update({
+      status: 'COMPLETED',
+      payment_key: paymentKey,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('id', order.id)
+
+  if (updErr) {
+    return NextResponse.json(
+      { message: 'Order update failed', error: updErr.message },
+      { status: 500 }
+    )
+  }
+
   return NextResponse.redirect(
     new URL(
       `/cart/complete?orderId=${encodeURIComponent(orderId)}`,

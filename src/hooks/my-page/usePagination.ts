@@ -1,26 +1,24 @@
 import { useState } from 'react'
 
-import type { ItemRow } from '@/types/item-row'
-
-type UsePaginationProps = {
+type UsePaginationProps<T> = {
   perpage: number
-  mockData?: ItemRow[]
+  data?: T[]
 }
 
-export const usePagination = ({
+export const usePagination = <T>({
   perpage,
-  mockData = [],
-}: UsePaginationProps) => {
+  data = [],
+}: UsePaginationProps<T>) => {
   const ITEMS_PER_PAGE = perpage
 
   const [currentPage, setCurrentPage] = useState(1)
 
   const totalPages =
-    mockData.length === 0 ? 1 : Math.ceil(mockData.length / ITEMS_PER_PAGE)
+    data.length === 0 ? 1 : Math.ceil(data.length / ITEMS_PER_PAGE)
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
   const endIndex = startIndex + ITEMS_PER_PAGE
-  const currentItems = mockData.slice(startIndex, endIndex)
+  const currentItems = data.slice(startIndex, endIndex)
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)

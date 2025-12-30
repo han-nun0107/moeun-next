@@ -1,6 +1,7 @@
 import { CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
 
+import { CompleteErrorMessage } from '@/components/cart/CompleteErrorMessage'
 import { Button } from '@/components/common'
 import {
   COMPLETE_BUTTON_ITEMS,
@@ -16,15 +17,6 @@ type SearchParams = {
   amount?: string
 }
 
-const ErrorMessage = ({ message }: { message: string }) => (
-  <div className="flex-center mt-25 flex-col">
-    <h1 className="text-black-200 text-bold-text-40 mb-4">결제 완료</h1>
-    <p className={message.includes('오류') ? 'text-red-500' : 'text-gray-600'}>
-      {message}
-    </p>
-  </div>
-)
-
 const CartComplete = async ({
   searchParams,
 }: {
@@ -32,14 +24,18 @@ const CartComplete = async ({
 }) => {
   const secretKey = process.env.TOSS_SECRET_KEY
   if (!secretKey) {
-    return <ErrorMessage message={COMPLETE_ERROR_MESSAGES.SERVER_ERROR} />
+    return (
+      <CompleteErrorMessage message={COMPLETE_ERROR_MESSAGES.SERVER_ERROR} />
+    )
   }
 
   const basicToken = Buffer.from(`${secretKey}:`).toString('base64')
   const params = await searchParams
 
   if (!params.orderId) {
-    return <ErrorMessage message={COMPLETE_ERROR_MESSAGES.NO_ORDER_ID} />
+    return (
+      <CompleteErrorMessage message={COMPLETE_ERROR_MESSAGES.NO_ORDER_ID} />
+    )
   }
 
   const paymentsResponse = await fetch(
@@ -54,7 +50,9 @@ const CartComplete = async ({
   )
 
   if (!paymentsResponse.ok) {
-    return <ErrorMessage message={COMPLETE_ERROR_MESSAGES.FETCH_ERROR} />
+    return (
+      <CompleteErrorMessage message={COMPLETE_ERROR_MESSAGES.FETCH_ERROR} />
+    )
   }
 
   const payments = await paymentsResponse.json()
