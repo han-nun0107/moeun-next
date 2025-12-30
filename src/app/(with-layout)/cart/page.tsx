@@ -40,6 +40,14 @@ const Cart = () => {
     }
   }
 
+  const handlePayment = () => {
+    if (checkedItems.length === 0) {
+      alert('결제할 상품을 선택해주세요.')
+      return
+    }
+    onPayment(checkedTotalPrice, checkedItems)
+  }
+
   const { data, onCheckChange, checkedTotalPrice, checkedItems } = useCartItem({
     data: cartData,
   })
@@ -116,13 +124,7 @@ const Cart = () => {
           <Button
             variant="CARD_PAY"
             className="mt-12 mb-25"
-            onClick={() => {
-              if (checkedItems.length === 0) {
-                alert('결제할 상품을 선택해주세요.')
-                return
-              }
-              onPayment(checkedTotalPrice, checkedItems)
-            }}
+            onClick={handlePayment}
           >
             결제하기
           </Button>

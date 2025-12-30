@@ -9,7 +9,6 @@ import {
 } from '@/service/cart/cart'
 import { useLoginStore } from '@/stores/useLoginStore'
 import type { CartResponse } from '@/types/item-row'
-import { formatOrderName } from '@/utils/cart/formatOrderName'
 import { updateCartItemOptimistically } from '@/utils/cart/optimisticUpdate'
 import { transformCartData } from '@/utils/cart/transformCartData'
 
@@ -119,47 +118,54 @@ export const useCart = () => {
       return
     }
 
-    const orderName = formatOrderName(cartData, checkedItems)
+    if (!user?.id) {
+      alert('로그인이 필요합니다.')
+      return
+    }
 
     let orderId: string
+    let amount: number
+    let orderName: string
+
     try {
-      const orderResponse = await fetch('/api/payment/create-order', {
+      const res = await fetch('/api/payments/order', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          amount: checkedTotalPrice,
-          orderName,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: user.id }),
       })
 
-      if (!orderResponse.ok) {
-        throw new Error('주문 생성 실패')
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}))
+        throw new Error(errorData.message || '주문 생성 실패')
       }
 
-      const orderData = await orderResponse.json()
+      const orderData = await res.json()
       orderId = orderData.orderId
-    } catch (error) {
-      if (process.env.NODE_ENV === 'development') {
-        // eslint-disable-next-line no-console
-        console.error(
-          'Failed to create order on server, using client UUID',
-          error
-        )
+      amount = orderData.amount
+      orderName = orderData.orderName
+
+      if (!orderId || !amount || !orderName) {
+        throw new Error('주문 정보를 받지 못했습니다')
       }
-      orderId = crypto.randomUUID()
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : '주문 생성에 실패했습니다. 다시 시도해주세요.'
+
+      alert(errorMessage)
+      return
     }
 
     const tossPayments = await loadTossPayments(clientKey)
 
     const payment = tossPayments.payment({
-      customerKey: user?.id ? String(user.id) : 'ANONYMOUS',
+      customerKey: user.id ? String(user.id) : 'ANONYMOUS',
     })
 
     await payment.requestPayment({
       method: 'CARD',
-      amount: { currency: 'KRW', value: checkedTotalPrice },
+      amount: { currency: 'KRW', value: amount },
       orderId,
       orderName,
       successUrl: `${window.location.origin}/api/payment/confirm`,
