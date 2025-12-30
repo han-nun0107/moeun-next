@@ -21,6 +21,7 @@ const ItemRowLabel = ({ type, children, className }: ItemRowLabelType) => {
           <div className="mx-auto w-20">수량</div>
           <div className="w-[15%] min-w-[80px]">가격</div>
           <div className="w-[25%] min-w-[150px]">수령 장소</div>
+          <div className="w-[50px] shrink-0"></div>
         </div>
       )}
       {type === 'order' && (
