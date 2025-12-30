@@ -5,21 +5,9 @@ import { useQuery } from '@tanstack/react-query'
 import { ItemRowContent, Pagination } from '@/components'
 import { usePagination } from '@/hooks/my-page'
 import { getOrders } from '@/service/my-page/order'
+import type { OrderWithItems } from '@/service/my-page/order.mapper'
 import { mapOrdersToItemRows } from '@/service/my-page/order.mapper'
 import type { ItemRow } from '@/types/item-row'
-import type { OrderItemTable, OrderTable } from '@/types/supabase/tables/order'
-
-type OrderItemWithProduct = OrderItemTable['Row'] & {
-  product_detail?: {
-    id: string
-    name: string
-    description_image_url: string
-  } | null
-}
-
-type OrderWithItems = OrderTable['Row'] & {
-  order_items: OrderItemWithProduct[]
-}
 
 const Order = () => {
   const {
@@ -31,7 +19,7 @@ const Order = () => {
     queryFn: async () => {
       const { data: orders, error } = await getOrders()
       if (error) throw error
-      return (orders ?? []) as unknown as OrderWithItems[]
+      return orders ?? []
     },
     select: (orders) => mapOrdersToItemRows(orders),
   })
