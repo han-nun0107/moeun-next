@@ -2,6 +2,7 @@ import { randomUUID } from 'crypto'
 
 import { NextRequest, NextResponse } from 'next/server'
 
+import type { OrderItemTable, OrderTable } from '@/types/supabase/tables/order'
 import { calculateTotalAmount } from '@/utils/order/calculateTotalAmount'
 import { createOrderItems } from '@/utils/order/createOrderItems'
 import { formatOrderName } from '@/utils/order/formatOrderName'
@@ -54,20 +55,26 @@ export async function POST(request: NextRequest) {
     const orderId = randomUUID()
     const orderName = formatOrderName(cartItems)
 
-    // ts-expect-error - Supabase 클라이언트의 insert 메소드 타입이 제대로 추론되지 않음
+    const orderInsert: OrderTable['Insert'] = {
+      user_id: userId,
+      order_id: orderId,
+      order_name: orderName,
+      total_amount: totalAmount,
+      status: 'PENDING',
+      order_date: new Date().toISOString(),
+    }
+
+    type OrderSelectResult = {
+      id: number
+      order_id: string
+      total_amount: number
+    }
     const { data: order, error: orderErr } = await (supabase
       .from('orders')
-      .insert({
-        user_id: userId,
-        order_id: orderId,
-        order_name: orderName,
-        total_amount: totalAmount,
-        status: 'PENDING',
-        order_date: new Date().toISOString(),
-      } as never)
+      .insert(orderInsert as never)
       .select('id, order_id, total_amount')
       .single() as unknown as Promise<{
-      data: { id: number; order_id: string; total_amount: number } | null
+      data: OrderSelectResult | null
       error: { message: string } | null
     }>)
 
@@ -80,18 +87,18 @@ export async function POST(request: NextRequest) {
 
     const itemsToInsert = createOrderItems(order.id, cartItems)
 
-    // ts-expect-error - Supabase 클라이언트의 insert 메소드 타입이 제대로 추론되지 않음
-    const { error: itemsErr } = await (supabase
+    const { error: itemsErr } = await supabase
       .from('order_items')
-      .insert(itemsToInsert as never) as unknown as Promise<{
-      error: { message: string } | null
-    }>)
+      .insert(itemsToInsert as never)
+      .then(
+        (result) => result as unknown as { error: { message: string } | null }
+      )
 
     if (itemsErr) {
-      // ts-expect-error - Supabase 클라이언트의 update 메소드 타입이 제대로 추론되지 않음
+      const orderUpdate: OrderTable['Update'] = { status: 'FAILED' }
       await (supabase
         .from('orders')
-        .update({ status: 'FAILED' } as never)
+        .update(orderUpdate as never)
         .eq('id', order.id) as unknown as Promise<{
         error: { message: string } | null
       }>)

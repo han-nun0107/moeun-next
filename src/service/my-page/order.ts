@@ -1,8 +1,9 @@
-import { OrderTable } from '@/types/supabase/tables/order'
 import { supabase } from '@/utils/supabase'
 
+import type { OrderWithItems } from './order.mapper'
+
 export const getOrders = async (): Promise<{
-  data: OrderTable[] | null
+  data: OrderWithItems[] | null
   error: Error | null
 }> => {
   const { data, error } = await supabase
@@ -11,5 +12,5 @@ export const getOrders = async (): Promise<{
   if (error) {
     return { data: null, error: new Error(error.message) }
   }
-  return { data: data as OrderTable[], error: null }
+  return { data: (data ?? []) as OrderWithItems[], error: null }
 }
