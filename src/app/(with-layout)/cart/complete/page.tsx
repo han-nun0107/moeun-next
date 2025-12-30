@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 import { CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
 
