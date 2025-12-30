@@ -1,6 +1,7 @@
 import type { Json } from '../common'
 
 import type { CartTable } from './cart'
+import type { OrderItemTable, OrderTable } from './order'
 import type { ProductDetailTable } from './product_detail'
 
 export type QuestionsTable = {
@@ -174,4 +175,6 @@ export type Tables = {
   product_image: ProductImageTable
   product_detail: ProductDetailTable
   cart: CartTable
+  orders: OrderTable
+  order_items: OrderItemTable
 }

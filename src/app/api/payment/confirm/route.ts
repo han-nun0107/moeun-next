@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+import type { OrderTable } from '@/types/supabase/tables/order'
 import { Payment } from '@/types/toss/toss'
 import { createSupabaseServerClient } from '@/utils/supabase/server-client'
 
@@ -51,7 +52,13 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ message: 'Order not found' }, { status: 404 })
   }
 
-  if (order.status === 'COMPLETED') {
+  type OrderResult = Pick<
+    OrderTable['Row'],
+    'id' | 'user_id' | 'total_amount' | 'status'
+  >
+  const typedOrder = order as OrderResult
+
+  if (typedOrder.status === 'COMPLETED') {
     return NextResponse.redirect(
       new URL(
         `/cart/complete?orderId=${encodeURIComponent(orderId)}`,
@@ -60,14 +67,14 @@ export async function GET(request: NextRequest) {
     )
   }
 
-  if (order.status !== 'PENDING') {
+  if (typedOrder.status !== 'PENDING') {
     const failUrl = new URL(`/cart/fail`, request.url)
     failUrl.searchParams.set('code', 'INVALID_ORDER_STATUS')
-    failUrl.searchParams.set('message', `Order status is ${order.status}`)
+    failUrl.searchParams.set('message', `Order status is ${typedOrder.status}`)
     return NextResponse.redirect(failUrl)
   }
 
-  if (order.total_amount !== clientAmount) {
+  if (typedOrder.total_amount !== clientAmount) {
     const failUrl = new URL(`/cart/fail`, request.url)
     failUrl.searchParams.set('code', 'AMOUNT_MISMATCH')
     failUrl.searchParams.set('message', 'Client amount differs from DB amount')
@@ -87,7 +94,7 @@ export async function GET(request: NextRequest) {
       body: JSON.stringify({
         paymentKey,
         orderId,
-        amount: order.total_amount,
+        amount: typedOrder.total_amount,
       }),
     }
   )
@@ -95,10 +102,13 @@ export async function GET(request: NextRequest) {
   const responseText = await response.text()
 
   if (!response.ok) {
-    await supabase
+    // ts-expect-error - Supabase 클라이언트의 update 메소드 타입이 제대로 추론되지 않음
+    await (supabase
       .from('orders')
-      .update({ status: 'FAILED' })
-      .eq('id', order.id)
+      .update({ status: 'FAILED' } as never)
+      .eq('id', typedOrder.id) as unknown as Promise<{
+      error: { message: string } | null
+    }>)
 
     try {
       const error = JSON.parse(responseText)
@@ -118,11 +128,14 @@ export async function GET(request: NextRequest) {
     return new NextResponse(responseText, { status: 500 })
   }
 
-  if (paymentResponse.totalAmount !== order.total_amount) {
-    await supabase
+  if (paymentResponse.totalAmount !== typedOrder.total_amount) {
+    // ts-expect-error - Supabase 클라이언트의 update 메소드 타입이 제대로 추론되지 않음
+    await (supabase
       .from('orders')
-      .update({ status: 'FAILED' })
-      .eq('id', order.id)
+      .update({ status: 'FAILED' } as never)
+      .eq('id', typedOrder.id) as unknown as Promise<{
+      error: { message: string } | null
+    }>)
 
     return NextResponse.json(
       {
@@ -133,14 +146,17 @@ export async function GET(request: NextRequest) {
     )
   }
 
-  const { error: updErr } = await supabase
+  // ts-expect-error - Supabase 클라이언트의 update 메소드 타입이 제대로 추론되지 않음
+  const { error: updErr } = await (supabase
     .from('orders')
     .update({
       status: 'COMPLETED',
       payment_key: paymentKey,
       updated_at: new Date().toISOString(),
-    })
-    .eq('id', order.id)
+    } as never)
+    .eq('id', typedOrder.id) as unknown as Promise<{
+    error: { message: string } | null
+  }>)
 
   if (updErr) {
     return NextResponse.json(

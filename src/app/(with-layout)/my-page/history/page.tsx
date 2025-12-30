@@ -7,7 +7,7 @@ import { mockTastingData } from '@/mocks/itemRow'
 
 const History = () => {
   const { currentPage, totalPages, currentItems, handlePageChange } =
-    usePagination({ perpage: 3, mockData: mockTastingData })
+    usePagination({ perpage: 3, data: mockTastingData })
 
   return (
     <section className="flex h-screen flex-col gap-6">
