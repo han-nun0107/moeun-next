@@ -35,14 +35,14 @@ const CartItemRow = ({
 
   return (
     <div className="text-black-200 flex items-center border-b border-gray-100 py-5 text-center">
-      <div className="flex w-[40%] min-w-[250px] items-center gap-12">
+      <div className="flex w-[40%] min-w-[250px] shrink-0 items-center gap-12">
         <input
           type="checkbox"
           checked={checked || false}
           onChange={(e) => onCheckChange?.(e.target.checked)}
-          className="ml-12 h-5 w-5 accent-red-500"
+          className="ml-12 h-5 w-5 shrink-0 accent-red-500"
         />
-        <Link href={`/item/${detailId}`}>
+        <Link href={`/item/${detailId}`} className="shrink-0">
           <Image
             src={img || IMAGE_URLS.Product.Default}
             alt={name || '상품 이름'}
@@ -51,28 +51,35 @@ const CartItemRow = ({
             className="h-25 w-25 rounded border border-gray-300"
           />
         </Link>
-        <p className="text-bold-lg text-left">{name || '상품 이름'}</p>
+        <p className="text-bold-lg truncate text-left">{name || '상품 이름'}</p>
       </div>
 
       {/* 수량 조절 */}
-      <div className="bg-gray-10 mx-auto inline-flex h-8 w-20 items-center justify-center gap-1 rounded-[5px]">
+      <div className="bg-gray-10 mx-auto inline-flex h-8 w-20 shrink-0 items-center justify-center gap-1 rounded-[5px]">
         <QuantityInput
           value={quantity || 0}
           onIncrease={handleIncrease}
           onDecrease={handleDecrease}
+          onChange={(newQuantity) => {
+            if (newQuantity >= 1) {
+              onQuantityChange?.(newQuantity)
+            }
+          }}
         />
       </div>
-      <div className="w-[15%] min-w-[80px] font-medium">
+      <div className="w-[15%] min-w-[80px] shrink-0 font-medium">
         {parseInt(String(price ?? '0'), 10).toLocaleString()}원
       </div>
 
-      <div className="w-[25%] min-w-[150px] text-gray-700">
-        <p className="text-black-200 mb-2 text-lg underline">{pickupName}</p>
-        <p className="text-sm">{pickupAddress}</p>
-        <p className="text-sm">{pickupContact}</p>
+      <div className="w-[25%] min-w-[150px] shrink-0 text-gray-700">
+        <p className="text-black-200 mb-2 truncate text-lg underline">
+          {pickupName}
+        </p>
+        <p className="truncate text-sm">{pickupAddress}</p>
+        <p className="truncate text-sm">{pickupContact}</p>
       </div>
 
-      <div className="w-[5%] min-w-[50px]">
+      <div className="flex w-[50px] shrink-0 justify-center">
         <Button
           variant="ICON"
           onClick={onDelete}
