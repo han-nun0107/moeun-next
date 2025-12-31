@@ -16,21 +16,25 @@ export const useGauge = () => {
     data: gaugeData,
     isLoading,
     error,
-  } = useQuery<{ data: TasteScore[] | null; error: Error | null }, Error>({
+  } = useQuery<TasteScore[] | null, Error>({
     queryKey: ['userAverageScores', user?.id],
     queryFn: async () => {
       if (!user?.id) {
-        return { data: null, error: null }
+        return null
       }
-      return await getUserAverageScores(user.id)
+      const result = await getUserAverageScores(user.id)
+      if (result.error) {
+        throw result.error
+      }
+      return result.data
     },
     enabled: !!user?.id,
   })
 
   const displayedGauges = useMemo(() => {
-    const gauges = gaugeData?.data || MY_PAGE.GAUGE_VALUES
+    const gauges = gaugeData || MY_PAGE.GAUGE_VALUES
     return isExpanded ? gauges : gauges.slice(0, 3)
-  }, [gaugeData?.data, isExpanded])
+  }, [gaugeData, isExpanded])
 
   const toggleExpand = () => {
     setIsExpanded((prev) => !prev)
