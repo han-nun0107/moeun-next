@@ -31,7 +31,7 @@ export const useHistory = (userId?: string) => {
   })
 
   return {
-    data: data as ItemRow[] | undefined,
+    data,
     isLoading,
     error,
   }

@@ -27,7 +27,7 @@ export const useOrder = () => {
   })
 
   return {
-    data: data as ItemRow[] | undefined,
+    data,
     isLoading,
     error,
   }
