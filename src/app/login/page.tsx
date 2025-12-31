@@ -45,7 +45,10 @@ const SOCIAL_LOGINS: SocialLogin[] = [
 
 type SupportedProvider = ExtendedProvider
 
-// 타입 가드: provider가 Supabase 기본 Provider인지 확인
+const SUPPORTED_PROVIDERS = SOCIAL_LOGINS.map(
+  (login) => login.provider
+) as SupportedProvider[]
+
 const isSupabaseProvider = (
   provider: SupportedProvider
 ): provider is Provider => {
@@ -54,9 +57,7 @@ const isSupabaseProvider = (
 
 const Login = () => {
   const handleLogin = async (provider: SupportedProvider) => {
-    const supportedProviders: SupportedProvider[] = ['google', 'kakao', 'naver']
-
-    if (!supportedProviders.includes(provider)) {
+    if (!SUPPORTED_PROVIDERS.includes(provider)) {
       return
     }
 
@@ -115,9 +116,7 @@ const Login = () => {
                 key={socialLogin.provider}
                 variant="SOCIAL"
                 className={socialLogin.className}
-                onClick={() =>
-                  handleLogin(socialLogin.provider as SupportedProvider)
-                }
+                onClick={() => handleLogin(socialLogin.provider)}
               >
                 <Image
                   src={socialLogin.icon}
