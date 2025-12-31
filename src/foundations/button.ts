@@ -229,7 +229,7 @@ export const BUTTON_VARIANTS = {
     'w-13',
     'rounded-[3px]',
     'border',
-    'text-text-11',
+    'text-[11px]',
     'transition',
   ].join(' '),
 

@@ -8,4 +8,5 @@ export const DB_TABLES = {
   CART: 'cart',
   ORDERS: 'orders',
   ORDER_ITEMS: 'order_items',
+  FEEDBACKS: 'feedback',
 } as const

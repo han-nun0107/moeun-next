@@ -1,28 +1,10 @@
 'use client'
 
-import { useQuery } from '@tanstack/react-query'
-
 import { ItemRowContent, Pagination } from '@/components'
-import { usePagination } from '@/hooks/my-page'
-import { getOrders } from '@/service/my-page/order'
-import type { OrderWithItems } from '@/service/my-page/order.mapper'
-import { mapOrdersToItemRows } from '@/service/my-page/order.mapper'
-import type { ItemRow } from '@/types/item-row'
+import { useOrder, usePagination } from '@/hooks/my-page'
 
 const Order = () => {
-  const {
-    data: orderRows,
-    isLoading,
-    error,
-  } = useQuery<OrderWithItems[], Error, ItemRow[]>({
-    queryKey: ['orders'],
-    queryFn: async () => {
-      const { data: orders, error } = await getOrders()
-      if (error) throw error
-      return orders ?? []
-    },
-    select: (orders) => mapOrdersToItemRows(orders),
-  })
+  const { data: orderRows, isLoading, error } = useOrder()
 
   const { currentPage, totalPages, currentItems, handlePageChange } =
     usePagination({ perpage: 4, data: orderRows ?? [] })
