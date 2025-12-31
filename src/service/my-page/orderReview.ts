@@ -87,7 +87,7 @@ export const orderReviewSubmit = ({
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['orders'] })
-      queryClient.invalidateQueries({ queryKey: ['tasting-history'] })
+      queryClient.invalidateQueries({ queryKey: ['myFeedback', userId] })
       resetForm()
       onClose?.()
       alert('리뷰가 제출되었습니다.')
