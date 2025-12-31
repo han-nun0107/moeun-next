@@ -1,4 +1,4 @@
-import Tag from '@/components/common/Tag'
+import { Tag } from '@/components/common'
 import { TestCardProps } from '@/types/card/card'
 
 import CardImage from './CardImage'

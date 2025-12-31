@@ -1,2 +1,8 @@
 export { getUserAverageScores } from './gauge'
 export { getUserTasteType, type UserTasteTypeResult } from './tasteType'
+export { getOrders } from './order'
+export type { OrderWithItems } from './order.mapper'
+export { mapOrdersToItemRows } from './order.mapper'
+export { getMyFeedback, type FeedbackWithRelations } from './feedback'
+export { mapFeedbacksToItemRows } from './history.mapper'
+export { orderReviewSubmit } from './orderReview'

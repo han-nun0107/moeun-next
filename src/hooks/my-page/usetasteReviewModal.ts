@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 
 import { MY_PAGE } from '@/constants/my-page/myPage'
-import { orderReviewSubmit } from '@/service/my-page/orderReview'
+import { orderReviewSubmit } from '@/service/my-page'
 import { useLoginStore } from '@/stores/useLoginStore'
 import { TastingReview, TastingSubmitData } from '@/types/modal/feedback'
 

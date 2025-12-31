@@ -1,5 +1,4 @@
-import Button from '@/components/common/Button'
-import StarRating from '@/components/common/StarRating'
+import { Button, StarRating } from '@/components/common'
 import { MY_PAGE } from '@/constants/my-page/myPage'
 import { TastingReview } from '@/types/modal/feedback'
 import { cn } from '@/utils/cn'

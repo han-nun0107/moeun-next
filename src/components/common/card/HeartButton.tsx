@@ -1,6 +1,6 @@
 import fullHeart from '@/assets/icons/card/fullHeart.svg'
 import heartButton from '@/assets/icons/card/heartButton.svg'
-import Button from '@/components/common/Button'
+import { Button } from '@/components/common'
 import { Z_INDEX } from '@/foundations/zIndex'
 import { cn } from '@/utils/cn'
 

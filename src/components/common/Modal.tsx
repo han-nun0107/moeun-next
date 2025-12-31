@@ -4,13 +4,13 @@ import { type ReactNode } from 'react'
 import FocusLock from 'react-focus-lock'
 
 import CloseIcon from '@/assets/icons/modal/close.svg'
-import Portal from '@/components/common/modal/Portal'
+import { Button } from '@/components/common'
 import { PORTAL_CONTAINER_ID } from '@/constants'
 import { Z_INDEX } from '@/foundations/zIndex'
 import { useModal } from '@/hooks/useModal'
 import { cn } from '@/utils/cn'
 
-import Button from './Button'
+import Portal from './modal/Portal'
 
 type ModalProps = {
   isOpen: boolean

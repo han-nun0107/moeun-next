@@ -2,9 +2,11 @@
 
 import { useQuery } from '@tanstack/react-query'
 
-import { getMyFeedback } from '@/service/my-page/feedback'
-import type { FeedbackWithRelations } from '@/service/my-page/feedback'
-import { mapFeedbacksToItemRows } from '@/service/my-page/history.mapper'
+import {
+  getMyFeedback,
+  type FeedbackWithRelations,
+  mapFeedbacksToItemRows,
+} from '@/service/my-page'
 import type { ItemRow } from '@/types/item-row'
 
 export const useHistory = (userId?: string) => {
