@@ -6,6 +6,7 @@ import { useState, useMemo } from 'react'
 import { MY_PAGE } from '@/constants/my-page/myPage'
 import { getUserAverageScores } from '@/service/my-page'
 import { useLoginStore } from '@/stores/useLoginStore'
+import type { TasteScore } from '@/types/gauge-bar/tasteTypes'
 
 export const useGauge = () => {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -15,9 +16,14 @@ export const useGauge = () => {
     data: gaugeData,
     isLoading,
     error,
-  } = useQuery({
+  } = useQuery<{ data: TasteScore[] | null; error: Error | null }, Error>({
     queryKey: ['userAverageScores', user?.id],
-    queryFn: () => getUserAverageScores(user!.id),
+    queryFn: async () => {
+      if (!user?.id) {
+        return { data: null, error: null }
+      }
+      return await getUserAverageScores(user.id)
+    },
     enabled: !!user?.id,
   })
 

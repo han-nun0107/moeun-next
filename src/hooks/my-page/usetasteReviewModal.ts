@@ -1,6 +1,9 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 
 import { MY_PAGE } from '@/constants/my-page/myPage'
+import { orderReviewSubmit } from '@/service/my-page/orderReview'
+import { useLoginStore } from '@/stores/useLoginStore'
 import { TastingReview, TastingSubmitData } from '@/types/modal/feedback'
 
 const INITIAL_REVIEW_STATE: TastingReview = {
@@ -17,6 +20,8 @@ const INITIAL_REVIEW_STATE: TastingReview = {
 const MAX_IMAGES = 3
 
 const useTastingReview = (orderItemId?: number, onClose?: () => void) => {
+  const queryClient = useQueryClient()
+  const { user } = useLoginStore()
   const [review, setReview] = useState<TastingReview>(INITIAL_REVIEW_STATE)
   const [files, setFiles] = useState<File[]>([])
   const [imagePreviews, setImagePreviews] = useState<string[]>([])
@@ -75,7 +80,7 @@ const useTastingReview = (orderItemId?: number, onClose?: () => void) => {
     )
   }
 
-  const createSubmitData = (): TastingSubmitData => {
+  const _createSubmitData = (): TastingSubmitData => {
     return {
       order_item_id: Number(orderItemId ?? 0),
       sweetness: review.sweetness,
@@ -122,10 +127,27 @@ const useTastingReview = (orderItemId?: number, onClose?: () => void) => {
     return true
   }
 
+  const reviewSubmitMutation = useMutation(
+    orderReviewSubmit({
+      queryClient,
+      resetForm,
+      onClose,
+      submitData: _createSubmitData(),
+      userId: user?.id,
+    })
+  )
+
   const handleSubmitAndClose = () => {
-    if (handleSubmit()) {
-      onClose?.()
+    if (!handleSubmit()) {
+      return
     }
+
+    if (!orderItemId) {
+      alert('유효하지 않은 주문 항목입니다.')
+      return
+    }
+
+    reviewSubmitMutation.mutate(orderItemId)
   }
 
   return {

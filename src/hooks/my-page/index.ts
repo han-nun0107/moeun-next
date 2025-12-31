@@ -1,6 +1,8 @@
 export { useEditPage } from './useEditPage'
 export { useEditPageModals } from './useEditPageModals'
 export { useGauge } from './useGauge'
+export { useHistory } from './useHistory'
+export { useOrder } from './useOrder'
 export { usePagination } from './usePagination'
 export { useRecommendedModal } from './useRecommendedModal'
 export { useSelectCartModal } from './useSelectCartModal'

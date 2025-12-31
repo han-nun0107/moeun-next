@@ -51,6 +51,7 @@ const OrderItemRow = ({
             width={100}
             height={100}
             className="h-25 w-25"
+            loading="eager"
           />
         </div>
         <p className="text-bold-lg text-left">{name}</p>
