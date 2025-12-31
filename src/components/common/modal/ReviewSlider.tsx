@@ -1,4 +1,4 @@
-import Slider from '@/components/common/Slider'
+import { Slider } from '@/components/common'
 import { MY_PAGE } from '@/constants/my-page/myPage'
 import type { TastingReview } from '@/types/modal/feedback'
 

@@ -1,9 +1,10 @@
 'use client'
 
-import ItemRowLabel from '@/components/common/item-row/ItemRowLabel'
-import ItemRowList from '@/components/common/item-row/ItemRowList'
 import useItemRow from '@/hooks/item-row/useItemRow'
 import type { ItemRow } from '@/types/item-row'
+
+import ItemRowLabel from './item-row/ItemRowLabel'
+import ItemRowList from './item-row/ItemRowList'
 
 type ItemRowProps = {
   items: ItemRow[]

@@ -4,7 +4,7 @@ import { Trash2 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Button from '@/components/common/Button'
+import { Button } from '@/components/common'
 import { IMAGE_URLS } from '@/constants/imageUrls'
 import { CartItemRowProps } from '@/types/item-row'
 

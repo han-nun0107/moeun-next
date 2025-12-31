@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import MinusIcon from '@/assets/icons/cart/minus.svg'
 import PlusIcon from '@/assets/icons/cart/plus.svg'
-import Button from '@/components/common/Button'
+import { Button } from '@/components/common'
 
 type QuantityInputProps = {
   value: number

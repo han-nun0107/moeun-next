@@ -1,7 +1,7 @@
 'use client'
 
 import ArrowIcon from '@/assets/icons/dropdown/arrow.svg'
-import Button from '@/components/common/Button'
+import { Button } from '@/components/common'
 import { dropdownOptions } from '@/constants'
 import useDropdown from '@/hooks/useDropdown'
 import type { DropdownProps } from '@/types/dropdown'

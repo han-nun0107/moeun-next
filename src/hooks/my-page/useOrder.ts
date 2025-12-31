@@ -2,9 +2,11 @@
 
 import { useQuery } from '@tanstack/react-query'
 
-import { getOrders } from '@/service/my-page/order'
-import type { OrderWithItems } from '@/service/my-page/order.mapper'
-import { mapOrdersToItemRows } from '@/service/my-page/order.mapper'
+import {
+  getOrders,
+  type OrderWithItems,
+  mapOrdersToItemRows,
+} from '@/service/my-page'
 import type { ItemRow } from '@/types/item-row'
 
 export const useOrder = () => {

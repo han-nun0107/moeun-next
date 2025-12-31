@@ -1,7 +1,7 @@
 import { InputHTMLAttributes, useId } from 'react'
 
 import SearchIcon from '@/assets/icons/input/search.svg'
-import Button from '@/components/common/Button'
+import { Button } from '@/components/common'
 import { INPUT_VARIANTS, InputVariant } from '@/foundations/input'
 import { cn } from '@/utils/cn'
 
