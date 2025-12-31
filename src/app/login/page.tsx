@@ -1,5 +1,6 @@
 'use client'
 
+import type { Provider } from '@supabase/supabase-js'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -12,8 +13,10 @@ import { Button } from '@/components'
 import { IMAGE_URLS } from '@/constants/imageUrls'
 import { supabase } from '@/utils/supabase'
 
+type ExtendedProvider = Provider | 'naver'
+
 type SocialLogin = {
-  provider: string
+  provider: ExtendedProvider
   icon: string
   label: string
   className: string
@@ -40,29 +43,35 @@ const SOCIAL_LOGINS: SocialLogin[] = [
   },
 ]
 
-type SupportedProvider = 'google' | 'kakao' | 'naver'
+type SupportedProvider = ExtendedProvider
+
+// 타입 가드: provider가 Supabase 기본 Provider인지 확인
+const isSupabaseProvider = (
+  provider: SupportedProvider
+): provider is Provider => {
+  return provider !== 'naver'
+}
 
 const Login = () => {
-  const handleLogin = async (provider: string) => {
+  const handleLogin = async (provider: SupportedProvider) => {
     const supportedProviders: SupportedProvider[] = ['google', 'kakao', 'naver']
 
-    if (!supportedProviders.includes(provider as SupportedProvider)) {
+    if (!supportedProviders.includes(provider)) {
       return
     }
 
-    const authMethod = supabase.auth.signInWithOAuth as (options: {
-      provider: string
-      options?: { redirectTo?: string }
-    }) => Promise<{ error: Error | null }>
-
-    const { error } = await authMethod({
-      provider,
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: isSupabaseProvider(provider)
+        ? provider
+        : (provider as unknown as Provider),
       options: {
         redirectTo: `${window.location.origin}/auth/callback`,
       },
     })
 
     if (error) {
+      // eslint-disable-next-line no-console
+      console.error('로그인 오류:', error)
       return
     }
   }
@@ -106,7 +115,9 @@ const Login = () => {
                 key={socialLogin.provider}
                 variant="SOCIAL"
                 className={socialLogin.className}
-                onClick={() => handleLogin(socialLogin.provider)}
+                onClick={() =>
+                  handleLogin(socialLogin.provider as SupportedProvider)
+                }
               >
                 <Image
                   src={socialLogin.icon}

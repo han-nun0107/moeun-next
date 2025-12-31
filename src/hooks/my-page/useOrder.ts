@@ -7,22 +7,28 @@ import {
   type OrderWithItems,
   mapOrdersToItemRows,
 } from '@/service/my-page'
+import { useLoginStore } from '@/stores/useLoginStore'
 import type { ItemRow } from '@/types/item-row'
 
 export const useOrder = () => {
+  const { user } = useLoginStore()
   const { data, isLoading, error } = useQuery<
     OrderWithItems[],
     Error,
     ItemRow[]
   >({
-    queryKey: ['orders'],
+    queryKey: ['orders', user?.id],
     queryFn: async () => {
-      const result = await getOrders()
+      if (!user?.id) {
+        return []
+      }
+      const result = await getOrders(user.id)
       if (result.error) {
         throw result.error
       }
       return result.data ?? []
     },
+    enabled: !!user?.id,
     select: (orders) => mapOrdersToItemRows(orders),
   })
 
