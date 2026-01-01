@@ -8,7 +8,7 @@ export const mapFeedbacksToItemRows = (
   return feedbacks.map((feedback) => ({
     id: feedback.id,
     type: 'tasting' as const,
-    order: feedback.order_date || undefined,
+    order: feedback.created_at || undefined,
     sweetness: feedback.sweetness,
     acidity: feedback.acidity,
     body: feedback.body,

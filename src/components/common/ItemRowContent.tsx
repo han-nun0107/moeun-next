@@ -37,7 +37,6 @@ const ItemRowContent = ({
         return <div>일치하는 타입이 없습니다.</div>
     }
   }
-
   return (
     <ItemRowLabel type={type}>
       {itemList.map((item, idx) => {

@@ -3,6 +3,7 @@ import { randomUUID } from 'crypto'
 import { NextRequest, NextResponse } from 'next/server'
 
 import type { OrderItemTable, OrderTable } from '@/types/supabase/tables/order'
+import { getCurrentKSTISOString } from '@/utils/date/toKST'
 import { calculateTotalAmount } from '@/utils/order/calculateTotalAmount'
 import { createOrderItems } from '@/utils/order/createOrderItems'
 import { formatOrderName } from '@/utils/order/formatOrderName'
@@ -61,7 +62,9 @@ export async function POST(request: NextRequest) {
       order_name: orderName,
       total_amount: totalAmount,
       status: 'PENDING',
-      order_date: new Date().toISOString(),
+      order_date: getCurrentKSTISOString(),
+      created_at: getCurrentKSTISOString(),
+      updated_at: getCurrentKSTISOString(),
     }
 
     type OrderSelectResult = {

@@ -80,9 +80,10 @@ const useTastingReview = (orderItemId?: number, onClose?: () => void) => {
     )
   }
 
-  const _createSubmitData = (): TastingSubmitData => {
+  const createSubmitData = (): TastingSubmitData => {
     return {
       order_item_id: Number(orderItemId ?? 0),
+      user_name: user?.user_metadata?.name ?? '당신',
       sweetness: review.sweetness,
       acidity: review.acidity,
       body: review.body,
@@ -132,7 +133,7 @@ const useTastingReview = (orderItemId?: number, onClose?: () => void) => {
       queryClient,
       resetForm,
       onClose,
-      submitData: _createSubmitData(),
+      submitData: createSubmitData(),
       userId: user?.id,
     })
   )

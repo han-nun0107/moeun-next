@@ -2,6 +2,7 @@ import { QueryClient } from '@tanstack/react-query'
 
 import { DB_TABLES } from '@/constants/supabase-db/dbTables'
 import type { TastingSubmitData } from '@/types/modal/feedback'
+import { getCurrentKSTISOString } from '@/utils/date/toKST'
 import { supabase } from '@/utils/supabase'
 
 export const orderReviewSubmit = ({
@@ -38,12 +39,14 @@ export const orderReviewSubmit = ({
       }
 
       // feedback 테이블에 데이터 저장
+      const now = getCurrentKSTISOString()
       const { data: feedbackData, error: feedbackError } = await (supabase
         .from('feedback')
         .insert({
           user_id: userId,
           order_item_id: itemId,
           product_id: orderItem.product_id,
+          user_name: submitData.user_name,
           sweetness: submitData.sweetness,
           acidity: submitData.acidity,
           body: submitData.body,
@@ -55,6 +58,8 @@ export const orderReviewSubmit = ({
           taste_tag: submitData.taste_tag,
           comment: submitData.comment || null,
           image_urls: [], // TODO: 이미지 업로드 후 URL 배열로 저장
+          created_at: getCurrentKSTISOString(),
+          updated_at: getCurrentKSTISOString(),
         } as never)
         .select()
         .single() as unknown as Promise<{
@@ -72,6 +77,7 @@ export const orderReviewSubmit = ({
         .update({
           reviewed: true,
           feedback_id: feedbackData.id,
+          updated_at: now,
         } as never)
         .eq('id', itemId) as unknown as Promise<{
         error: { message: string } | null

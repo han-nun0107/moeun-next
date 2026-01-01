@@ -42,6 +42,7 @@ export type ItemRow =
       type: 'order'
       order?: string
       order_date?: string
+      created_at?: string
       reviewed?: boolean
       feedback_id?: number | null
       product?: Product

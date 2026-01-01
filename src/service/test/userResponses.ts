@@ -1,4 +1,5 @@
 import { Database } from '@/types/supabase'
+import { getCurrentKSTISOString } from '@/utils/date/toKST'
 import { supabase } from '@/utils/supabase'
 
 type UserResponseRow = Database['public']['Tables']['user_responses']['Row']
@@ -21,6 +22,7 @@ export const saveUserResponses = async (
       question_id: response.question_id,
       selected_option: response.selected_option,
       score_value: response.score_value,
+      created_at: getCurrentKSTISOString(),
     }))
 
     const table = supabase.from('user_responses')

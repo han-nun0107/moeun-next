@@ -18,12 +18,13 @@ export const mapOrdersToItemRows = (orders: OrderWithItems[]): ItemRow[] =>
     (order.order_items ?? []).map((item) => ({
       id: item.id,
       type: 'order' as const,
-      order_date: order.order_date,
+      order_date: item.created_at,
       order: order.order_id,
+      created_at: item.created_at,
 
       product: {
         id: item.product_detail?.id || String(item.product_id),
-        name: item.product_detail?.name || '',
+        name: item.order_name || item.product_detail?.name || '',
         main_image_url:
           item.image_url || item.product_detail?.description_image_url || '',
       },
