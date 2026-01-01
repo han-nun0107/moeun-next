@@ -12,14 +12,16 @@ type MonthlyReviewProps = {
 }
 
 const MonthlyReview = ({ feedbackData }: MonthlyReviewProps) => {
-  const currentMonth = new Date().getMonth()
-  const currentYear = new Date().getFullYear()
+  const now = new Date()
+  const currentMonth = now.getUTCMonth()
+  const currentYear = now.getUTCFullYear()
+
   const monthlyData = feedbackData
     .filter((feedback) => {
       const feedbackDate = new Date(feedback.created_at)
       return (
-        feedbackDate.getMonth() === currentMonth &&
-        feedbackDate.getFullYear() === currentYear
+        feedbackDate.getUTCMonth() === currentMonth &&
+        feedbackDate.getUTCFullYear() === currentYear
       )
     })
     .slice(0, 4)

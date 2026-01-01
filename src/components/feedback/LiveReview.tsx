@@ -22,7 +22,9 @@ const LiveReview = ({ feedbackData }: LiveReviewProps) => {
       <div>
         <h1 className="feedback-title">실시간 후기</h1>
         <div className="flex w-full items-center justify-between gap-2">
-          <p>한 잔 취향을 이용한 고객님들의 실시간 후기</p>
+          <p className="text-lg text-gray-700">
+            한 잔 취향을 이용한 고객님들의 실시간 후기
+          </p>
           <Button
             variant="ICON"
             aria-label="실시간 후기 새로고침"

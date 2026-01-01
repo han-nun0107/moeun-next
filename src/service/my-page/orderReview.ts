@@ -24,7 +24,6 @@ export const orderReviewSubmit = ({
         throw new Error('로그인이 필요합니다.')
       }
 
-      // order_item에서 product_id 가져오기
       const { data: orderItem, error: orderItemError } = await (supabase
         .from(DB_TABLES.ORDER_ITEMS)
         .select('product_id')
@@ -38,7 +37,6 @@ export const orderReviewSubmit = ({
         throw new Error('주문 항목을 찾을 수 없습니다.')
       }
 
-      // feedback 테이블에 데이터 저장
       const now = getCurrentKSTISOString()
       const { data: feedbackData, error: feedbackError } = await (supabase
         .from('feedback')
@@ -71,7 +69,6 @@ export const orderReviewSubmit = ({
         throw new Error(feedbackError?.message || '리뷰 저장에 실패했습니다.')
       }
 
-      // order_items의 reviewed와 feedback_id 업데이트
       const { error: updateError } = await (supabase
         .from(DB_TABLES.ORDER_ITEMS)
         .update({
