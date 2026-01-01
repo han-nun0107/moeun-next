@@ -23,7 +23,7 @@ const SimilarReview = ({ feedbackData }: SimilarReviewProps) => {
       <div>
         <h1 className="feedback-title">나와 비슷한 취향의 후기</h1>
         <div className="flex w-full items-center justify-between gap-2">
-          <p>한 잔 취향을 이용한 고객님들의 실시간 후기</p>
+          <p>나와 비슷한 취향을 가진 고객님들의 후기</p>
           <Button
             variant="ICON"
             aria-label="나와 비슷한 취향의 후기 새로고침"

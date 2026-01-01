@@ -1,8 +1,11 @@
+import { toZonedTime } from 'date-fns-tz'
+
+const KST_TIMEZONE = 'Asia/Seoul'
+
 export const getCurrentKSTISOString = (): string => {
   const now = new Date()
-  const kstOffset = 9 * 60 * 60 * 1000
-  const kstTime = new Date(now.getTime() + kstOffset)
-  return kstTime.toISOString()
+  const kstDate = toZonedTime(now, KST_TIMEZONE)
+  return kstDate.toISOString()
 }
 
 export const convertUTCToKST = (
@@ -12,9 +15,8 @@ export const convertUTCToKST = (
 
   try {
     const utcDate = new Date(utcString)
-    const kstOffset = 9 * 60 * 60 * 1000
-    const kstTime = new Date(utcDate.getTime() + kstOffset)
-    return kstTime.toISOString()
+    const kstDate = toZonedTime(utcDate, KST_TIMEZONE)
+    return kstDate.toISOString()
   } catch (error) {
     return utcString
   }
