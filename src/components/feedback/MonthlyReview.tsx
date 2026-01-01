@@ -1,9 +1,12 @@
+import { toZonedTime } from 'date-fns-tz'
 import dynamic from 'next/dynamic'
 
 import { Card } from '@/components'
 import type { FeedbackWithRelations } from '@/service/my-page/feedback'
 import { mapFeedbackToReview } from '@/service/my-page/feedback'
 import { formatDateTime } from '@/utils/date/formatDate'
+
+const KST_TIMEZONE = 'Asia/Seoul'
 
 const Carousel = dynamic(() => import('@/components/common/Carousel'))
 
@@ -12,16 +15,19 @@ type MonthlyReviewProps = {
 }
 
 const MonthlyReview = ({ feedbackData }: MonthlyReviewProps) => {
-  const now = new Date()
-  const currentMonth = now.getUTCMonth()
-  const currentYear = now.getUTCFullYear()
+  const now = toZonedTime(new Date(), KST_TIMEZONE)
+  const currentMonth = now.getMonth()
+  const currentYear = now.getFullYear()
 
   const monthlyData = feedbackData
     .filter((feedback) => {
-      const feedbackDate = new Date(feedback.created_at)
+      const feedbackDate = toZonedTime(
+        new Date(feedback.created_at),
+        KST_TIMEZONE
+      )
       return (
-        feedbackDate.getUTCMonth() === currentMonth &&
-        feedbackDate.getUTCFullYear() === currentYear
+        feedbackDate.getMonth() === currentMonth &&
+        feedbackDate.getFullYear() === currentYear
       )
     })
     .slice(0, 4)
