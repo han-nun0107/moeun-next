@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 import type { OrderTable } from '@/types/supabase/tables/order'
 import { Payment } from '@/types/toss/toss'
+import { getCurrentKSTISOString } from '@/utils/date/toKST'
 import { createSupabaseServerClient } from '@/utils/supabase/server-client'
 
 export async function GET(request: NextRequest) {
@@ -105,7 +106,10 @@ export async function GET(request: NextRequest) {
     // ts-expect-error - Supabase 클라이언트의 update 메소드 타입이 제대로 추론되지 않음
     await (supabase
       .from('orders')
-      .update({ status: 'FAILED' } as never)
+      .update({
+        status: 'FAILED',
+        updated_at: getCurrentKSTISOString(),
+      } as never)
       .eq('id', typedOrder.id) as unknown as Promise<{
       error: { message: string } | null
     }>)
@@ -132,7 +136,10 @@ export async function GET(request: NextRequest) {
     // ts-expect-error - Supabase 클라이언트의 update 메소드 타입이 제대로 추론되지 않음
     await (supabase
       .from('orders')
-      .update({ status: 'FAILED' } as never)
+      .update({
+        status: 'FAILED',
+        updated_at: getCurrentKSTISOString(),
+      } as never)
       .eq('id', typedOrder.id) as unknown as Promise<{
       error: { message: string } | null
     }>)
@@ -152,7 +159,7 @@ export async function GET(request: NextRequest) {
     .update({
       status: 'COMPLETED',
       payment_key: paymentKey,
-      updated_at: new Date().toISOString(),
+      updated_at: getCurrentKSTISOString(),
     } as never)
     .eq('id', typedOrder.id) as unknown as Promise<{
     error: { message: string } | null

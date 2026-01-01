@@ -13,6 +13,7 @@ export type TastingReview = {
 
 export type TastingSubmitData = {
   order_item_id: number
+  user_name: string
   sweetness: number
   acidity: number
   body: number

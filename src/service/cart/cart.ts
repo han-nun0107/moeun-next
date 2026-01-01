@@ -1,5 +1,6 @@
 import { DB_TABLES } from '@/constants/supabase-db/dbTables'
 import type { CartTable } from '@/types/supabase'
+import { getCurrentKSTISOString } from '@/utils/date/toKST'
 import { supabase } from '@/utils/supabase'
 
 type CartRow = CartTable['Row']
@@ -76,6 +77,7 @@ export const addToCart = async (
       return await updateCartItem(cartRow.id, { quantity: newQuantity })
     }
 
+    const now = getCurrentKSTISOString()
     const cartItem: CartInsert = {
       user_id: userId,
       product_id: productId,
@@ -87,6 +89,8 @@ export const addToCart = async (
       pickup_date: options?.pickupDate || null,
       price_at_added: options?.priceAtAdded || productPrice,
       image_url: options?.imageUrl || null,
+      created_at: now,
+      updated_at: now,
     }
 
     // ts-expect-error - Supabase 클라이언트의 insert 메소드 타입이 제대로 추론되지 않음
@@ -105,7 +109,19 @@ export const addToCart = async (
       return createErrorResponse<CartRow>(error.message)
     }
 
-    return createSuccessResponse(data)
+    // UTC 시간을 KST로 변환
+    const convertedData = data
+      ? {
+          ...data,
+          created_at: getCurrentKSTISOString() || data.created_at,
+          updated_at: getCurrentKSTISOString() || data.updated_at,
+          pickup_date: data.pickup_date
+            ? getCurrentKSTISOString() || data.pickup_date
+            : null,
+        }
+      : data
+
+    return createSuccessResponse(convertedData)
   } catch (error) {
     if (error instanceof CartError) {
       return createErrorResponse<CartRow>(error.message)
@@ -145,7 +161,19 @@ export const getCartItems = async (userId: string) => {
       return createErrorResponse<CartRowWithProduct[]>(error.message)
     }
 
-    return createSuccessResponse((data as CartRowWithProduct[]) || [])
+    // UTC 시간을 KST로 변환
+    const convertedData = ((data as CartRowWithProduct[]) || []).map(
+      (item) => ({
+        ...item,
+        created_at: getCurrentKSTISOString() || item.created_at,
+        updated_at: getCurrentKSTISOString() || item.updated_at,
+        pickup_date: item.pickup_date
+          ? getCurrentKSTISOString() || item.pickup_date
+          : null,
+      })
+    )
+
+    return createSuccessResponse(convertedData)
   } catch (error) {
     if (error instanceof CartError) {
       return createErrorResponse<CartRowWithProduct[]>(error.message)
@@ -158,10 +186,15 @@ export const getCartItems = async (userId: string) => {
 
 export const updateCartItem = async (cartId: number, updates: CartUpdate) => {
   try {
+    const now = getCurrentKSTISOString()
+    const updatesWithTimestamp: CartUpdate = {
+      ...updates,
+      updated_at: now,
+    }
     // ts-expect-error - Supabase 클라이언트의 update 메소드 타입이 제대로 추론되지 않음
     const updateResult = await (supabase
       .from(DB_TABLES.CART)
-      .update(updates as never)
+      .update(updatesWithTimestamp as never)
       .eq('id', cartId)
       .select()
       .single() as unknown as Promise<{
@@ -179,7 +212,17 @@ export const updateCartItem = async (cartId: number, updates: CartUpdate) => {
       return createErrorResponse<CartRow>('장바구니 항목을 찾을 수 없습니다.')
     }
 
-    return createSuccessResponse(data)
+    // UTC 시간을 KST로 변환
+    const convertedData = {
+      ...data,
+      created_at: getCurrentKSTISOString() || data.created_at,
+      updated_at: getCurrentKSTISOString() || data.updated_at,
+      pickup_date: data.pickup_date
+        ? getCurrentKSTISOString() || data.pickup_date
+        : null,
+    }
+
+    return createSuccessResponse(convertedData)
   } catch (error) {
     if (error instanceof CartError) {
       return createErrorResponse<CartRow>(error.message)

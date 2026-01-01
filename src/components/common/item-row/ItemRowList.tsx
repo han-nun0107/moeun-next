@@ -30,7 +30,7 @@ const ItemRowList = (props: ItemRow) => {
         <OrderItemRow
           id={props.id}
           key={props.id}
-          order={props.order_date}
+          order={props.created_at}
           img={props.product?.main_image_url || ''}
           name={props.product?.name || ''}
           quantity={props.quantity || 0}

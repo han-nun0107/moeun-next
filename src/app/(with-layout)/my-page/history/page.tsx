@@ -26,7 +26,7 @@ const History = () => {
       </section>
     )
   }
-
+  console.log(currentItems)
   return (
     <section className="flex h-screen flex-col gap-6">
       <article>

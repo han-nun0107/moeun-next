@@ -53,6 +53,7 @@ export type OrderItemTable = {
     reviewed: boolean
     feedback_id: number | null
     cart_id: number | null
+    order_name: string | null
     created_at: string
     updated_at: string
   }
@@ -71,6 +72,7 @@ export type OrderItemTable = {
     reviewed?: boolean
     feedback_id?: number | null
     cart_id?: number | null
+    order_name?: string | null
     created_at?: string
     updated_at?: string
   }
@@ -89,6 +91,7 @@ export type OrderItemTable = {
     reviewed?: boolean
     feedback_id?: number | null
     cart_id?: number | null
+    order_name?: string | null
     created_at?: string
     updated_at?: string
   }
