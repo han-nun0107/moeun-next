@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import { StarRating, Button } from '@/components'
 import { ReviewCardProps } from '@/types/card/card'
+import maskingUserId from '@/utils/maskingUserId'
 
 import CardImage from './CardImage'
 
@@ -37,7 +38,7 @@ const ReviewMainCard = ({
         </div>
         <div className="mt-15 mb-[50px] flex gap-8">
           <p style={{ fontSize: text }} className="text-gray-600">
-            {nickname}
+            {nickname ? maskingUserId(nickname) : 'Unknown User'}
           </p>
           <p style={{ fontSize: text }} className="text-gray-600">
             {createdAt}
