@@ -31,7 +31,9 @@ export const createOrderItems = (orderId: number, cartItems: CartItem[]) => {
       pickup_store_name: item.pickup_store_name ?? null,
       pickup_store_address: item.pickup_store_address ?? null,
       pickup_store_contact: item.pickup_store_contact ?? null,
-      pickup_date: item.pickup_date || null,
+      pickup_date: item.pickup_date
+        ? new Date(item.pickup_date).toISOString()
+        : null,
       reviewed: false,
       cart_id: item.id,
       order_name: productName,
