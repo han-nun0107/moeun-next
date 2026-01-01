@@ -1,4 +1,5 @@
 import type { ItemRow } from '@/types/item-row'
+import { formatDateTime } from '@/utils/date/formatDate'
 
 import CartItemRow from './list-component/CartItemRow'
 import OrderItemRow from './list-component/OrderItemRow'
@@ -47,11 +48,7 @@ const ItemRowList = (props: ItemRow) => {
         <TastingItemRow
           img={props.image_url || ''}
           name={props.product_name || ''}
-          order={
-            props.created_at
-              ? `${props.created_at.slice(0, 10)} ${props.created_at.slice(11, 16)}`
-              : ''
-          }
+          order={formatDateTime(props.created_at)}
           feedback={props.comment || ''}
           sweetness={props.sweetness}
           acidity={props.acidity}

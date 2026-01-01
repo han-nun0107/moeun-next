@@ -1,11 +1,34 @@
 import dynamic from 'next/dynamic'
 
 import { Card } from '@/components'
-import { monthlyReviewData } from '@/mocks/review/review'
+import type { FeedbackWithRelations } from '@/service/my-page/feedback'
+import { mapFeedbackToReview } from '@/service/my-page/feedback'
+import { formatDateTime } from '@/utils/date/formatDate'
 
 const Carousel = dynamic(() => import('@/components/common/Carousel'))
 
-const MonthlyReview = () => {
+type MonthlyReviewProps = {
+  feedbackData: FeedbackWithRelations[]
+}
+
+const MonthlyReview = ({ feedbackData }: MonthlyReviewProps) => {
+  const currentMonth = new Date().getMonth()
+  const currentYear = new Date().getFullYear()
+  const monthlyData = feedbackData
+    .filter((feedback) => {
+      const feedbackDate = new Date(feedback.created_at)
+      return (
+        feedbackDate.getMonth() === currentMonth &&
+        feedbackDate.getFullYear() === currentYear
+      )
+    })
+    .slice(0, 4)
+    .map(mapFeedbackToReview)
+
+  if (monthlyData.length === 0) {
+    return null
+  }
+
   return (
     <article>
       <div className="flex h-200 w-full flex-col items-center bg-gray-50">
@@ -23,7 +46,7 @@ const MonthlyReview = () => {
             navigationHeight={290}
             type="monthly"
           >
-            {monthlyReviewData.map((item) => (
+            {monthlyData.map((item) => (
               <Card
                 key={item.id}
                 type="reviewMain"
@@ -34,7 +57,7 @@ const MonthlyReview = () => {
                   rating: item.rating,
                   feedback: item.desc,
                   nickname: item.nickname,
-                  createdAt: item.createdAt,
+                  createdAt: formatDateTime(item.createdAt),
                   product_id: String(item.product_id ?? item.id),
                 }}
               />
