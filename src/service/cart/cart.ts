@@ -109,19 +109,7 @@ export const addToCart = async (
       return createErrorResponse<CartRow>(error.message)
     }
 
-    // UTC 시간을 KST로 변환
-    const convertedData = data
-      ? {
-          ...data,
-          created_at: getCurrentKSTISOString() || data.created_at,
-          updated_at: getCurrentKSTISOString() || data.updated_at,
-          pickup_date: data.pickup_date
-            ? getCurrentKSTISOString() || data.pickup_date
-            : null,
-        }
-      : data
-
-    return createSuccessResponse(convertedData)
+    return createSuccessResponse(data)
   } catch (error) {
     if (error instanceof CartError) {
       return createErrorResponse<CartRow>(error.message)
@@ -161,19 +149,7 @@ export const getCartItems = async (userId: string) => {
       return createErrorResponse<CartRowWithProduct[]>(error.message)
     }
 
-    // UTC 시간을 KST로 변환
-    const convertedData = ((data as CartRowWithProduct[]) || []).map(
-      (item) => ({
-        ...item,
-        created_at: getCurrentKSTISOString() || item.created_at,
-        updated_at: getCurrentKSTISOString() || item.updated_at,
-        pickup_date: item.pickup_date
-          ? getCurrentKSTISOString() || item.pickup_date
-          : null,
-      })
-    )
-
-    return createSuccessResponse(convertedData)
+    return createSuccessResponse((data as CartRowWithProduct[]) || [])
   } catch (error) {
     if (error instanceof CartError) {
       return createErrorResponse<CartRowWithProduct[]>(error.message)
@@ -212,17 +188,7 @@ export const updateCartItem = async (cartId: number, updates: CartUpdate) => {
       return createErrorResponse<CartRow>('장바구니 항목을 찾을 수 없습니다.')
     }
 
-    // UTC 시간을 KST로 변환
-    const convertedData = {
-      ...data,
-      created_at: getCurrentKSTISOString() || data.created_at,
-      updated_at: getCurrentKSTISOString() || data.updated_at,
-      pickup_date: data.pickup_date
-        ? getCurrentKSTISOString() || data.pickup_date
-        : null,
-    }
-
-    return createSuccessResponse(convertedData)
+    return createSuccessResponse(data)
   } catch (error) {
     if (error instanceof CartError) {
       return createErrorResponse<CartRow>(error.message)
