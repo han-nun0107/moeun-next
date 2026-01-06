@@ -7,7 +7,7 @@ import {
   supabase,
 } from './productBase'
 
-const buildProductDetailFromRow = (
+export const buildProductDetailFromRow = (
   product: ProductDetailRow,
   images: ProductImageRow[]
 ): ProductDetail => {
@@ -51,7 +51,7 @@ const buildProductDetailFromRow = (
   }
 }
 
-const fetchProductImagesBatch = async (
+export const fetchProductImagesBatch = async (
   productIds: string[]
 ): Promise<Record<string, ProductImageRow[]>> => {
   if (productIds.length === 0) {
