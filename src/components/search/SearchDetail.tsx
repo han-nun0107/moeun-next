@@ -1,15 +1,25 @@
 import { Button, Input, Slider } from '@/components'
-import { SEARCH_CHECKBOX, SLIDER_OPTIONS } from '@/constants'
+import {
+  SEARCH_CHECKBOX,
+  SLIDER_OPTIONS,
+} from '@/constants/slider/sliderColors'
 import { useSearch } from '@/hooks/search/useSearch'
 
 const SearchDetail = () => {
-  const { handleSliderChange, sliderState } = useSearch()
+  const {
+    handleSliderChange,
+    sliderState,
+    handleToggleCheckbox,
+    handleSearch,
+  } = useSearch()
 
   return (
     <article className="flex max-h-[322px] w-320 flex-col items-center justify-between">
       <div className="flex w-full justify-between">
         <h3 className="text-black-200 text-2xl font-bold">상세 검색</h3>
-        <Button variant="FILTER_BUTTON">필터 적용하기</Button>
+        <Button variant="FILTER_BUTTON" onClick={handleSearch}>
+          필터 적용하기
+        </Button>
       </div>
       <div className="mt-4 grid h-[266px] w-full grid-cols-[.7fr_3fr] items-center justify-center bg-gray-50">
         <div className="ml-[50px] flex w-[200px] flex-col items-start justify-center gap-5 overflow-auto py-4">
@@ -21,6 +31,7 @@ const SearchDetail = () => {
               label={item.label}
               className="h-[30px] w-[30px]"
               labelClassName="text-lg text-black-200 ml-3"
+              onChange={() => handleToggleCheckbox(item.id)}
             />
           ))}
         </div>

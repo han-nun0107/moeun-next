@@ -16,7 +16,7 @@ const TestCard = ({ name, description, img, alt, tags }: TestCardProps) => {
         />
         <h3 className="text-black-200 mt-2 text-sm font-bold">{name}</h3>
         <p className="mt-2 text-xs font-bold text-gray-700">{description}</p>
-        <div className="mt-2 flex flex-wrap gap-1">
+        <div className="mt-2 grid grid-cols-2 gap-1">
           {tags.map((tag) => (
             <Tag key={tag} tagName={tag} />
           ))}
