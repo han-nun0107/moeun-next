@@ -42,6 +42,13 @@ const INITIAL_CHECKBOX_STATE: SearchFilters['checkboxes'] = {
   limited: false,
 }
 
+const CHECKBOX_ID_MAP: Record<string, CheckboxFilter> = {
+  'search-checkbox-1': 'gift',
+  'search-checkbox-2': 'regional',
+  'search-checkbox-3': 'award',
+  'search-checkbox-4': 'limited',
+}
+
 type SearchContextValue = {
   query: string
   handleChangeQuery: (value: string) => void
@@ -100,14 +107,7 @@ const useSearchProvider = (): SearchContextValue => {
   }
 
   const handleToggleCheckbox = (id: string) => {
-    const map: Record<string, CheckboxFilter> = {
-      'search-checkbox-1': 'gift',
-      'search-checkbox-2': 'regional',
-      'search-checkbox-3': 'award',
-      'search-checkbox-4': 'limited',
-    }
-
-    const key = map[id]
+    const key = CHECKBOX_ID_MAP[id]
     if (!key) return
 
     setCheckboxFilters((prev) => ({

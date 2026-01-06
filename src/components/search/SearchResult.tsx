@@ -26,11 +26,8 @@ const SearchResult = () => {
         <p className="pt-5 text-gray-700">검색 결과가 없습니다.</p>
       )}
       <div className="grid grid-cols-4 gap-7 pt-5">
-        {currentItems.map((item, idx) => (
-          <Link
-            key={`${item.name}-${item.id}-${idx}`}
-            href={`/item/${item.id}`}
-          >
+        {currentItems.map((item) => (
+          <Link key={item.id} href={`/item/${item.id}`}>
             <Card
               type="product"
               data={{

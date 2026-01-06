@@ -6,7 +6,10 @@ import {
   ProductError,
   supabase,
 } from './productBase'
-import { getProducts } from './productList'
+import {
+  buildProductDetailFromRow,
+  fetchProductImagesBatch,
+} from './productList'
 
 type SearchCheckboxFilters = {
   gift: boolean
@@ -146,24 +149,13 @@ export const searchProducts = async (
     }
 
     // 이미지 포함된 상세 Card용 정보로 변환
-    const { data: baseProducts, error: baseError } =
-      await getProducts('individual')
-    if (baseError || !baseProducts) {
-      return {
-        data: [],
-        total: 0,
-        error:
-          baseError ??
-          new ProductError('상품 기본 정보를 불러오는 중 오류가 발생했습니다.'),
-      }
-    }
+    const productIds = filteredRows.map((p) => p.id)
+    const imagesByProductId = await fetchProductImagesBatch(productIds)
 
-    const productsById = new Map<string, ProductDetail>()
-    ;(baseProducts as ProductDetail[]).forEach((p) => productsById.set(p.id, p))
-
-    const productsWithDetails: ProductDetail[] = filteredRows
-      .map((row) => productsById.get(row.id))
-      .filter((p): p is ProductDetail => !!p)
+    const productsWithDetails: ProductDetail[] = filteredRows.map((product) => {
+      const images = imagesByProductId[product.id] || []
+      return buildProductDetailFromRow(product, images)
+    })
 
     return { data: productsWithDetails, total, error: null }
   } catch (error) {
