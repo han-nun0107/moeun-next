@@ -20,7 +20,7 @@ const ReviewSummaryForm = ({
           시음 사진 등록하기 <span className="font-normal">(선택)</span>
         </p>
         <div className="mt-7">
-          <div className="flex flex-wrap gap-4">
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4">
             {imagePreviews.map((preview, index) => (
               <div key={preview} className="relative">
                 <img
@@ -42,7 +42,7 @@ const ReviewSummaryForm = ({
               />
               <label
                 htmlFor="file-upload"
-                className="flex-center hover:bg-gray-150 ml-5 h-[150px] w-[150px] cursor-pointer rounded-[10px] bg-gray-50 transition"
+                className="flex-center hover:bg-gray-150 h-[150px] w-[150px] cursor-pointer rounded-[10px] bg-gray-50 transition"
                 aria-label="사진 등록"
               >
                 <Plus size={24} className="text-black-200" />
