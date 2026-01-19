@@ -148,380 +148,71 @@ refactor: 패키지 구성 로직 분리
 ## 📁 프로젝트 구조
 
 ```bash
-📦 src
-├── api
+src
+├── app                     # Next.js App Router
+│   ├── (with-layout)        # 공통 레이아웃 적용 영역
+│   │   ├── cart             # 장바구니 / 주문 완료
+│   │   ├── feedback         # 후기 페이지
+│   │   ├── item/[id]        # 상품 상세 페이지
+│   │   ├── like-page        # 찜(좋아요) 페이지
+│   │   ├── my-page          # 마이페이지
+│   │   │   ├── edit         # 회원 정보 수정
+│   │   │   ├── history      # 주문 / 시음 히스토리
+│   │   │   ├── order        # 주문 내역
+│   │   ├── package          # 패키지 상품
+│   │   ├── search           # 검색 페이지
+│   │   ├── test             # 취향 테스트
+│   │   ├── layout.tsx       # 서브 레이아웃
+│   │   └── page.tsx         # 메인 페이지
+│   ├── api                  # Next.js Route Handler
+│   │   ├── payment          # 결제 관련 API
+│   │   └── payments/order   # 주문 처리 API
+│   ├── auth/callback        # 소셜 로그인 콜백
+│   ├── login                # 로그인 페이지
+│   ├── layout.tsx           # 루트 레이아웃
+│   └── globals.css          # 전역 스타일
+│
+├── api                     # 외부 API / 서버 통신 모듈
 │   ├── payment
-│   ├── product
-├── app
-│   ├── (with-layout)
-│   │   ├── cart
-│   │   │   ├── complete
-│   │   │   ├── page.tsx
-│   │   ├── feedback
-│   │   │   ├── page.tsx
-│   │   ├── item
-│   │   │   ├── [id]
-│   │   ├── layout.tsx
-│   │   ├── like-page
-│   │   │   ├── page.tsx
-│   │   ├── my-page
-│   │   │   ├── edit
-│   │   │   ├── history
-│   │   │   ├── layout.tsx
-│   │   │   ├── order
-│   │   │   ├── page.tsx
-│   │   ├── package
-│   │   │   ├── page.tsx
-│   │   ├── page.tsx
-│   │   ├── search
-│   │   │   ├── page.tsx
-│   │   ├── test
-│   │   │   ├── page.tsx
-│   ├── api
-│   │   ├── payment
-│   │   │   ├── confirm
-│   │   ├── payments
-│   │   │   ├── order
-│   ├── auth
-│   │   ├── callback
-│   │   │   ├── page.tsx
-│   ├── favicon.ico
-│   ├── globals.css
-│   ├── layout.tsx
-│   ├── login
-│   │   ├── page.tsx
-├── assets
-│   ├── icons
-│   │   ├── card
-│   │   │   ├── fullHeart.svg
-│   │   │   ├── heartButton.svg
-│   │   ├── cart
-│   │   │   ├── minus.svg
-│   │   │   ├── plus.svg
-│   │   ├── dropdown
-│   │   │   ├── arrow.svg
-│   │   ├── header
-│   │   │   ├── cart.svg
-│   │   │   ├── like.svg
-│   │   │   ├── mypage.svg
-│   │   ├── input
-│   │   │   ├── search.svg
-│   │   ├── login
-│   │   │   ├── google-icon.svg
-│   │   │   ├── kakao-icon.svg
-│   │   │   ├── naver-icon.svg
-│   │   ├── logo
-│   │   │   ├── logo-black.svg
-│   │   │   ├── logo-footer.svg
-│   │   │   ├── logo-white.svg
-│   │   ├── modal
-│   │   │   ├── close.svg
-│   │   ├── my-page
-│   │   │   ├── my-question.svg
-│   │   │   ├── select-cart.svg
-│   │   ├── pagination
-│   │   │   ├── next.svg
-│   │   │   ├── prev.svg
-│   │   ├── search
-│   │   │   ├── search.svg
-│   │   ├── star-rating
-│   │   │   ├── star-rating.svg
-│   │   ├── test
-│   │   │   ├── facebook-icon.svg
-│   │   │   ├── kakao-icon.svg
-│   │   │   ├── link-icon.svg
-│   │   │   ├── share.svg
-│   ├── test.png
-├── components
-│   ├── auth
-│   │   ├── AuthProvider.tsx
+│   └── product
+│
+├── components              # 공통 UI 컴포넌트
+│   ├── common               # Button, Modal, Card 등 재사용 컴포넌트
+│   ├── layout               # Header / Footer
+│   ├── home                 # 메인 페이지 전용 컴포넌트
+│   ├── detail               # 상품 상세
+│   ├── cart                 # 장바구니
+│   ├── search               # 검색
+│   ├── test                 # 취향 테스트
+│   └── my-page              # 마이페이지
+│
+├── hooks                   # 커스텀 훅
 │   ├── cart
-│   │   ├── CompleteErrorMessage.tsx
-│   ├── common
-│   │   ├── Button.tsx
-│   │   ├── card
-│   │   │   ├── CardImage.tsx
-│   │   │   ├── DetailCard.tsx
-│   │   │   ├── HeartButton.tsx
-│   │   │   ├── PackageModalCard.tsx
-│   │   │   ├── ProductCard.tsx
-│   │   │   ├── RecommendedCard.tsx
-│   │   │   ├── ReviewCard.tsx
-│   │   │   ├── ReviewMainCard.tsx
-│   │   │   ├── TestCard.tsx
-│   │   ├── Card.tsx
-│   │   ├── Carousel.tsx
-│   │   ├── Dropdown.tsx
-│   │   ├── gauge-bar
-│   │   │   ├── JustifiedText.tsx
-│   │   ├── GaugeBar.tsx
-│   │   ├── index.ts
-│   │   ├── Input.tsx
-│   │   ├── item-row
-│   │   │   ├── ItemRowLabel.tsx
-│   │   │   ├── ItemRowList.tsx
-│   │   │   ├── list-component
-│   │   ├── ItemRowContent.tsx
-│   │   ├── modal
-│   │   │   ├── AlarmModal.tsx
-│   │   │   ├── EditNickNameModal.tsx
-│   │   │   ├── Portal.tsx
-│   │   │   ├── RecommendedModal.tsx
-│   │   │   ├── ResignationModal.tsx
-│   │   │   ├── ReviewModal.tsx
-│   │   │   ├── ReviewSlider.tsx
-│   │   │   ├── ReviewStarTag.tsx
-│   │   │   ├── ReviewSummaryForm.tsx
-│   │   │   ├── SelectCartModal.tsx
-│   │   │   ├── TasteReviewModal.tsx
-│   │   ├── Modal.tsx
-│   │   ├── Pagination.tsx
-│   │   ├── RetryIcon.tsx
-│   │   ├── Slider.tsx
-│   │   ├── StarRating.tsx
-│   │   ├── Tag.tsx
-│   ├── detail
-│   │   ├── DetailFeedback.tsx
-│   │   ├── DetailInformation.tsx
-│   │   ├── DetailProduct.tsx
-│   │   ├── index.ts
-│   ├── feedback
-│   │   ├── index.ts
-│   │   ├── LiveReview.tsx
-│   │   ├── MonthlyReview.tsx
-│   │   ├── SimilarReview.tsx
-│   ├── home
-│   │   ├── BannerCarousel.tsx
-│   │   ├── index.ts
-│   │   ├── MonthlyFeaturedSection.tsx
-│   │   ├── PopularCarousel.tsx
-│   │   ├── PopularPackagesSection.tsx
-│   │   ├── ProductTitle.tsx
-│   │   ├── RecommendedDrinksSection.tsx
-│   ├── index.ts
-│   ├── layout
-│   │   ├── Footer.tsx
-│   │   ├── FooterLogo.tsx
-│   │   ├── Header.tsx
-│   │   ├── index.ts
-│   │   ├── RenderInfo.tsx
-│   ├── my-page
-│   │   ├── index.ts
-│   │   ├── TasteFingerprint.tsx
-│   │   ├── TasteTypeResult.tsx
 │   ├── product
-│   ├── providers
 │   ├── search
-│   │   ├── index.ts
-│   │   ├── SearchDetail.tsx
-│   │   ├── SearchInput.tsx
-│   │   ├── SearchResult.tsx
 │   ├── test
-│   │   ├── index.ts
-│   │   ├── MainStep.tsx
-│   │   ├── QuestionStep.tsx
-│   │   ├── ResultStep.tsx
-│   │   ├── TestClient.tsx
-│   │   ├── TestModal.tsx
-├── constants
-│   ├── carousel
-│   │   ├── carousel.ts
-│   ├── cart
-│   │   ├── complete.ts
-│   ├── dropdown
-│   │   ├── dropdown.ts
-│   ├── footer
-│   │   ├── footer.ts
-│   ├── gauge-bar
-│   │   ├── tasteMeta.ts
-│   ├── header
-│   │   ├── header.ts
-│   ├── home
-│   │   ├── sections.ts
-│   │   ├── title.ts
-│   ├── imageUrls.ts
-│   ├── index.ts
 │   ├── my-page
-│   │   ├── myPage.ts
-│   ├── package
-│   │   ├── sections.ts
-│   │   ├── title.ts
-│   ├── portalContainerId.ts
-│   ├── routePaths.ts
-│   ├── slider
-│   │   ├── sliderColors.ts
-│   ├── supabase-db
-│   │   ├── dbTables.ts
-│   ├── test
-│   │   ├── localStorage.ts
-│   │   ├── share.ts
-├── foundations
-│   ├── button.ts
-│   ├── card.ts
-│   ├── input.ts
-│   ├── zIndex.ts
-├── hooks
-│   ├── cart
-│   │   ├── useCart.ts
-│   ├── detail
-│   │   ├── useDetailPage.ts
-│   ├── feedback
-│   │   ├── useRefreshButton.ts
-│   ├── item-row
-│   │   ├── useCartItem.ts
-│   │   ├── useItemRow.ts
-│   │   ├── useOrderItemRow.ts
-│   │   ├── useTasteDisplay.ts
-│   ├── modal
-│   │   ├── useReviewModal.ts
-│   ├── my-page
-│   │   ├── index.ts
-│   │   ├── useEditPage.ts
-│   │   ├── useEditPageModals.ts
-│   │   ├── useGauge.ts
-│   │   ├── useHistory.ts
-│   │   ├── useOrder.ts
-│   │   ├── usePagination.ts
-│   │   ├── useRecommendedModal.ts
-│   │   ├── useSelectCartModal.ts
-│   │   ├── usetasteReviewModal.ts
-│   │   ├── useTasteType.ts
+│   └── modal
+│
+├── service                 # 비즈니스 로직 / API 가공
 │   ├── product
-│   │   ├── usePopularProducts.ts
-│   │   ├── useProduct.ts
-│   │   ├── useProductDetail.ts
-│   │   ├── useRecommendedProducts.ts
-│   ├── search
-│   │   ├── useSearch.ts
-│   ├── test
-│   │   ├── index.ts
-│   │   ├── useMainStep.ts
-│   │   ├── useQuestions.ts
-│   │   ├── useQuestionStep.ts
-│   │   ├── useTestClient.ts
-│   ├── useDropdown.ts
-│   ├── useHeader.ts
-│   ├── useInfiniteScroll.ts
-│   ├── useModal.ts
-│   ├── useModalState.ts
-│   ├── usePaginations.ts
-│   ├── useStarRating.ts
-├── mocks
 │   ├── cart
-│   │   ├── cart.ts
-│   ├── detail
-│   │   ├── detailMock.ts
-│   ├── index.ts
-│   ├── itemRow.ts
-│   ├── main
-│   │   ├── monthly.ts
-│   │   ├── recommended.ts
-│   ├── modal
-│   │   ├── recommended.ts
-│   │   ├── recommendedDropdown.ts
-│   ├── package
-│   │   ├── recommended.ts
-│   ├── review
-│   │   ├── review.ts
-│   ├── test
-│   │   ├── questions.ts
-│   │   ├── resultProduct.ts
-├── providers
-│   ├── ReactQueryProvider.tsx
-├── service
-│   ├── cart
-│   │   ├── cart.ts
-│   ├── feedback
-│   ├── my-page
-│   │   ├── feedback.ts
-│   │   ├── gauge.ts
-│   │   ├── history.mapper.ts
-│   │   ├── index.ts
-│   │   ├── order.mapper.ts
-│   │   ├── order.ts
-│   │   ├── orderReview.ts
-│   │   ├── tasteType.ts
-│   ├── payment
-│   ├── product
-│   │   ├── product.ts
-│   │   ├── productBase.ts
-│   │   ├── productDetail.ts
-│   │   ├── productList.ts
-│   │   ├── productSearch.ts
-│   ├── test
-│   │   ├── questions.ts
-│   │   ├── userResponses.ts
-├── stores
-│   ├── useLoginStore.ts
-├── styles
-│   ├── fonts.ts
-├── types
-│   ├── card
-│   │   ├── card.ts
-│   ├── carousel
-│   │   ├── carousel.ts
-│   ├── cart
-│   │   ├── cart.ts
-│   ├── dropdown.ts
-│   ├── gauge-bar
-│   │   ├── tasteTypes.ts
-│   ├── index.ts
-│   ├── item-row
-│   │   ├── cart.ts
-│   │   ├── common.ts
-│   │   ├── index.ts
-│   │   ├── order.ts
-│   │   ├── tasting.ts
-│   ├── main
-│   │   ├── mainSection.ts
-│   ├── modal
-│   │   ├── feedback.ts
-│   │   ├── modal.ts
-│   ├── product
-│   ├── product.ts
-│   ├── review.ts
-│   ├── slider
-│   │   ├── slider.ts
-│   ├── starRating.ts
-│   ├── supabase
-│   │   ├── common.ts
-│   │   ├── index.ts
-│   │   ├── tables
-│   │   │   ├── cart.ts
-│   │   │   ├── index.ts
-│   │   │   ├── order.ts
-│   │   │   ├── product_detail.ts
-│   ├── supabase.ts
-│   ├── test
-│   │   ├── test.ts
-│   ├── toss
-│   │   ├── toss.ts
-├── utils
-│   ├── axios.ts
-│   ├── cart
-│   │   ├── formatOrderName.ts
-│   │   ├── formatPayment.ts
-│   │   ├── idConverter.ts
-│   │   ├── optimisticUpdate.ts
-│   │   ├── paymentInfoItems.ts
-│   │   ├── priceCalculator.ts
-│   │   ├── transformCartData.ts
-│   ├── cn.ts
-│   ├── date
-│   │   ├── formatDate.ts
-│   │   ├── toKST.ts
-│   ├── getUsername.ts
-│   ├── isValidUrl.ts
-│   ├── maskingUserId.ts
 │   ├── order
-│   │   ├── calculateTotalAmount.ts
-│   │   ├── createOrderItems.ts
-│   │   ├── formatOrderName.ts
-│   ├── supabase
-│   │   ├── server-client.ts
-│   ├── supabase.ts
-│   ├── syncPendingResponses.ts
-│   ├── validUrl.ts
+│   ├── payment
+│   ├── test
+│   └── my-page
+│
+├── stores                  # Zustand 전역 상태
+│   └── useLoginStore.ts
+│
+├── constants               # 상수 정의 (route, UI, section)
+├── types                   # TypeScript 타입 정의
+├── utils                   # 공통 유틸 함수
+├── providers               # React Query Provider 등
+├── foundations             # UI 기본 설계 (button, zIndex 등)
+├── assets                  # 아이콘 / 이미지 리소스
+├── styles                  # 폰트, 스타일 설정
+└── mocks                   # MSW 테스트용 Mock 데이터
 ```
 
 ---
