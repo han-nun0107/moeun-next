@@ -56,10 +56,7 @@ export const useDetailPage = (product?: ProductDetail) => {
       return result.data
     },
     onSuccess: () => {
-      // 장바구니 쿼리 invalidate하여 최신 데이터 가져오기
       queryClient.invalidateQueries({ queryKey: ['cart', user?.id] })
-      alert('장바구니에 추가되었습니다.')
-      router.push('/cart')
     },
     onError: (error: Error) => {
       alert(error.message || '장바구니 추가에 실패했습니다.')
@@ -78,28 +75,80 @@ export const useDetailPage = (product?: ProductDetail) => {
       return
     }
 
+    if (!dropdownValues.orderRegion || !dropdownValues.pickupStore || !dropdownValues.pickupDate) {
+      alert('주문 지역, 픽업 매장, 픽업 날짜를 모두 선택해주세요.')
+      return
+    }
+
     const productId = parseInt(product.id, 10)
     if (isNaN(productId)) {
       alert('상품 ID가 올바르지 않습니다.')
       return
     }
 
-    addToCartMutation.mutate({
-      userId: user.id,
-      productId,
-      quantity: localQuantity,
-      options: {
-        orderRegion: dropdownValues.orderRegion || undefined,
-        pickupStoreName: dropdownValues.pickupStore || undefined,
-        pickupDate: dropdownValues.pickupDate || undefined,
-        priceAtAdded: product.price,
-        imageUrl: product.main_image_url,
+    addToCartMutation.mutate(
+      {
+        userId: user.id,
+        productId,
+        quantity: localQuantity,
+        options: {
+          orderRegion: dropdownValues.orderRegion || undefined,
+          pickupStoreName: dropdownValues.pickupStore || undefined,
+          pickupDate: dropdownValues.pickupDate || undefined,
+          priceAtAdded: product.price,
+          imageUrl: product.main_image_url,
+        },
       },
-    })
+      {
+        onSuccess: () => {
+          alert('장바구니에 추가되었습니다.')
+        },
+      }
+    )
   }
 
   const handlePurchase = () => {
-    router.push(`/purchase`)
+    if (!user) {
+      alert('로그인이 필요합니다.')
+      router.push('/login')
+      return
+    }
+
+    if (!product) {
+      alert('상품 정보를 불러올 수 없습니다.')
+      return
+    }
+
+    if (!dropdownValues.orderRegion || !dropdownValues.pickupStore || !dropdownValues.pickupDate) {
+      alert('주문 지역, 픽업 매장, 픽업 날짜를 모두 선택해주세요.')
+      return
+    }
+
+    const productId = parseInt(product.id, 10)
+    if (isNaN(productId)) {
+      alert('상품 ID가 올바르지 않습니다.')
+      return
+    }
+
+    addToCartMutation.mutate(
+      {
+        userId: user.id,
+        productId,
+        quantity: localQuantity,
+        options: {
+          orderRegion: dropdownValues.orderRegion || undefined,
+          pickupStoreName: dropdownValues.pickupStore || undefined,
+          pickupDate: dropdownValues.pickupDate || undefined,
+          priceAtAdded: product.price,
+          imageUrl: product.main_image_url,
+        },
+      },
+      {
+        onSuccess: () => {
+          router.push('/cart')
+        },
+      }
+    )
   }
 
   return {
