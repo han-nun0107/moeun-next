@@ -71,7 +71,7 @@ export const useCart = () => {
 
       return { previousCartData }
     },
-    onError: (err, variables, context) => {
+    onError: (_err, _variables, context) => {
       if (context?.previousCartData) {
         queryClient.setQueryData(['cart', user?.id], context.previousCartData)
       }
@@ -108,10 +108,7 @@ export const useCart = () => {
     },
   })
 
-  const onPayment = async (
-    checkedTotalPrice: number,
-    checkedItems: (number | string)[]
-  ) => {
+  const onPayment = async (checkedItems: (number | string)[]) => {
     const clientKey = process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY
     if (!clientKey) {
       alert('클라이언트 키가 없습니다.')
@@ -131,7 +128,12 @@ export const useCart = () => {
       const res = await fetch('/api/payments/order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId: user.id }),
+        body: JSON.stringify({
+          userId: user.id,
+          checkedItems: checkedItems.map((id) =>
+            typeof id === 'string' ? parseInt(id, 10) : id
+          ),
+        }),
       })
 
       if (!res.ok) {

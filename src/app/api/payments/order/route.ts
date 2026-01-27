@@ -2,7 +2,7 @@ import { randomUUID } from 'crypto'
 
 import { NextRequest, NextResponse } from 'next/server'
 
-import type { OrderItemTable, OrderTable } from '@/types/supabase/tables/order'
+import type { OrderTable } from '@/types/supabase/tables/order'
 import { getCurrentKSTISOString } from '@/utils/date/toKST'
 import { calculateTotalAmount } from '@/utils/order/calculateTotalAmount'
 import { createOrderItems } from '@/utils/order/createOrderItems'
@@ -12,10 +12,21 @@ import { createSupabaseServerClient } from '@/utils/supabase/server-client'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { userId } = body
+    const { userId, checkedItems } = body
 
     if (!userId) {
       return NextResponse.json({ message: 'Missing userId' }, { status: 400 })
+    }
+
+    if (
+      !checkedItems ||
+      !Array.isArray(checkedItems) ||
+      checkedItems.length === 0
+    ) {
+      return NextResponse.json(
+        { message: 'No items selected' },
+        { status: 400 }
+      )
     }
 
     const supabase = createSupabaseServerClient()
@@ -32,6 +43,7 @@ export async function POST(request: NextRequest) {
         `
       )
       .eq('user_id', userId)
+      .in('id', checkedItems)
 
     if (cartErr) {
       return NextResponse.json(
