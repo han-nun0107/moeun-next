@@ -25,7 +25,9 @@ const MonthlyFeaturedSection = ({
         )}
       >
         <ProductTitle title={title} desc={desc} />
-        <div className="grid grid-cols-3 gap-[23.4px]">
+        <div
+          className={`grid grid-cols-3 gap-[23.4px] ${type === 'package' ? 'grid-cols-4' : 'grid-cols-3'}`}
+        >
           {products.map((product: Product) => (
             <Link
               key={`${product.name}-${product.id}`}
