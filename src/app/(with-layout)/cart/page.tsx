@@ -40,17 +40,17 @@ const Cart = () => {
     }
   }
 
+  const { data, onCheckChange, checkedTotalPrice, checkedItems } = useCartItem({
+    data: cartData,
+  })
+
   const handlePayment = () => {
     if (checkedItems.length === 0) {
       alert('결제할 상품을 선택해주세요.')
       return
     }
-    onPayment(checkedTotalPrice, checkedItems)
+    onPayment(checkedItems)
   }
-
-  const { data, onCheckChange, checkedTotalPrice, checkedItems } = useCartItem({
-    data: cartData,
-  })
 
   if (!isLoggedIn || !user) {
     return (
